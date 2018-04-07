@@ -9,7 +9,7 @@ import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
 
 public class GetStandardTime {
-	//设置NET服务器时间地址，这里是北京的服务器
+	//设置NET服务器时间地址，这里是北京的服务器.
 	public static String ServerIP = "202.108.6.95";
 
 	//获取服务器的标准北京时间
