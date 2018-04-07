@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vote.mapper.UserchoiceMapper">
+	<!-- 自定义结果集 -->
+	<resultMap type="Userchoice" id="userchoiceResultMap">
+		<result property="voteId" column="vote_id" />
+		<result property="userId" column="user_id" />
+		<result property="userChoice" column="userchoice" />
+	</resultMap>
+
+	<!-- 自定义结果集 -->
+	<resultMap type="Userchoice" id="userchoiceListResultMap">
+		<result property="voteId" column="vote_id" />
+		<result property="userId" column="user_id" />
+		<result property="userChoice" column="userchoice" />
+		<association property="vote" javaType="Vote">
+			<result property="voteId" column="vote_id" />
+			<result property="voteTitle" column="vote_title" />
+			<result property="voteExplain" column="vote_explain" />
+			<result property="voteResultA" column="vote_resulta" />
+			<result property="voteResultB" column="vote_resultb" />
+			<result property="voteResultC" column="vote_resultc" />
+			<result property="voteResultD" column="vote_resultd" />
+			<result property="voteBeginTime" column="vote_begintime" />
+			<result property="voteEndTime" column="vote_endTime" />
+		</association>
+	</resultMap>
+	<!-- 登录查询 -->
+	<select id="selectChoiceByVidAndUid" parameterType="String"
+		resultMap="userchoiceResultMap">
+		select *
+		from vote_userchoice
+		where vote_id=#{0} and
+		user_id=#{1}
+	</select>
+	<!-- 插入用户的选择 -->
+	<insert id="addUserchoice" parameterType="String">
+		insert into
+		vote_userchoice(vote_id,user_id,userchoice)
+		values(#{voteId},#{userId},#{userChoice})
+	</insert>
+
+	<sql id="Base_Column_List">
+		vu.vote_id, user_id,userchoice,vote_id,vote_title
+	</sql>
+
+	<!-- 根据用户id获取用户所有的投票信息 -->
+	<select id="getUserchoiceListById" parameterType="String"
+		resultMap="userchoiceListResultMap">
+		select vu.*,vv.vote_title
+		from vote_userchoice vu,vote_vote vv
+		where user_id=#{0} and vu.vote_id=vv.vote_id
+	</select>
+
+	<!-- 根据投票id删除该id下的所有选择 -->
+	<delete id="deleteUserchoiceById" parameterType="String">
+		delete from
+		vote_userchoice
+		where
+		vote_id=#{0}
+	</delete>
+
+</mapper>

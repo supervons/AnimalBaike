@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vote.mapper.VoteMapper">
+	<!-- 自定义结果集 -->
+	<resultMap type="Vote" id="voteResultMap">
+		<result property="voteId" column="vote_id" />
+		<result property="voteTitle" column="vote_title" />
+		<result property="voteExplain" column="vote_explain" />
+		<result property="voteResultA" column="vote_resulta" />
+		<result property="voteResultB" column="vote_resultb" />
+		<result property="voteResultC" column="vote_resultc" />
+		<result property="voteResultD" column="vote_resultd" />
+		<result property="voteBeginTime" column="vote_begintime" />
+		<result property="voteEndTime" column="vote_endTime" />
+	</resultMap>
+
+	<!-- 登录查询 -->
+	<select id="getVoteById" parameterType="String" resultMap="voteResultMap">
+		select *
+		from vote_vote
+		where vote_id=#{0}
+	</select>
+	<!-- <update id="updateUserInfo" parameterType="User" > -->
+	<!-- update vote_user -->
+	<!-- set user_name=#{userName},user_age=#{userAge},user_email=#{userEmail},user_address=#{userAddress} -->
+	<!-- where user_id=#{userId} -->
+	<!-- </update> -->
+	<sql id="Base_Column_List">
+		vote_id,
+		vote_title,vote_explain,vote_resulta,vote_resultb,vote_resultc,vote_resultd,vote_begintime,vote_endtime
+	</sql>
+
+	<!-- 获取所有项目信息 -->
+	<select id="getAllVoteInfo" resultMap="voteResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from vote_vote
+	</select>
+
+	<!-- 模糊查询 -->
+	<select id="getVagueVote" parameterType="String" resultMap="voteResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from vote_vote where vote_id like #{0}
+		 or vote_title like #{0}
+		or vote_explain like #{0} or vote_resulta like #{0} or vote_resultb like #{0}
+		or vote_resultc like #{0} or vote_resultd like #{0}
+	</select>
+	
+	<!-- 添加新项目 -->
+	<insert id="addVote" parameterType="Vote">
+		insert into
+		vote_vote(vote_id,vote_title,vote_explain,vote_resulta,vote_resultb,vote_resultc,vote_resultd,vote_begintime,vote_endtime)
+		values(#{voteId},#{voteTitle},#{voteExplain},#{voteResultA},#{voteResultB},#{voteResultC},#{voteResultD},#{voteBeginTime},#{voteEndTime})
+	</insert>
+
+	<!-- 删除项目 -->
+	<delete id="deleteVote" parameterType="String">
+		delete from
+		vote_vote
+		where
+		vote_id=#{0}
+	</delete>
+
+	<!--更新项目 -->
+	<update id="updateVote" parameterType="Vote">
+		update vote_vote
+		set
+		vote_title=#{voteTitle},vote_explain=#{voteExplain},vote_resulta=#{voteResultA},vote_resultb=#{voteResultB},
+		vote_resultc=#{voteResultC},vote_resultd=#{voteResultD},vote_begintime=#{voteBeginTime},vote_endtime=#{voteEndTime}
+		where vote_id=#{voteId}
+	</update>
+
+	<!-- 根据项目id查询有多少男生 -->
+	<select id="countManById" parameterType="String" resultType="int">
+		select count(*)
+		from vote_userchoice vu,vote_user vv
+		where vote_id =#{0}
+		and user_sex = '男' and vu.user_id = vv.user_id
+	</select>
+
+	<!-- 根据项目id查询有多少女生 -->
+	<select id="countWomanById" parameterType="String" resultType="int">
+		select count(*)
+		from vote_userchoice vu,vote_user vv
+		where vote_id =#{0}
+		and user_sex = '女' and vu.user_id = vv.user_id
+	</select>
+	
+	<!-- 根据项目编号，答案查出选择此答案的人数 -->
+	<select id="countResult" parameterType="String" resultType="int">
+		select count(*)
+		from vote_userchoice 
+		where vote_id =#{0} and userchoice = #{1}
+	</select>
+</mapper>
