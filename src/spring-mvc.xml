@@ -10,7 +10,7 @@
      http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
 	<!-- 自动扫描该包，Spring MVC 会将包下用 @Controller 注解的类注册为 Spring 的 controller -->
-	<context:component-scan base-package="com.vote.controller" />
+	<context:component-scan base-package="com.animal.controller" />
 	<!-- 设置默认配置方案 -->
 	<mvc:annotation-driven />
 	<!-- 视图解析器 -->

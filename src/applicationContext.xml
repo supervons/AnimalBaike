@@ -11,12 +11,12 @@
           http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
     <!-- 自动扫描有 Spring 相关注解的类，并把这些类注册为 bean -->
-    <context:component-scan base-package="com.vote" />
+    <context:component-scan base-package="com.animal" />
     <!-- 配置数据源 -->
     <bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/vote" />
+        <property name="url" value="jdbc:mysql://localhost:3306/animalbk" />
         <property name="username" value="root" />
         <property name="password" value="root" />
     </bean>
@@ -28,7 +28,7 @@
 
     <!-- MyBatis 自动扫描加载 Sql 映射文件/接口 -->    
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.vote.mapper"></property>
+        <property name="basePackage" value="com.animal.mapper"></property>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
     </bean>
     <!-- JDBC 事务管理器 -->

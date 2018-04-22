@@ -4,10 +4,10 @@
 <configuration>
     <!-- 为JavaBean起类别名 -->
     <typeAliases>
-        <package name="com.vote.model" />
+        <package name="com.animal.model" />
     </typeAliases> 
     <!-- 通过 mapper 接口包加载整个包的映射文件 --> 
     <mappers>
-        <package name="com/vote/mapper" />
+        <package name="com/animal/mapper" />
     </mappers>
 </configuration>
