@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.animal.model.Login;
-import com.animal.service.LoginService;
 import com.animal.service.UserInfoService;
 import com.animal.model.UserInfo;
 

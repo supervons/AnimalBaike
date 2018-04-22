@@ -1,6 +1,5 @@
 package com.animal.model;
 
-import java.util.Date;
 
 /**
  * 动物基本信息表

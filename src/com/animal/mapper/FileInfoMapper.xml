@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.animal.mapper.FileInfoMapper">
+	<!-- 自定义结果集 -->
+	<resultMap type="fileId" id="file_id">
+		<result property="fileType" column="file_type" />
+		<result property="fileFullPath" column="file_fuulpath" />
+		<result property="fileName" column="file_name" />
+		<result property="fileSize" column="file_size" />
+		<result property="uploadTime" column="upload_time" />
+	</resultMap>
+	<!-- 根据动物id获取动物信息 -->
+<!-- 	<select id="getAnimalInfoByAnimalId" parameterType="String" resultMap="animalInfoResultMap"> -->
+<!-- 		select * -->
+<!-- 		from animal_info -->
+<!-- 		where animal_id=#{0} -->
+<!-- 	</select> -->
+	<!--更新用户的密码 -->
+<!-- 	<update id="updatePassword" parameterType="String"> -->
+<!-- 		update -->
+<!-- 		user_login -->
+<!-- 		set user_password=#{2} -->
+<!-- 		where user_id=#{0} and user_password=#{1} -->
+<!-- 	</update> -->
+	<!--重置用户的密码 -->
+<!-- 	<update id="resetUserPassword" parameterType="String"> -->
+<!-- 		update -->
+<!-- 		user_login -->
+<!-- 		set user_password="123456" -->
+<!-- 		where user_id=#{0} -->
+<!-- 	</update> -->
+<!-- 	 插入新的用户登录  -->
+<!-- 	<insert id="addNewUser" parameterType="User"> -->
+<!-- 		insert into -->
+<!-- 		user_login(user_id,user_password,user_identity,user_regitime) -->
+<!-- 		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime}) -->
+<!-- 	</insert> -->
+</mapper>
