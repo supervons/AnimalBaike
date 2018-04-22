@@ -40,5 +40,12 @@ public class LoginController {
             return "login";
         }
     }
+	/**
+	 * 跳转到登陆界面
+	 */
+	@RequestMapping(value="goToLogin",method=RequestMethod.GET)
+    public String goToLogin(Login login, Model model, HttpSession session,HttpServletRequest ss) {
+            return "login";
+    }
 
 }

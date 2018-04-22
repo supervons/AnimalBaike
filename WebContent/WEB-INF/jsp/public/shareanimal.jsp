@@ -53,9 +53,9 @@
 				<!--/.navbar-header-->
 				<div id="main-nav" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav" id="mainNav">
-						<li class="active"><a href="${path}" class="scroll-link">首页</a></li>
+						<li><a href="${path}" class="scroll-link">首页</a></li>
 						<li><a href="${path}/Navigation/goToDiscoverAnimal" class="scroll-link">发现动物</a></li>
-						<li><a href="${path}/Navigation/goToShareAnimal" class="scroll-link">分享动物</a></li>
+						<li class="active"><a href="${path}/Navigation/goToShareAnimal" class="scroll-link">分享动物</a></li>
 						<li><a href="#team" class="scroll-link">论坛</a></li>
 						<li><a href="${path}/Navigation/goToContactNature" class="scroll-link">亲近自然</a></li>
 						<li><a href="${path}/Navigation/goToSeachRank" class="scroll-link">搜索排行</a></li>

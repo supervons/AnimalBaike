@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.animal.mapper.FileInfoMapper">
 	<!-- 自定义结果集 -->
-	<resultMap type="fileId" id="file_id">
+	<resultMap type="FileInfo" id="fileInfoResultMap">
 		<result property="fileType" column="file_type" />
 		<result property="fileFullPath" column="file_fuulpath" />
 		<result property="fileName" column="file_name" />

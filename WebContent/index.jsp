@@ -15,7 +15,7 @@
 <!--[if lt IE 9]> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
-<title>亲近自然，热爱动物！欢迎访问动物百科</title>
+<title>Home</title>
 <c:set value="${pageContext.request.contextPath}" var="path"
 	scope="page" />
 <meta name="description" content="">
@@ -44,23 +44,21 @@
 				<div class="navbar-header">
 					<button type="button" id="nav-toggle" class="navbar-toggle"
 						data-toggle="collapse" data-target="#main-nav">
-						<span class="sr-only">导航</span> <span
+						<span class="sr-only">Toggle navigation</span> <span
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a href="#" class="navbar-brand scroll-top logo"><b>动物百科</b>Animal BaiKe</a>
+					<a href="#" class="navbar-brand scroll-top logo"><b>Green</b>Corp</a>
 				</div>
 				<!--/.navbar-header-->
 				<div id="main-nav" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav" id="mainNav">
-						<li class="active"><a href="${path}" class="scroll-link">首页</a></li>
-						<li><a href="${path}/Navigation/goToDiscoverAnimal" class="scroll-link">发现动物</a></li>
-						<li><a href="${path}/Navigation/goToShareAnimal" class="scroll-link">分享动物</a></li>
-						<li><a href="#team" class="scroll-link">论坛</a></li>
-						<li><a href="${path}/Navigation/goToContactNature" class="scroll-link">亲近自然</a></li>
-						<li><a href="${path}/Navigation/goToSeachRank" class="scroll-link">搜索排行</a></li>
-						<li><a href="${path}/Navigation/goToAboutUs" class="scroll-link">关于我们</a></li>
-						<li><a href="${path}/Navigation/goToLogin" class="scroll-link">登陆</a></li>
+						<li class="active"><a href="#home" class="scroll-link">Home</a></li>
+						<li><a href="#aboutUs" class="scroll-link">About Us</a></li>
+						<li><a href="#services" class="scroll-link">Services</a></li>
+						<li><a href="#portfolio" class="scroll-link">Portfolio</a></li>
+						<li><a href="#team" class="scroll-link">Team</a></li>
+						<li><a href="#contactUs" class="scroll-link">Contact Us</a></li>
 					</ul>
 				</div>
 				<!--/.navbar-collapse-->
@@ -81,8 +79,8 @@
 			</ol>
 			<div class="carousel-inner">
 				<div class="item">
-					<img data-src="${path}/images/chess-2.jpg" alt="First slide"
-						src="${path}/images/chess-2.jpg" />
+					<img data-src="images/chess-2.jpg" alt="First slide"
+						src="images/chess-2.jpg" />
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>Responsive Website</h1>
@@ -92,8 +90,8 @@
 					</div>
 				</div>
 				<div class="item active">
-					<img data-src="${path}/images/apple.jpg" alt="Second slide"
-						src="${path}/images/apple.jpg">
+					<img data-src="images/apple.jpg" alt="Second slide"
+						src="images/apple.jpg">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>Mulit device compatability</h1>
@@ -103,8 +101,8 @@
 					</div>
 				</div>
 				<div class="item">
-					<img data-src="${path}/images/windmills.jpg" alt="Third slide"
-						src="${path}/images/windmills.jpg">
+					<img data-src="images/windmills.jpg" alt="Third slide"
+						src="images/windmills.jpg">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1 id="">Technologies Include</h1>
@@ -123,14 +121,64 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9 ">
-						<h3>动物世界</h3>
+						<h3>Duis aute irure dolor in reprehenderit in voluptate velit
+							esse cillum..</h3>
 					</div>
 					<div class="col-sm-3 ">
-						<a href="#" class="btn btn-extra-large btn-primary spclBtn">发现动物!</a>
+						<a href="#" class="btn btn-extra-large btn-primary spclBtn">Start
+							Now!</a>
 					</div>
 				</div>
 			</div>
 		</div>
+	</section>
+
+
+	<section id="aboutUs" class="page-section darkBg pDark pdingBtm30">
+		<div class="container">
+			<div class="heading text-center">
+				<!-- Heading -->
+				<h2>About Us</h2>
+				<p>At lorem ipsum available, but the majority have suffered
+					alteration humour or randomised</p>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<h3>
+						<i class="fa fa-desktop color"></i> &nbsp; What we do?
+					</h3>
+					<!-- Paragraph -->
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit
+						esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+						occaecat cupidatat non proident, sunt in culpa qui officia
+						deserunt mollit occaecat cupidatat non id est laborum.</p>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<!-- Heading -->
+					<h3>
+						<i class="fa fa-cloud color"></i> &nbsp;Why choose us?
+					</h3>
+					<!-- Paragraph -->
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit
+						esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+						occaecat cupidatat non proident, sunt in culpa qui officia
+						deserunt mollit occaecat cupidatat non id est laborum.</p>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<!-- Heading -->
+					<h3>
+						<i class="fa fa-home color"></i> &nbsp;Where are we?
+					</h3>
+					<!-- Paragraph -->
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit
+						esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+						occaecat cupidatat non proident, sunt in culpa qui officia
+						deserunt mollit occaecat cupidatat non id est laborum.</p>
+				</div>
+			</div>
+		</div>
+		<!--/.container-->
 	</section>
 
 	<section id="services" class="page-section">
@@ -453,71 +501,7 @@
 		</div>
 		<!--/.container-->
 	</section>
-<section id="contactNature" class="page-section">
-		<div class="container">
 
-			<div class="row">
-				<div class="heading text-center">
-					<!-- Heading -->
-					<h2>Contact Us</h2>
-					<p>There are many variations of passages of Lorem Ipsum
-						available, but the majority have suffered.</p>
-				</div>
-			</div>
-
-			<div class="row mrgn30">
-				<div class="col-sm-4 col-md-4">
-					<h4>Address:</h4>
-					<address>
-						WebThemez Company<br> 134 Stilla. Tae., 414515<br>
-						Leorislon, SA 02434-34534 USA <br>
-					</address>
-					<h4>Phone:</h4>
-					<address>
-						12345-49589-2<br>
-					</address>
-				</div>
-
-				<div class="col-sm-12 col-md-8">
-					<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
-					<form name="sentMessage" id="contactForm" novalidate>
-						<div class="control-group">
-							<div class="controls">
-								<input type="text" class="form-control" placeholder="Full Name"
-									id="name" required
-									data-validation-required-message="Please enter your name" />
-								<p class="help-block"></p>
-							</div>
-						</div>
-						<div class="control-group">
-							<div class="controls">
-								<input type="email" class="form-control" placeholder="Email"
-									id="email" required
-									data-validation-required-message="Please enter your email" />
-							</div>
-						</div>
-
-						<div class="control-group">
-							<div class="controls">
-								<textarea rows="10" cols="100" class="form-control"
-									placeholder="Message" id="message" required
-									data-validation-required-message="Please enter your message"
-									minlength="5"
-									data-validation-minlength-message="Min 5 characters"
-									maxlength="999" style="resize: none"></textarea>
-							</div>
-						</div>
-						<div id="success"></div>
-						<!-- For success/fail messages -->
-						<button type="submit" class="btn btn-primary pull-right">Send</button>
-						<br />
-					</form>
-				</div>
-			</div>
-		</div>
-		<!--/.container-->
-	</section>
-	
 	<section id="contactUs" class="page-section">
 		<div class="container">
 
@@ -636,8 +620,10 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="pull-left copyRights">
-						Copyright &copy; 2018.动物百科网，部分图片来源于网络，若有侵权，请联系删除！ <a
-							href="http://www.cssmoban.com/" target="_blank" title="联系我们">联系我们</a>
+						Copyright &copy; 2016.Company name All rights reserved.More
+						Templates <a href="http://www.cssmoban.com/" target="_blank"
+							title="模板之家">模板之家</a> - Collect from <a
+							href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
 					</div>
 				</div>
 			</div>
