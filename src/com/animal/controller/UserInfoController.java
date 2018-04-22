@@ -14,26 +14,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.animal.model.Login;
+import com.animal.model.UserInfo;
 import com.animal.service.LoginService;
 //sss
+import com.animal.service.UserInfoService;
 
 @Controller
-@RequestMapping("Login")
-public class LoginController {
+@RequestMapping("UserInfo")
+public class UserInfoController {
 	@Autowired
-	private LoginService loginService;	
+	private UserInfoService userInfoService;	
 	
 	
 
 	@RequestMapping(value="login",method=RequestMethod.POST)
-    public String login(Login login, Model model, HttpSession session,HttpServletRequest ss) {
-		Login loginUser = loginService.isLogin(login);	
+    public String getUserInfoByUserId(String userId, Model model, HttpSession session,HttpServletRequest ss) {
+		UserInfo userInfo = userInfoService.getUserInfoByUserId(userId);	
 		System.out.println("run Login-login");
-        if (loginUser != null) {
-            session.setAttribute("loginsession", loginUser);
-            if(loginUser.getUserIdentity()==0)
-            	return "Admin/adminindex";
-            else
+        if (userInfo != null) {
+            session.setAttribute("loginsession", userInfo);
+            System.out.println(userInfo.toString());
             	return "Member/memberindex";
         } else {
             model.addAttribute("message", "登陆失败!s");
