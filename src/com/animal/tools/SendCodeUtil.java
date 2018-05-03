@@ -1,4 +1,4 @@
-package com.animal.test;
+package com.animal.tools;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -20,10 +20,9 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
-import com.animal.tools.CheckSumBuilder;
-import com.animal.tools.GetRandonNumberUtil;
+import com.animal.test.HttpUtils;
 
-public class AliSendMsg {
+public class SendCodeUtil {
 	public static void main(String[] args) {
 		System.out.println(sendCodeAliYun("18249625212",6,true));;
 	}
@@ -63,7 +62,7 @@ public class AliSendMsg {
 	    	//获取response的body
 	    	String responseMap = EntityUtils.toString(response.getEntity());
 	    	Map<String,String> map= (Map<String, String>) JSON.parse(responseMap);//获取返回值信息，转为MAP
-    		Logger logger = LogManager.getLogger(AliSendMsg.class.getName());
+    		Logger logger = LogManager.getLogger(SendCodeUtil.class.getName());
 	    	String resultCode = map.get("Code");
         	if(resultCode.equals("OK")){
         		logger.info(map.toString());//日志级别为info则输出
@@ -144,7 +143,7 @@ public class AliSendMsg {
             //获取返回值信息，转为MAP
         	Map<String,String> map= (Map<String, String>) JSON.parse(responseMap);
         	String resultCode = String.valueOf(map.get("code"));
-    		Logger logger = LogManager.getLogger(AliSendMsg.class.getName());
+    		Logger logger = LogManager.getLogger(SendCodeUtil.class.getName());
         	if(resultCode.equals("200")){
         		//日志级别为info则输出
         		logger.info(map.toString());
