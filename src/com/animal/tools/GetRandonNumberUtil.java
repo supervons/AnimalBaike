@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * 生成随机验证码等
  * 
- * @author fys
+ * @author supervons
  *
  */
 public class GetRandonNumberUtil {

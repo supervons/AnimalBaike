@@ -21,12 +21,12 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.animal.test.HttpUtils;
-
+/**
+ * 发送验证码工具类，分为阿里云和网易云版本。
+ * @author supervons
+ *
+ */
 public class SendCodeUtil {
-	public static void main(String[] args) {
-		System.out.println(sendCodeAliYun("18249625212",6,true));;
-	}
-	
 	/**
 	 * 发送验证码阿里云版本，没有动物百科签名
 	 * @param phoneNum 手机号码
