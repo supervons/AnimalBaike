@@ -20,7 +20,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
-import com.animal.test.HttpUtils;
 /**
  * 发送验证码工具类，分为阿里云和网易云版本。
  * @author supervons

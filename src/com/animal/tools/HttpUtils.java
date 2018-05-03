@@ -1,4 +1,4 @@
-package com.animal.test;
+package com.animal.tools;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
