@@ -30,10 +30,10 @@ public class SendCodeUtil {
 	 * 发送验证码阿里云版本，没有动物百科签名
 	 * @param phoneNum 手机号码
 	 * @param codeLength 验证码长度
-	 * @param flag 两种情况，true：纯数字，false：数字+大小写字母
+	 * @param flag 两种情况，true：纯数字，false：数字+大小写字母，skin:模版号-5为注册通用,17为验证码通用,
 	 * @return 返回map对象，其中包含验证码code，状态码status，信息msg,此验证码需要自己生成
 	 */
-	public static Map<String, Object> sendCodeAliYun(String phoneNum,int codeLength,boolean flag){
+	public static Map<String, Object> sendCodeAliYun(String phoneNum,int codeLength,boolean flag,String skin){
 	    String host = "https://fesms.market.alicloudapi.com";//短信发送接口
 	    String path = "/sms/";
 	    String method = "GET";//get方式
@@ -45,7 +45,7 @@ public class SendCodeUtil {
 	    String code = GetRandonNumberUtil.getNumRandom(codeLength,flag);//随机生成验证码,后面的参数为是否纯数字，true为纯数字
 	    querys.put("code",code);
 	    querys.put("phone", phoneNum);
-	    querys.put("skin", "5");
+	    querys.put("skin", skin);
 		Map<String,Object> resultMap = new HashMap<String,Object>();//返回数据的map
 	    try {
 	    	/**
