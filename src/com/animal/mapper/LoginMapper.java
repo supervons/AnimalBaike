@@ -1,7 +1,5 @@
 package com.animal.mapper;
 
-import java.util.Date;
-
 import com.animal.model.Login;
 
 //用户登录信息类

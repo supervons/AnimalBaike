@@ -20,9 +20,9 @@
 	<div class="page">
 		<div class="loginwarrp">
 
-			<div class="logo">登陆动物百科</div>
+			<div class="logo">动物百科注册</div>
 			<div class="login_form">
-				<form action="${path}/Login/login/" method="POST">
+				<form action="${path}/Login/register/" method="POST">
 					<font color="red">${requestScope.message}${requestScope.addFlag}</font>
 					<ul>
 					<li class="login-item">
@@ -30,13 +30,21 @@
 						type="text" id="userId" name="userId"
 						class="login_input"> <span id="count-msg" class="error"></span>
 					</li>
-					<li class="login-item"><span>密 码：</span> <input
+					<li class="login-item"><span>密   码：</span> <input
 						type="password" id="userPassword" name="userPassword"
 						class="login_input"> <span id="password-msg" class="error"></span></li>
 
-					<li ><input class="btn btn-default" type="submit" value="登录" />
-					<input class="btn btn-default" type="reset" name="Register" value="注册" onclick="window.location.href='${path}/Navigation/goToRegister/'"/>
-					<input class="btn btn-default" type="reset" name="Register" value="忘记密码" onclick="window.location.href='${path}/Navigation/goToRegister/'"/></li>
+					<li class="login-item"><span>手机号：</span> <input
+						type="text" id="phoneNum" name="phoneNum"
+						class="login_input"> <span id="password-msg" class="error"></span></li>
+
+					<li class="login-item" style="width:50%;float:left"><span>验证码：</span> <input
+						type="password" style="width:30%"  id="userPassword" name="userPassword"
+						class="login_input">
+						</li>
+						<input id="sendCodeBtn" style="width:45%;float:right;margin-top:5%" class="btn btn-default" type="button" value="获取验证码" onclick="sendCode()"/>
+						
+					<li class="login-sub" ><input type="submit" value="注册" />
 					</ul>
 				</form>
 			</div>

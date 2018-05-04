@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.animal.mapper.CodeInfoMapper">
+	<!-- 自定义结果集 -->
+	<resultMap type="codeInfo" id="codeInfoResultMap">
+		<result property="codeId" column="code_id" />
+		<result property="phoneNum" column="phone_num" />
+		<result property="codeNum" column="code_num" />
+		<result property="codeStatus" column="code_status" />
+		<result property="sendTime" column="send_time" />
+	</resultMap>
+	<!-- 根据手机号，验证码和状态【不为sendstatus03】来查询验证码记录 -->
+	<select id="getCodeByPhoneNumAndCode" parameterType="String" resultMap="codeInfoResultMap">
+		select *
+		from code_info
+		where phone_num=#{0} and code_num=#{1} and code_status !='sendstatus03' 
+	</select>
+	<!--更新用户的密码 -->
+	<!-- <update id="updatePassword" parameterType="String"> -->
+	<!-- update -->
+	<!-- user_login -->
+	<!-- set user_password=#{2} -->
+	<!-- where user_id=#{0} and user_password=#{1} -->
+	<!-- </update> -->
+	<!--根据手机号，作废该手机号的验证码 -->
+	<update id="abandonCodeByPhoneNum" parameterType="String">
+		update
+		code_info
+		set code_status="sendstatus03"
+		where phone_num=#{0}
+	</update>
+	<!--发送新的验证码 -->
+	<insert id="sendMsg" parameterType="CodeInfo" >
+		insert into
+		code_info(code_id,phone_num,code_num,code_status,send_time)
+		values(#{codeId},#{phoneNum},#{codeNum},#{codeStatus},#{sendTime})
+	</insert>
+</mapper>

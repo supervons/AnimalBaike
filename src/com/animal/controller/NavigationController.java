@@ -1,23 +1,12 @@
 package com.animal.controller;
 
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.animal.model.Login;
-import com.animal.service.LoginService;
 /**
- * 负责跳转页面
- * @author Administrator
+ * 导航控制器，主要负责跳转页面
+ * @author fys
  *
  */
 @Controller
@@ -79,4 +68,11 @@ public class NavigationController {
             return "login";
     }
 
+	/**
+	 * 跳转到注册界面
+	 */
+	@RequestMapping(value="goToRegister",method=RequestMethod.GET)
+    public String goToRegister() {
+            return "register";
+    }
 }

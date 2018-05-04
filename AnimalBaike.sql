@@ -126,10 +126,27 @@ create table `notice_info`(
 create table `data_library`(
 	data_id varchar(11) comment '字典id',
 	data_no varchar(20) comment '字典no',
-	data_content varchar(32) comment '公告内容',
+	data_content varchar(32) comment '字典内容',
 	remark varchar(32) comment '备注',
 	reserve_field1 varchar(32) comment '保留字段1',	
 	reserve_field2 varchar(32) comment '保留字段2',	
 	reserve_field3 varchar(32) comment '保留字段3',	
-	primary key(data_id)
+	primary key(data_id,data_no)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8; 
+
+INSERT INTO `data_library` VALUES 
+ ('sendstatus','sendstatus01','正常','该状态标识此条验证码记录状态可用','','',''),
+ ('sendstatus','sendstatus03','作废','该状态标识此条验证码记录状态作废','','','');
+
+ /*验证码表*/
+create table `code_info`(
+	code_id varchar(32) comment '验证码id',
+	phone_num varchar(20) comment '手机号',
+	code_num varchar(20) comment '验证码',
+	code_status varchar(32) comment '状态',
+	send_time datetime comment '发送时间',	
+	reserve_field1 varchar(32) comment '保留字段1',
+	reserve_field2 varchar(32) comment '保留字段2',	
+	reserve_field3 varchar(32) comment '保留字段3',	
+	primary key(code_id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8; 
