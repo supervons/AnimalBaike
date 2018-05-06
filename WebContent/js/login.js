@@ -29,12 +29,15 @@ function checkPassword(){
 
 
 function sendCode(){
+	var pathName = document.location.pathname;
+    var index = pathName.substr(1).indexOf("/");
+    var result = pathName.substr(0,index+1);
 	let aa=document.getElementById("sendCodeBtn");
 	let userId=document.getElementById("userId").value;
 	let userPassword=document.getElementById("userPassword").value;
 	let phoneNum=document.getElementById("phoneNum").value;
 	$.ajax({
-        url:"${path}/Login/sendCode/",
+        url:result +  "/Login/sendCode/",
         data:{
         	phoneNum:phoneNum//参数
         },
