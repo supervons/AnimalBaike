@@ -20,7 +20,7 @@ import com.animal.tools.CommonUtils;
 import com.animal.tools.GetStandardTime;
 import com.animal.tools.SendCodeUtil;
 /**
- * 登陆，注册相关控制器
+ * 登陆，注册相关控制器哈
  * @author Administrator
  *
  */
