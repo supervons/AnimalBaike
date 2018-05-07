@@ -132,8 +132,7 @@ function sendCode() {
 	});
 	$("#codeSendSuccessAlert").show();
 	sendCodeBtn.disabled = true;
-	let
-	count = 60;// 重复发送阀值
+	let	count = 60;// 重复发送阀值
 	sendCodeBtn.value = count + "秒后，重新发送";
 	function countDown() {
 		count--;

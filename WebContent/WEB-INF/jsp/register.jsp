@@ -44,6 +44,10 @@
 				style="display: none">
 				<a class="close" onclick="closeAlert()">&times;</a> <strong>提示：</strong>该用户名已被使用。
 			</div>
+			<div id="sendCodeFaild" class="alert alert-warning"
+				style="display: none">
+				<a class="close" onclick="closeAlert()">&times;</a> <strong>提示：</strong>发送验证码失败。
+			</div>
 			<div id="userIdcheck" class="alert alert-warning"
 				style="display: none">
 				<a class="close" onclick="closeAlert()">&times;</a> <strong>提示：</strong>用户名不能为空，且大于6位。

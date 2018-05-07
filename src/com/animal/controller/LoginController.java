@@ -95,6 +95,7 @@ public class LoginController {
 		String phoneNum = ss.getParameter("phoneNum");
 		Map<String, Object> resultMap = SendCodeUtil.sendCodeAliYun(phoneNum,
 				6, true, "5");
+//		Map<String, Object> resultMap = SendCodeUtil.sendCodeNetease(phoneNum, "6");
 		//获取map中的status，该状态标识是否发送成功
 		String statusResult = (String) resultMap.get("status");
 		ModelAndView  resultMav = new ModelAndView();
