@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -43,6 +45,9 @@ public class LoginController {
 	@Autowired
 	private CodeInfoService codeInfoService;	
 	
+
+	Logger logger = LogManager.getLogger(SendCodeUtil.class.getName());
+	
 	/**
 	 * 登陆控制器，传入login类，比较数据库
 	 * @param login
@@ -52,17 +57,21 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value="login",method=RequestMethod.POST)
-    public String login(Login login, Model model, HttpSession session,HttpServletRequest ss) {
+    public String login(Model model, HttpSession session,HttpServletRequest ss) {
+		Login login = new Login();
+		Md5PasswordEncoder md5 = new Md5PasswordEncoder();
+		login.setUserId(ss.getParameter("userId"));
+		login.setUserPassword(md5.encodePassword(ss.getParameter("userPassword"), null));
 		Login loginUser = loginService.isLogin(login);	
-		System.out.println("run Login-login");
         if (loginUser != null) {
             session.setAttribute("loginsession", loginUser);
+    		logger.info(loginUser.toString());//日志级别为info则输出
             if(loginUser.getUserIdentity()==0)
             	return "Admin/adminindex";
             else
             	return "Member/memberindex";
         } else {
-            model.addAttribute("message", "登陆失败!s");
+            model.addAttribute("flag", "false");
             return "login";
         }
     }

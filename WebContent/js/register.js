@@ -65,16 +65,11 @@ $(document).ready(
 
 // 注册提交事件方法
 function checkFrom() {
-	let
-	userId = $("#userId").val();
-	let
-	userPassword = $("#userPassword").val();
-	let
-	userPasswordReplay = $("#userPasswordReplay").val();
-	let
-	phoneNum = $("#phoneNum").val();
-	let
-	checkCode = $("#checkCode").val();
+	let	userId = $("#userId").val();
+	let	userPassword = $("#userPassword").val();
+	let	userPasswordReplay = $("#userPasswordReplay").val();
+	let	phoneNum = $("#phoneNum").val();
+	let	checkCode = $("#checkCode").val();
 	console.log(userId + "-" + userPassword + "-" + phoneNum + "-" + checkCode);
 	if (userId == "" || userPassword == "" || phoneNum == "" || checkCode == ""
 			|| userPasswordReplay == "") {
@@ -111,14 +106,10 @@ function sendCode() {
 	var pathName = document.location.pathname;
 	var index = pathName.substr(1).indexOf("/");
 	var result = pathName.substr(0, index + 1);
-	let
-	aa = document.getElementById("sendCodeBtn");
-	let
-	userId = document.getElementById("userId").value;
-	let
-	userPassword = document.getElementById("userPassword").value;
-	let
-	phoneNum = document.getElementById("phoneNum").value;
+	let	sendCodeBtn = document.getElementById("sendCodeBtn");
+	let	userId = document.getElementById("userId").value;
+	let	userPassword = document.getElementById("userPassword").value;
+	let	phoneNum = document.getElementById("phoneNum").value;
 	var phoneNumReg = /^1[3|4|5|7|8]\d{9}$/
 	if (!phoneNumReg.test(phoneNum)) {
 		document.getElementById("phoneNum").focus();
@@ -140,17 +131,17 @@ function sendCode() {
 		}
 	});
 	$("#codeSendSuccessAlert").show();
-	aa.disabled = true;
+	sendCodeBtn.disabled = true;
 	let
 	count = 60;// 重复发送阀值
-	aa.value = count + "秒后，重新发送";
+	sendCodeBtn.value = count + "秒后，重新发送";
 	function countDown() {
 		count--;
-		aa.value = count + "秒后，重新发送";
+		sendCodeBtn.value = count + "秒后，重新发送";
 		if (count == 0) {
 			clearInterval(timer);
-			aa.disabled = false;
-			aa.value = "重新发送";
+			sendCodeBtn.disabled = false;
+			sendCodeBtn.value = "重新发送";
 			$("#codeSendSuccessAlert").hide();
 		}
 	}
