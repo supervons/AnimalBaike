@@ -165,6 +165,8 @@ public class LoginController {
 		ui.setUserId(userId);
 		ui.setUserTel(phoneNum);
 		userInfoService.addNewUserInfo(ui);
+		/**作废此条验证码**/
+		codeInfoService.abandonCodeByPhoneNum(phoneNum);
 		return "login";
 	}
 	
