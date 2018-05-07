@@ -1,8 +1,5 @@
 package com.animal.mapper;
 
-import java.util.Date;
-
-import com.animal.model.Login;
 import com.animal.model.UserInfo;
 
 //用户信息类
@@ -16,6 +13,6 @@ public interface UserInfoMapper {
 //	//重置用户密码为"123456"
 //	public int resetUserPassword(String userId);
 //
-//	//插入新用户
-//	public int addNewUser(Login login);
+	//插入新用户
+	public int addNewUserInfo(UserInfo userInfo);
 }

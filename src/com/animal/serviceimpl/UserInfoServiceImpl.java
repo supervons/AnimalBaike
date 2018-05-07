@@ -22,4 +22,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 		// TODO Auto-generated method stub
 		return userInfoMapper.getUserInfoByUserId(userId);
 	}
+
+	@Override
+	public int addNewUserInfo(UserInfo userInfo) {
+		// TODO Auto-generated method stub
+		return userInfoMapper.addNewUserInfo(userInfo);
+	}
+
 }

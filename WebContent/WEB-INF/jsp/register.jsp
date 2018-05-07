@@ -31,10 +31,14 @@
 
 			<div class="logo">动物百科注册</div>
 			<div id="welcomeInfo" class="alert alert-info" style="display: block">
-				欢迎加入动物百科，尽情释放自己吧~</div>
+				加入动物百科，尽情释放自己吧~</div>
 			<div id="phoneNumberAlert" class="alert alert-warning"
 				style="display: none">
 				<a class="close" onclick="closeAlert()">&times;</a> <strong>提示：</strong>手机号码有误，请重新输入。
+			</div>
+			<div id="codeNumberAlert" class="alert alert-warning"
+				style="display: none">
+				<a class="close" onclick="closeAlert()">&times;</a> <strong>提示：</strong>验证码不正确，请检查。
 			</div>
 			<div id="userIdAlert" class="alert alert-warning"
 				style="display: none">

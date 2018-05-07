@@ -2,6 +2,7 @@ package com.animal.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.animal.model.CodeInfo;
 import com.animal.model.Login;
+import com.animal.model.UserInfo;
 import com.animal.service.LoginService;
 import com.animal.service.CodeInfoService;
+import com.animal.service.UserInfoService;
 import com.animal.tools.CommonUtils;
 import com.animal.tools.GetStandardTime;
 import com.animal.tools.SendCodeUtil;
@@ -33,7 +37,9 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;	
 	
-
+	@Autowired
+	private UserInfoService userInfoService;	
+	
 	@Autowired
 	private CodeInfoService codeInfoService;	
 	
@@ -113,23 +119,53 @@ public class LoginController {
 	public void  getUserById(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
 		String userId = ss.getParameter("userId");
 		int i = loginService.isExistUser(userId);
-		ModelAndView  resultMav = new ModelAndView();
 		PrintWriter out = response.getWriter();
 		if(i==0){
 			out.print(1);
-//			resultMav.addObject("isExistFlag", "SUCCESS");
 		}else{
 			out.print(2);
-//			resultMav.addObject("isExistFlag", "ERROR");
 		}
-//		resultMav.setViewName("register");
-//		System.out.println(resultMav.toString());
-//		return resultMav;
 	}
 	
-//	@RequestMapping(value="register",method=RequestMethod.POST)
-//    public String register(Login login, Model model, HttpSession session,HttpServletRequest ss) {
-//		
-//	}
+	@RequestMapping(value="checkCodeNumber",method=RequestMethod.POST)
+    public void checkCodeNumber(Model model, HttpSession session,HttpServletRequest ss,HttpServletResponse response) {
+		String phoneNum = ss.getParameter("phoneNum");
+		String checkCode = ss.getParameter("checkCode");
+		CodeInfo ci = new CodeInfo();
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			ci = codeInfoService.getCodeByPhoneNumAndCode(phoneNum, checkCode);
+			if(ci==null){
+				out.print(0);//如果为空，输出0
+			}
+			else
+				out.print(1);//如果有记录，则证明验证码正确
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value="register",method=RequestMethod.POST)
+    public String register(Model model, HttpSession session,HttpServletRequest ss) {
+		String userId = ss.getParameter("userId");
+		String userPassword = ss.getParameter("userPassword");
+		String phoneNum = ss.getParameter("phoneNum");
+		/**以下向登陆表插入登陆信息**/
+		Md5PasswordEncoder md5 = new Md5PasswordEncoder();
+		Login ul = new Login();
+		ul.setUserId(userId);
+		ul.setUserPassword(md5.encodePassword(userPassword, null));
+		ul.setUserIdentity(1);
+		ul.setUserRegitime(new Date());
+		loginService.addNewUser(ul);
+		/**以下向用户信息表插入信息**/
+		UserInfo ui = new UserInfo();
+		ui.setUserId(userId);
+		ui.setUserTel(phoneNum);
+		userInfoService.addNewUserInfo(ui);
+		return "login";
+	}
 	
 }

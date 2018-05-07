@@ -13,7 +13,8 @@
 	<select id="isLogin" parameterType="Login" resultMap="loginResultMap">
 		select *
 		from user_login
-		where user_id=#{userId} and user_password=#{userPassword}
+		where user_id=#{userId} and
+		user_password=#{userPassword}
 	</select>
 	<!-- 查询用户是否存在 -->
 	<select id="isExistUser" parameterType="String" resultType="int">
@@ -25,7 +26,8 @@
 	<update id="updatePassword" parameterType="String">
 		update
 		user_login
-		set user_password=#{2}
+		set
+		user_password=#{2}
 		where user_id=#{0} and user_password=#{1}
 	</update>
 	<!--重置用户的密码 -->
@@ -35,10 +37,10 @@
 		set user_password="123456"
 		where user_id=#{0}
 	</update>
-<!-- 	 插入新的用户登录  -->
-<!-- 	<insert id="addNewUser" parameterType="User"> -->
-<!-- 		insert into -->
-<!-- 		user_login(user_id,user_password,user_identity,user_regitime) -->
-<!-- 		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime}) -->
-<!-- 	</insert> -->
+	<!-- 插入新的用户登录 -->
+	<insert id="addNewUser" parameterType="Login">
+		insert into
+		user_login(user_id,user_password,user_identity,user_regitime)
+		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime})
+	</insert>
 </mapper>
