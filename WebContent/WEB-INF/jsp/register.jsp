@@ -1,4 +1,6 @@
-﻿<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+﻿<%@page import="org.apache.commons.lang3.RandomUtils"%>
+<%@page import="java.util.Random"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -25,8 +27,13 @@
 <script type="text/javascript" src="${path}/js/register.js"></script>
 <script type="text/javascript" src="${path}/js/jquery-1.8.3.min.js"></script>
 </head>
-<body>
-	<div>
+<%
+	String imageName[] = {"Cat_01","Elephant_01","Garrulax_01"};
+	int i = RandomUtils.nextInt()%3;
+%>
+
+<body style="background:url(${path}/images/animal_images/<%=imageName[i]%>.jpg) no-repeat;background-size: 100%;">
+	<div >
 		<div class="loginwarrp">
 
 			<div class="logo">动物百科注册</div>
