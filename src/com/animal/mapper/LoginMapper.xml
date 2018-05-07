@@ -15,6 +15,12 @@
 		from user_login
 		where user_id=#{userId} and user_password=#{userPassword}
 	</select>
+	<!-- 查询用户是否存在 -->
+	<select id="isExistUser" parameterType="String" resultType="int">
+		select count(*)
+		from user_login
+		where user_id=#{0}
+	</select>
 	<!--更新用户的密码 -->
 	<update id="updatePassword" parameterType="String">
 		update

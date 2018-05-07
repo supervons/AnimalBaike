@@ -1,8 +1,11 @@
 package com.animal.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +107,24 @@ public class LoginController {
 		}
 		resultMav.setViewName("login");
 		return resultMav;
+	}
+	
+	@RequestMapping(value="getUserById",method=RequestMethod.POST)
+	public void  getUserById(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
+		String userId = ss.getParameter("userId");
+		int i = loginService.isExistUser(userId);
+		ModelAndView  resultMav = new ModelAndView();
+		PrintWriter out = response.getWriter();
+		if(i==0){
+			out.print(1);
+//			resultMav.addObject("isExistFlag", "SUCCESS");
+		}else{
+			out.print(2);
+//			resultMav.addObject("isExistFlag", "ERROR");
+		}
+//		resultMav.setViewName("register");
+//		System.out.println(resultMav.toString());
+//		return resultMav;
 	}
 	
 //	@RequestMapping(value="register",method=RequestMethod.POST)

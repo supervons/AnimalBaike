@@ -23,38 +23,37 @@ public class LoginTest {
     private Login login;
 
     //测试用户登录
-    @Test
-    public void testLogin() {
-//    	Admin admin = new Admin();
-    	login.setUserId("qq123456");
-    	login.setUserPassword("123456");
-        System.out.println(loginService.isLogin(login)!=null?"登录成功":"登录失败");
-
-    }
+//    @Test
+//    public void testLogin() {
+////    	Admin admin = new Admin();
+//    	login.setUserId("qq123456");
+//    	login.setUserPassword("123456");
+//        System.out.println(loginService.isLogin(login)!=null?"登录成功":"登录失败");
+//
+//    }
     
     //测试根据id，旧密码更改密码。
-    @Test
-    public void testUpdatePassword() {
-//    	Admin admin = new Admin();    	
-        System.out.println(loginService.updatePassword("qq123456","123456","456789"));
-
-    }
-    
+//    @Test
+//    public void testUpdatePassword() {
+////    	Admin admin = new Admin();    	
+//        System.out.println(loginService.updatePassword("qq123456","123456","456789"));
+//
+//    }
+//    
     //测试根据id，旧密码更改密码。
     @Test
     public void resetUserPassword() {
-        System.out.println(loginService.resetUserPassword("qq123456"));
-
+      System.out.println(loginService.isExistUser("qq123456"));
     }
     
     //测试根据id，旧密码更改密码。
-    @Test
-    public void testAddNewLogin() {
-    	Login login = new Login();
-		login.setUserId("qq56456");
-		login.setUserPassword("123");
-		login.setUserIdentity(1);
-		login.setUserRegitime(new Date());
-		loginService.addNewUser(login);		
-    }
+//    @Test
+//    public void testAddNewLogin() {
+//    	Login login = new Login();
+//		login.setUserId("qq56456");
+//		login.setUserPassword("123");
+//		login.setUserIdentity(1);
+//		login.setUserRegitime(new Date());
+//		loginService.addNewUser(login);		
+//    }
 }

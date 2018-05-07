@@ -43,5 +43,10 @@ public class LoginServiceImpl implements LoginService {
 		return loginMapper.addNewUser(login);
 	}
 
+	@Override
+	public int isExistUser(String userId) {
+		return loginMapper.isExistUser(userId);
+	}
+
 
 }

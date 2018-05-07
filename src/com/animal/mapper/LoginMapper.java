@@ -15,4 +15,7 @@ public interface LoginMapper {
 
 	//插入新用户
 	public int addNewUser(Login login);
+	
+	//检查用户是否存在
+	public int isExistUser(String userId);
 }
