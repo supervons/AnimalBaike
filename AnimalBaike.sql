@@ -49,7 +49,7 @@ create table `animal_info`(
 	animal_enlishname varchar(20) comment '动物英文名',
 	animal_region varchar(20) comment '动物所属区域',
 	animal_fileid varchar(20) comment '动物文件图片id',
-	reserve_field1 varchar(32) comment '保留字段1',	
+	animal_details text comment '动物描述',	
 	reserve_field2 varchar(32) comment '保留字段2',	
 	reserve_field3 varchar(32) comment '保留字段3',	
 	primary key(animal_id)

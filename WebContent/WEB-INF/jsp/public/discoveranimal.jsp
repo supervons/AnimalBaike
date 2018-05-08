@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.animal.model.Login" %>
+<%@ page import="com.animal.model.Login,com.animal.model.AnimalInfo,java.util.*" %>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -91,12 +91,20 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<div class="container">
 			<div class="heading text-center">
 				<!-- Heading -->
-				<h2>Services</h2>
-				<p>At lorem Ipsum available, but the majority have suffered
-					alteration in some form by injected humour.</p>
+				<h2>请输入想要查询的动物</h2>
+				<form action="${path}/AnimalController/seachAnimal/" method="POST">
+					<input type="text" id="seachWord" name="seachWord" class="seachWord" style="font-size:25px;height:45px">
+					<input class="btn btn-default" style="font-size:25px; height:40px" type="submit" id="seachBtn" name="seachBtn" value="搜一下" /></li>
+					</ul>
+				</form>
 			</div>
 			<div class="row">
+<%
 
+AnimalInfo animalInfo = new AnimalInfo();
+ArrayList<AnimalInfo> listAnimalInfo =  (ArrayList<AnimalInfo>) session.getAttribute("listAnimalInfo");
+%>
+<%=listAnimalInfo==null?"空":listAnimalInfo.toString()%>
 				<!-- item -->
 				<div class="col-md-4 text-center">
 					<i class="fa fa-arrows fa-2x circle"></i>

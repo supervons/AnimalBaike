@@ -13,7 +13,7 @@ public class AnimalInfo {
 	private String animalEnlishName;
 	private String animalRegion;
 	private String animalFileId;
-	private String reserveField1;
+	private String animalDetails;
 	private String reserveField2;
 	private String reserveField3;
 	public String getAnimalId() {
@@ -52,11 +52,11 @@ public class AnimalInfo {
 	public void setAnimalFileId(String animalFileId) {
 		this.animalFileId = animalFileId;
 	}
-	public String getReserveField1() {
-		return reserveField1;
+	public String getAnimalDetails() {
+		return animalDetails;
 	}
-	public void setReserveField1(String reserveField1) {
-		this.reserveField1 = reserveField1;
+	public void setAnimalDetails(String animalDetails) {
+		this.animalDetails = animalDetails;
 	}
 	public String getReserveField2() {
 		return reserveField2;
@@ -76,7 +76,7 @@ public class AnimalInfo {
 				+ animalType + ", animalName=" + animalName
 				+ ", animalEnlishName=" + animalEnlishName + ", animalRegion="
 				+ animalRegion + ", animalFileId=" + animalFileId
-				+ ", reserveField1=" + reserveField1 + ", reserveField2="
+				+ ", animalDetails=" + animalDetails + ", reserveField2="
 				+ reserveField2 + ", reserveField3=" + reserveField3 + "]";
 	}
 	

@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/index.jsp=UTF-8
+encoding//src/com/animal/controller/AnimalInfoController.java=UTF-8
 encoding//src/com/animal/controller/LoginController.java=UTF-8
 encoding//src/com/animal/controller/NavigationController.java=UTF-8
 encoding//src/com/animal/controller/UserInfoController.java=UTF-8

@@ -10,12 +10,19 @@
 		<result property="animalEnlishName" column="animal_enlishname" />
 		<result property="animalRegion" column="animal_region" />
 		<result property="animalFileId" column="animal_fileid" />
+		<result property="animalDetails" column="animal_details" />
 	</resultMap>
 	<!-- 根据动物id获取动物信息 -->
 	<select id="getAnimalInfoByAnimalId" parameterType="String" resultMap="animalInfoResultMap">
 		select *
 		from animal_info
 		where animal_id=#{0}
+	</select>
+	<!-- 模糊搜索动物信息 -->
+	<select id="seachAnimalByWords" parameterType="String" resultMap="animalInfoResultMap">
+	select * 
+	from animal_info 
+	where animal_type = #{0} or animal_name like CONCAT('%', #{0}, '%')  or animal_region like CONCAT('%', #{0}, '%')
 	</select>
 	<!--更新用户的密码 -->
 <!-- 	<update id="updatePassword" parameterType="String"> -->

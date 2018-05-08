@@ -1,5 +1,7 @@
 package com.animal.test;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,14 @@ public class AnimalInfoTest {
     @Test
     public void testGetAnimalInfoByAnimalId() {
     	animalInfo = animalInfoService.getAnimalInfoByAnimalId("uuid55");
-    	System.out.println(animalInfo.toString());
+//    	System.out.println(animalInfo.toString());
+    }
+    
+    //测试根据id获取动物数据
+    @Test
+    public void testSeachAnimalByWords() {
+    	ArrayList<AnimalInfo> arrayListAnimalInfo = new ArrayList<AnimalInfo>();
+    	arrayListAnimalInfo = animalInfoService.seachAnimalByWords("龙");
+    	System.out.println(arrayListAnimalInfo.toString());
     }
 }
