@@ -42,6 +42,7 @@
 <%
 Login loginSession =  (Login)session.getAttribute("loginsession");
 String userId = loginSession==null?"":loginSession.getUserId();
+
 %>
 	<header class="header">
 		<div class="container">

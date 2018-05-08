@@ -16,7 +16,7 @@
 <script type="text/javascript" src="${path}/js/jquery.min.js"></script>
 <script type="text/javascript" src="${path}/js/login.js"></script>
 </head>
-<body>
+<body style="background:url(${path}/images/animal_images/GrayBear_01.jpg) no-repeat;background-size: 100%;">
 	<div class="page">
 		<div class="loginwarrp">
 

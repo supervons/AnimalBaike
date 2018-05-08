@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>网上投票系统</title>
+<title>动物百科-注册</title>
 <c:set value="${pageContext.request.contextPath}" var="path"
 	scope="page" />
 <link rel="stylesheet" href="${path}/css/reset.css" />
@@ -34,7 +34,7 @@
 
 <body style="background:url(${path}/images/animal_images/<%=imageName[i]%>.jpg) no-repeat;background-size: 100%;">
 	<div >
-		<div class="loginwarrp">
+		<div class="registerwarrp">
 
 			<div class="logo">动物百科注册</div>
 			<div id="welcomeInfo" class="alert alert-info" style="display: block">
