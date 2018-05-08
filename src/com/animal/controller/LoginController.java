@@ -67,9 +67,9 @@ public class LoginController {
             session.setAttribute("loginsession", loginUser);
     		logger.info(loginUser.toString());//日志级别为info则输出
             if(loginUser.getUserIdentity()==0)
-            	return "Admin/adminindex";
+            	return "index";
             else
-            	return "Member/memberindex";
+            	return "index";
         } else {
             model.addAttribute("flag", "false");
             return "login";
@@ -179,5 +179,4 @@ public class LoginController {
 		codeInfoService.abandonCodeByPhoneNum(phoneNum);
 		return "login";
 	}
-	
 }

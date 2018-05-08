@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*" %>
+<%@ page import="com.animal.model.Login" %>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -32,12 +34,18 @@
 <link rel="stylesheet" href="${path}/js/fancybox/jquery.fancybox.css"
 	type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="${path}/css/da-slider.css" />
+<link rel="stylesheet"
+	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="${path}/css/styles.css" />
 <!-- Font Awesome -->
-<link href="${path}/font/css/font-awesome.min.css" rel="stylesheet">
+<link href="${path}/fonts/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
+<%
+Login loginSession =  (Login)session.getAttribute("loginsession");
+String userId = loginSession==null?"":loginSession.getUserId();
+%>
 	<header class="header">
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
@@ -56,11 +64,12 @@
 						<li class="active"><a href="${path}" class="scroll-link">首页</a></li>
 						<li><a href="${path}/Navigation/goToDiscoverAnimal" class="scroll-link">发现动物</a></li>
 						<li><a href="${path}/Navigation/goToShareAnimal" class="scroll-link">分享动物</a></li>
-						<li><a href="#team" class="scroll-link">论坛</a></li>
 						<li><a href="${path}/Navigation/goToContactNature" class="scroll-link">亲近自然</a></li>
 						<li><a href="${path}/Navigation/goToSeachRank" class="scroll-link">搜索排行</a></li>
+						<li><a href="${path}/Navigation/goToUserInfo" class="scroll-link">个人中心</a></li>
 						<li><a href="${path}/Navigation/goToAboutUs" class="scroll-link">关于我们</a></li>
-						<li><a href="${path}/Navigation/goToLogin" class="scroll-link">登陆</a></li>
+						<li id="loginIn" style="display: block"><a href="${path}/Navigation/goToLogin" class="scroll-link">登陆</a></li>
+						<li id="signOut" style="display: none"><a href="${path}/Navigation/goSignOut" class="scroll-link">退出</a></li>
 					</ul>
 				</div>
 				<!--/.navbar-collapse-->
@@ -85,8 +94,8 @@
 						src="${path}/images/chess-2.jpg" />
 					<div class="container">
 						<div class="carousel-caption">
-							<h1>Responsive Website</h1>
-							<h3>Its a Single Page Responsive Website.</h3>
+							<h1>梅 花 鹿</h1>
+							<h3>森林中的精灵.</h3>
 							<!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
 						</div>
 					</div>
@@ -96,8 +105,8 @@
 						src="${path}/images/apple.jpg">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1>Mulit device compatability</h1>
-							<h3>Its a Responsive website with mulit device compatability</h3>
+							<h1>猎 豹</h1>
+							<h3>草原上的追风者.</h3>
 							<!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>-->
 						</div>
 					</div>
@@ -107,8 +116,8 @@
 						src="${path}/images/windmills.jpg">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1 id="">Technologies Include</h1>
-							<h3>Technologies: Bootstrap, HTML5, CSS3 and jQuery.</h3>
+							<h1>考 拉</h1>
+							<h3>静静的享受树上时光.</h3>
 							<!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
 						</div>
 					</div>
@@ -654,9 +663,25 @@
 	<script src="${path}/js/fancybox/jquery.fancybox.pack.js"
 		type="text/javascript"></script>
 	<script src="${path}/js/jquery.nav.js" type="text/javascript"></script>
-	<script src="${path}/js/jquery.cslider.js" type="text/javascript"></script>
-	<script src="${path}/contact/jqBootstrapValidation.js"></script>
-	<script src="${path}/contact/contact_me.js"></script>
-	<script src="${path}/js/custom.js" type="text/javascript"></script>
+	<script src="${path}/js/jquery.cslider.js" type="text/javascript"></script
+	<script src="${path}/js/custom.js" type="text/javascript"></script>>
+	<script src="${path}/js/Common.js" type="text/javascript"></script>
+<script
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js">
+</script>
+<script
+	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+    $(function(){
+        var userId = '<%=userId%>';
+        if(userId == null || userId =="" || userId == undefined){
+    		$("#signOut").hide();
+        	$("#loginIn").show();
+        }else{
+        	$("#signOut").show();
+        	$("#loginIn").hide();
+        }
+        });
+</script>
 </body>
 </html>

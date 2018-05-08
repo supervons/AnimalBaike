@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.animal.model.Login" %>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -34,10 +35,14 @@
 <link rel="stylesheet" type="text/css" href="${path}/css/da-slider.css" />
 <link rel="stylesheet" href="${path}/css/styles.css" />
 <!-- Font Awesome -->
-<link href="${path}/font/css/font-awesome.min.css" rel="stylesheet">
+<link href="${path}/fonts/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
+<%
+Login loginSession =  (Login)session.getAttribute("loginsession");
+String userId = loginSession==null?"":loginSession.getUserId();
+%>
 	<header class="header">
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
@@ -55,11 +60,12 @@
 						<li><a href="${path}" class="scroll-link">首页</a></li>
 						<li><a href="${path}/Navigation/goToDiscoverAnimal" class="scroll-link">发现动物</a></li>
 						<li><a href="${path}/Navigation/goToShareAnimal" class="scroll-link">分享动物</a></li>
-						<li><a href="#team" class="scroll-link">论坛</a></li>
 						<li><a href="${path}/Navigation/goToContactNature" class="scroll-link">亲近自然</a></li>
 						<li><a href="${path}/Navigation/goToSeachRank" class="scroll-link">搜索排行</a></li>
+						<li><a href="${path}/Navigation/goToUserInfo" class="scroll-link">个人中心</a></li>
 						<li class="active"><a href="${path}/Navigation/goToAboutUs" class="scroll-link">关于我们</a></li>
-						<li><a href="${path}/Navigation/goToLogin" class="scroll-link">登陆</a></li>
+						<li id="loginIn" style="display: block"><a href="${path}/Navigation/goToLogin" class="scroll-link">登陆</a></li>
+						<li id="signOut" style="display: none"><a href="${path}/Navigation/goSignOut" class="scroll-link">退出</a></li>
 					</ul>
 				</div>
 				<!--/.navbar-collapse-->
@@ -220,8 +226,24 @@
 		type="text/javascript"></script>
 	<script src="${path}/js/jquery.nav.js" type="text/javascript"></script>
 	<script src="${path}/js/jquery.cslider.js" type="text/javascript"></script>
-	<script src="${path}/contact/jqBootstrapValidation.js"></script>
-	<script src="${path}/contact/contact_me.js"></script>
 	<script src="${path}/js/custom.js" type="text/javascript"></script>
+	<script src="${path}/js/Common.js" type="text/javascript"></script>
+<script
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js">
+</script>
+<script
+	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+    $(function(){
+        var userId = '<%=userId%>';
+        if(userId == null || userId =="" || userId == undefined){
+    		$("#signOut").hide();
+        	$("#loginIn").show();
+        }else{
+        	$("#signOut").show();
+        	$("#loginIn").hide();
+        }
+        });
+</script>
 </body>
 </html>

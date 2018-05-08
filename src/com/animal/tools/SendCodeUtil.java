@@ -37,7 +37,7 @@ public class SendCodeUtil {
 	    String host = "https://fesms.market.alicloudapi.com";//短信发送接口
 	    String path = "/sms/";
 	    String method = "GET";//get方式
-	    String appcode = "";//密钥
+	    String appcode = "c118c38da99447658a5299bc48413921";//密钥
 	    Map<String, String> headers = new HashMap<String, String>();
 	    //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
 	    headers.put("Authorization", "APPCODE " + appcode);
@@ -91,9 +91,9 @@ public class SendCodeUtil {
 	    //发送验证码的请求路径URL
 	    String SERVER_URL="https://api.netease.im/sms/sendcode.action";
 	    //网易云信分配的账号，请替换你在管理后台应用下申请的Appkey
-	    String APP_KEY="";
+	    String APP_KEY="bf92233856d8881853bdb0ce4c62311f";
 	    //网易云信分配的密钥，请替换你在管理后台应用下申请的appSecret
-	    String APP_SECRET="";
+	    String APP_SECRET="13e09d5b09aa";
 	    //随机数
 	    String NONCE="123456";
 	    //短信模板ID

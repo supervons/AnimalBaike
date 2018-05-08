@@ -1,6 +1,12 @@
 package com.animal.controller;
 
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +35,7 @@ public class NavigationController {
         return "public/discoveranimal";
     }
 	/**
-	 * 跳转到关于我们界面
+	 * 跳转到亲近自然界面
 	 * @return
 	 */
 	@RequestMapping(value="goToContactNature",method=RequestMethod.GET)
@@ -37,7 +43,7 @@ public class NavigationController {
         return "public/contactnature";
     }
 	/**
-	 * 跳转到关于我们界面
+	 * 跳转到分享动物界面
 	 * @return
 	 */
 	@RequestMapping(value="goToShareAnimal",method=RequestMethod.GET)
@@ -45,7 +51,7 @@ public class NavigationController {
         return "public/shareanimal";
     }
 	/**
-	 * 跳转到关于我们界面
+	 * 跳转到搜索排行界面
 	 * @return
 	 */
 	@RequestMapping(value="goToSeachRank",method=RequestMethod.GET)
@@ -75,4 +81,21 @@ public class NavigationController {
     public String goToRegister() {
             return "register";
     }
+
+	/**
+	 * 跳转到个人中心
+	 */
+	@RequestMapping(value="goToUserInfo",method=RequestMethod.GET)
+    public String goToUserInfo() {
+            return "public/userinfo";
+    }
+
+	/**
+	 * 退出登陆
+	 */
+	@RequestMapping(value="goSignOut",method=RequestMethod.GET)
+	public String  goSignOut(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
+         session.setAttribute("loginsession", null);
+         return "index";
+	}
 }

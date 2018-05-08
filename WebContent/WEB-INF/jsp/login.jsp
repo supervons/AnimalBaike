@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>网上投票系统</title>
+<title>动物百科-登陆</title>
 <c:set value="${pageContext.request.contextPath}" var="path"
 	scope="page" />
 <link rel="stylesheet" href="${path}/css/reset.css" />
@@ -44,7 +44,7 @@
 						class="login_input"> <span id="password-msg" class="error"></span></li>
 
 					<li ><input class="btn btn-default" type="submit" value="登录" onclick="return checkLogin()"/>
-					<input class="btn btn-default" type="reset" name="Register" value="注册" onclick="window.location.href='${path}/Navigation/goToRegister/'"/>
+					<input class="btn btn-default" type="reset" name="Register" value="加入我们" onclick="window.location.href='${path}/Navigation/goToRegister/'"/>
 					<input class="btn btn-default" type="reset" name="Register" value="忘记密码" onclick="window.location.href='${path}/Navigation/goToRegister/'"/></li>
 					</ul>
 				</form>
