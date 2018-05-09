@@ -45,7 +45,7 @@
 
 					<li ><input class="btn btn-default" type="submit" value="登录" onclick="return checkLogin()"/>
 					<input class="btn btn-default" type="reset" name="Register" value="加入我们" onclick="window.location.href='${path}/Navigation/goToRegister/'"/>
-					<input class="btn btn-default" type="reset" name="Register" value="忘记密码" onclick="window.location.href='${path}/Navigation/goToRegister/'"/></li>
+					<input class="btn btn-default" type="reset" name="Register" value="返回主页" onclick="window.location.href='${path}/Navigation/goToIndex/'"/></li>
 					</ul>
 				</form>
 			</div>
