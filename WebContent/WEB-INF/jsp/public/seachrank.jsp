@@ -108,7 +108,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 					<%
 						for (int i = 0; i < seachRankList.size(); i++) {
 					%>
-					<tr>
+					<tr onclick="goToSeach('<%=seachRankList.get(i).get("seach_content")%>')">
 						<td>
 						 <%if(i==0){%><img style="width:25px" src="${path}/images/icon/firstIcon.png"><%} 
 						 else if(i==1){%><img style="width:25px" src="${path}/images/icon/secondIcon.png"><%} 
@@ -117,7 +117,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 						 %>	
 						 <%=i+1%><%}%>					
 						</td>
-						<td><%=seachRankList.get(i).get("seach_content")%></td>
+						<td ><%=seachRankList.get(i).get("seach_content")%></td>
 						<td><%=String.valueOf(seachRankList.get(i).get("hot"))%></td>
 					</tr>
 					<%
@@ -137,8 +137,8 @@ String userId = loginSession==null?"":loginSession.getUserId();
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="pull-left copyRights">
-						Copyright &copy; 2018.动物百科网，部分图片来源于网络，若有侵权，请联系删除！ <a
-							href="http://www.cssmoban.com/" target="_blank" title="联系我们">联系我们</a>
+						Copyright &copy; 2018.动物百科网，部分图片来源于网络，若有侵权，请联系删除！
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=934235475&amp;site=qq&amp;menu=yes">联系我们</a>
 					</div>
 				</div>
 			</div>
@@ -217,6 +217,20 @@ String userId = loginSession==null?"":loginSession.getUserId();
 			type : "GET",
 			success : function(re) {
 				location.reload();
+			}
+		});      	
+    }
+    
+    function goToSeach(seach_content){
+    	console.log(seach_content);
+		$.ajax({
+			url : result + "/AnimalController/seachAnimal/",
+			data : {
+				seachWord:seach_content,
+			},
+			type : "POST",
+			success : function(re) {
+				window.location.href=result + "/Navigation/goToDiscoverAnimal?rank=yes";
 			}
 		});      	
     }

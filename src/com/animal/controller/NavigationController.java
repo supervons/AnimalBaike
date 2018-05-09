@@ -39,8 +39,10 @@ public class NavigationController {
 	 * @return
 	 */
 	@RequestMapping(value="goToDiscoverAnimal",method=RequestMethod.GET)
-    public String goToDiscoverAnimal(HttpSession session) {
-		session.setAttribute("listAnimalInfo", null);
+    public String goToDiscoverAnimal(HttpSession session,HttpServletRequest ss) {
+		String rankFlag = ss.getParameter("rank")==null?"":ss.getParameter("rank");
+		if(!rankFlag.equals("yes"))
+			session.setAttribute("listAnimalInfo", null);
         return "public/discoveranimal";
     }
 	/**

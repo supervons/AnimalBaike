@@ -133,8 +133,8 @@ if(listAnimalInfo != null){
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="pull-left copyRights">
-						Copyright &copy; 2018.动物百科网，部分图片来源于网络，若有侵权，请联系删除！ <a
-							href="http://www.cssmoban.com/" target="_blank" title="联系我们">联系我们</a>
+						Copyright &copy; 2018.动物百科网，部分图片来源于网络，若有侵权，请联系删除！
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=934235475&amp;site=qq&amp;menu=yes">联系我们</a>
 					</div>
 				</div>
 			</div>
