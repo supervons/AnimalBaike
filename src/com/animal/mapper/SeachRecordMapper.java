@@ -1,5 +1,7 @@
 package com.animal.mapper;
 
-public interface SeachRecordMapper {
+import com.animal.model.SeachRecord;
 
+public interface SeachRecordMapper {
+	public int addNewSeachRecord(SeachRecord seachRecord);
 }

@@ -86,7 +86,7 @@ create table `animal_type`(
 
  /*搜索记录表*/
 create table `seach_record`(
-	record_id varchar(11) comment '记录id',
+	record_id varchar(32) comment '记录id',
 	user_id varchar(20) comment '用户id',
 	seach_content varchar(255) comment '搜索内容',
 	seach_time datetime comment '搜索日期',

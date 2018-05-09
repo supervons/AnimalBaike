@@ -23,10 +23,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.animal.model.AnimalInfo;
 import com.animal.model.CodeInfo;
 import com.animal.model.Login;
+import com.animal.model.SeachRecord;
 import com.animal.model.UserInfo;
 import com.animal.service.AnimalInfoService;
 import com.animal.service.LoginService;
 import com.animal.service.CodeInfoService;
+import com.animal.service.SeachRecordService;
 import com.animal.service.UserInfoService;
 import com.animal.tools.CommonUtils;
 import com.animal.tools.GetStandardTime;
@@ -41,6 +43,9 @@ import com.animal.tools.SendCodeUtil;
 public class AnimalInfoController {
 	@Autowired
 	private AnimalInfoService animalInfoService;	
+
+	@Autowired
+	private SeachRecordService seachRecordService;	
 	Logger logger = LogManager.getLogger(SendCodeUtil.class.getName());
 	
 	@RequestMapping(value="seachAnimal",method=RequestMethod.POST)
@@ -48,9 +53,24 @@ public class AnimalInfoController {
 		String seachWord = ss.getParameter("seachWord");
 		AnimalInfo animalInfo = new AnimalInfo();
 		ArrayList<AnimalInfo> listAnimalInfo = new ArrayList<AnimalInfo>();
-		listAnimalInfo = animalInfoService.seachAnimalByWords(seachWord);
+		if(!seachWord.equals("")){
+			listAnimalInfo = animalInfoService.seachAnimalByWords(seachWord);
+		}else{
+			listAnimalInfo = null;
+		}
         if (listAnimalInfo != null) {
             session.setAttribute("listAnimalInfo", listAnimalInfo);
+            //如果搜索的有结果，则证明该搜索有效，进入搜索记录表
+            SeachRecord seachRecord = new SeachRecord();
+            /**从session中获取用户id**/
+            Login userLoginInfo = (Login)session.getAttribute("loginsession");
+            String userId = userLoginInfo==null?"":userLoginInfo.getUserId();
+            /**插入搜索记录表**/
+            seachRecord.setRecordId(CommonUtils.getUUID());
+            seachRecord.setUserId(userId);
+            seachRecord.setSeachContent(seachWord);
+            seachRecord.setSeachTime(new Date());
+            seachRecordService.addNewSeachRecord(seachRecord);
     		logger.info(listAnimalInfo.toString());//日志级别为info则输出
     		return "public/discoveranimal";
         } else {

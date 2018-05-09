@@ -10,29 +10,29 @@
 		<result property="seachTime" column="seach_time" />
 	</resultMap>
 	<!-- 根据动物id获取动物信息 -->
-<!-- 	<select id="getAnimalInfoByAnimalId" parameterType="String" resultMap="animalInfoResultMap"> -->
-<!-- 		select * -->
-<!-- 		from animal_info -->
-<!-- 		where animal_id=#{0} -->
-<!-- 	</select> -->
+	<!-- <select id="getAnimalInfoByAnimalId" parameterType="String" resultMap="animalInfoResultMap"> -->
+	<!-- select * -->
+	<!-- from animal_info -->
+	<!-- where animal_id=#{0} -->
+	<!-- </select> -->
 	<!--更新用户的密码 -->
-<!-- 	<update id="updatePassword" parameterType="String"> -->
-<!-- 		update -->
-<!-- 		user_login -->
-<!-- 		set user_password=#{2} -->
-<!-- 		where user_id=#{0} and user_password=#{1} -->
-<!-- 	</update> -->
+	<!-- <update id="updatePassword" parameterType="String"> -->
+	<!-- update -->
+	<!-- user_login -->
+	<!-- set user_password=#{2} -->
+	<!-- where user_id=#{0} and user_password=#{1} -->
+	<!-- </update> -->
 	<!--重置用户的密码 -->
-<!-- 	<update id="resetUserPassword" parameterType="String"> -->
-<!-- 		update -->
-<!-- 		user_login -->
-<!-- 		set user_password="123456" -->
-<!-- 		where user_id=#{0} -->
-<!-- 	</update> -->
-<!-- 	 插入新的用户登录  -->
-<!-- 	<insert id="addNewUser" parameterType="User"> -->
-<!-- 		insert into -->
-<!-- 		user_login(user_id,user_password,user_identity,user_regitime) -->
-<!-- 		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime}) -->
-<!-- 	</insert> -->
+	<!-- <update id="resetUserPassword" parameterType="String"> -->
+	<!-- update -->
+	<!-- user_login -->
+	<!-- set user_password="123456" -->
+	<!-- where user_id=#{0} -->
+	<!-- </update> -->
+	<!-- 插入新搜索记录-->
+	<insert id="addNewSeachRecord" parameterType="SeachRecord">
+		insert into
+		seach_record(record_id,user_id,seach_content,seach_time)
+		values(#{recordId},#{userId},#{seachContent},#{seachTime})
+	</insert>
 </mapper>
