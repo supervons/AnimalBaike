@@ -74,6 +74,8 @@ public class AnimalInfoController {
     		logger.info(listAnimalInfo.toString());//日志级别为info则输出
     		return "public/discoveranimal";
         } else {
+        	//如果搜索出来的是空，则清空session
+            session.setAttribute("listAnimalInfo", null);
     		return "public/discoveranimal";
         }
     }
