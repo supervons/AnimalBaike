@@ -41,6 +41,9 @@ p {
 .blank{
 	margin-top: 40%;
 }
+.seachRankBlank{
+	margin-top: 5%;
+}
 .button-outline {
     -webkit-font-smoothing: antialiased;
     display: inline-block;

@@ -65,8 +65,14 @@ public class NavigationController {
 	 */
 	@RequestMapping(value="goToSeachRank",method=RequestMethod.GET)
     public String goToSeachRank(HttpSession session) {
+		//去到搜索排行界面，默认展示总排行
 		List<Map<String,String>> map =seachRecordService.getSeachRank();
-		session.setAttribute("seachRankList", map);
+		List<Map<String,String>> tempFlag = (List<Map<String, String>>) session.getAttribute("seachRankList");
+		if(tempFlag==null){
+			session.setAttribute("seachRankList", map);
+			session.setAttribute("rankType", "all");
+		}
+		
         return "public/seachrank";
     }
 	/**
@@ -106,7 +112,8 @@ public class NavigationController {
 	 */
 	@RequestMapping(value="goSignOut",method=RequestMethod.GET)
 	public String  goSignOut(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
-         session.setAttribute("loginsession", null);
+		 //清空所有session中的值
+         session.invalidate(); 
          return "index";
 	}
 }

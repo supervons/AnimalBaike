@@ -85,15 +85,18 @@ String userId = loginSession==null?"":loginSession.getUserId();
 			<%
 				List<Map<String, String>> seachRankList = (List<Map<String, String>>) session
 						.getAttribute("seachRankList");
+				String rankType =  (String)session.getAttribute("rankType");
 				if (seachRankList != null) {
 			%>
 			<h4>
-			
-			<input type="button" class="btn btn-default" style="float:right"value="周">
-			<input type="button" class="btn btn-default" style="float:right"value="月">
-			<input type="button" class="btn btn-default" style="float:right"value="总">			
+			<h4 id="allRank" class=".col-xs-1" style="float:left;margin-left:1%;display:none"">总排行</h4>
+			<h4 id="monthRank" class=".col-xs-1"  style="float:left;margin-left:1%;display:none">当月排行</h4>
+			<h4 id="weekRank" class=".col-xs-1" style="float:left;margin-left:1%;display:none">一周排行</h4>
+			<input type="button" class=".col-xs-1 btn btn-default" style="float:right" value="周" onclick="showWeek()" >
+			<input type="button" class=".col-xs-1 btn btn-default" style="float:right" value="月" onclick="showMonth()">
+			<input type="button" class=".col-xs-1 btn btn-default" style="float:right" value="总" onclick="showAll()">			
 			</h4>
-			<table id="animalTable" class="table table-hover table-bordered">
+			<table id="animalTable" class="table table-hover table-bordered text-center text-justify">
 				<thead>
 					<tr>
 						<th>排名</th>
@@ -106,7 +109,14 @@ String userId = loginSession==null?"":loginSession.getUserId();
 						for (int i = 0; i < seachRankList.size(); i++) {
 					%>
 					<tr>
-						<td><%=i + 1%></td>
+						<td>
+						 <%if(i==0){%><img style="width:25px" src="${path}/images/icon/firstIcon.png"><%} 
+						 else if(i==1){%><img style="width:25px" src="${path}/images/icon/secondIcon.png"><%} 
+						 else if(i==2){%><img style="width:25px" src="${path}/images/icon/thirdIcon.png"><%}
+						 else {
+						 %>	
+						 <%=i+1%><%}%>					
+						</td>
 						<td><%=seachRankList.get(i).get("seach_content")%></td>
 						<td><%=String.valueOf(seachRankList.get(i).get("hot"))%></td>
 					</tr>
@@ -119,7 +129,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		</section>
 
 	</section>
-	<section class="blank">
+	<section class="seachRankBlank">
 	</section>
 	<!--/.page-section-->
 	<section class="copyright">
@@ -153,8 +163,20 @@ String userId = loginSession==null?"":loginSession.getUserId();
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	var pathName = document.location.pathname;
+	var index = pathName.substr(1).indexOf("/");
+	var result = pathName.substr(0, index + 1);
+	var i = 0;
     $(function(){
         var userId = '<%=userId%>';
+        var rankType = '<%=rankType%>';
+        if(rankType == "all"){
+        	$("#allRank").show();
+        }else if(rankType == "week"){
+        	$("#weekRank").show();
+        }else{
+        	$("#monthRank").show();        	
+        }
         if(userId == null || userId =="" || userId == undefined){
     		$("#signOut").hide();
         	$("#loginIn").show();
@@ -163,6 +185,41 @@ String userId = loginSession==null?"":loginSession.getUserId();
         	$("#loginIn").hide();
         }
         });
+    function showWeek(){
+    	$.ajax({
+			url : result + "/SeachRank/weekRank/",
+			data : {
+			},
+			type : "GET",
+			success : function(re) {
+				location.reload();
+			}
+		});	
+    }
+    
+    function showMonth(){
+    	$.ajax({
+			url : result + "/SeachRank/monthRank/",
+			data : {
+			},
+			type : "GET",
+			success : function(re) {
+				location.reload();
+			}
+		});
+    }
+    
+    function showAll(){
+    	$.ajax({
+			url : result + "/SeachRank/allRank/",
+			data : {
+			},
+			type : "GET",
+			success : function(re) {
+				location.reload();
+			}
+		});      	
+    }
 </script>
 </body>
 </html>
