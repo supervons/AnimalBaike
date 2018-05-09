@@ -1,6 +1,8 @@
 package com.animal.serviceimpl;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,25 @@ public class SeachRecordServiceImpl implements SeachRecordService{
 	public int addNewSeachRecord(SeachRecord seachRecord) {
 		// TODO Auto-generated method stub
 		return seachRecordMapper.addNewSeachRecord(seachRecord);
+	}
+
+	//获取搜索数据排行。
+	@Override
+	public List<Map<String,String>> getSeachRank() {
+		// TODO Auto-generated method stub
+		return seachRecordMapper.getSeachRank();
+	}
+
+	@Override
+	public List<Map<String, String>> getSeachRankBetweenMonth() {
+		// TODO Auto-generated method stub
+		return seachRecordMapper.getSeachRankBetweenMonth();
+	}
+
+	@Override
+	public List<Map<String, String>> getSeachRankBetweenWeek() {
+		// TODO Auto-generated method stub
+		return seachRecordMapper.getSeachRankBetweenWeek();
 	}
 
 }

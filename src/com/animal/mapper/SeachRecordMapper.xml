@@ -35,4 +35,25 @@
 		seach_record(record_id,user_id,seach_content,seach_time)
 		values(#{recordId},#{userId},#{seachContent},#{seachTime})
 	</insert>
+	
+	<!-- 插入获取搜索记录排行,只取搜索前十的,总榜-->	
+	<select id="getSeachRank" resultType="map">
+	select seach_content,count(*) hot 
+	from seach_record 
+	group by seach_content order by hot desc LIMIT 0,10
+	</select>
+	
+	<!-- 插入获取搜索记录排行,只取搜索前十的,月榜-->	
+	<select id="getSeachRankBetweenMonth" resultType="map">
+	select seach_content,count(*) hot 
+	from seach_record where (to_days(now())-to_days(seach_time))&lt;='30'
+	group by seach_content order by hot desc LIMIT 0,10
+	</select>
+	
+	<!-- 插入获取搜索记录排行,只取搜索前十的,周榜-->	
+	<select id="getSeachRankBetweenWeek" resultType="map">
+	select seach_content,count(*) hot 
+	from seach_record where (to_days(now())-to_days(seach_time))&lt;='7'
+	group by seach_content order by hot desc LIMIT 0,10
+	</select>
 </mapper>

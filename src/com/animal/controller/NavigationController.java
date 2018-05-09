@@ -2,14 +2,19 @@ package com.animal.controller;
 
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.animal.service.SeachRecordService;
 /**
  * 导航控制器，主要负责跳转页面
  * @author fys
@@ -18,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("Navigation")
 public class NavigationController {
+
+    @Autowired
+    private SeachRecordService seachRecordService;
 	/**
 	 * 跳转到首页
 	 * @return
@@ -56,7 +64,9 @@ public class NavigationController {
 	 * @return
 	 */
 	@RequestMapping(value="goToSeachRank",method=RequestMethod.GET)
-    public String goToSeachRank() {
+    public String goToSeachRank(HttpSession session) {
+		List<Map<String,String>> map =seachRecordService.getSeachRank();
+		session.setAttribute("seachRankList", map);
         return "public/seachrank";
     }
 	/**

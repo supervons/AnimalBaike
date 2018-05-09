@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.animal.model.Login" %>
+<%@ page import="com.animal.model.AnimalInfo,java.util.*" %>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -78,6 +79,45 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	<!--/.header-->
 	<section id="contactNature" class="page-section">
 		
+	</section>
+	<section id="seachRank" class="container" style="width:30%;margin-top:3% ">
+		<section id="seachContentRank">
+			<%
+				List<Map<String, String>> seachRankList = (List<Map<String, String>>) session
+						.getAttribute("seachRankList");
+				if (seachRankList != null) {
+			%>
+			<h4>
+			
+			<input type="button" class="btn btn-default" style="float:right"value="周">
+			<input type="button" class="btn btn-default" style="float:right"value="月">
+			<input type="button" class="btn btn-default" style="float:right"value="总">			
+			</h4>
+			<table id="animalTable" class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>排名</th>
+						<th>关键词</th>
+						<th>指数</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+						for (int i = 0; i < seachRankList.size(); i++) {
+					%>
+					<tr>
+						<td><%=i + 1%></td>
+						<td><%=seachRankList.get(i).get("seach_content")%></td>
+						<td><%=String.valueOf(seachRankList.get(i).get("hot"))%></td>
+					</tr>
+					<%
+						}
+						}
+					%>
+				</tbody>
+			</table>
+		</section>
+
 	</section>
 	<section class="blank">
 	</section>
