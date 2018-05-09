@@ -58,7 +58,7 @@ public class AnimalInfoController {
 		}else{
 			listAnimalInfo = null;
 		}
-        if (listAnimalInfo != null) {
+        if (listAnimalInfo != null && listAnimalInfo.size()>0) {//搜索的内容不为空，且有搜索结果，才计入搜索记录表
             session.setAttribute("listAnimalInfo", listAnimalInfo);
             //如果搜索的有结果，则证明该搜索有效，进入搜索记录表
             SeachRecord seachRecord = new SeachRecord();
