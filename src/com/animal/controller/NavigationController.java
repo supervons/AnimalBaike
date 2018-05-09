@@ -31,7 +31,8 @@ public class NavigationController {
 	 * @return
 	 */
 	@RequestMapping(value="goToDiscoverAnimal",method=RequestMethod.GET)
-    public String goToDiscoverAnimal() {
+    public String goToDiscoverAnimal(HttpSession session) {
+		session.setAttribute("listAnimalInfo", null);
         return "public/discoveranimal";
     }
 	/**

@@ -77,8 +77,23 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<!--/.container-->
 	</header>
 	<!--/.header-->
-	<div id="#top"></div>
-	<section id="home">
+	<section id="contactNature" class="page-section">
+		
+	</section>
+	<section class="blank"></section>
+	<!--/.page-section-->
+	<section class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="pull-left copyRights">
+						Copyright &copy; 2018.动物百科网，部分图片来源于网络，若有侵权，请联系删除！ <a
+							href="http://www.cssmoban.com/" target="_blank" title="联系我们">联系我们</a>
+					</div>
+				</div>
+			</div>
+			<!-- / .row -->
+		</div>
 	</section>
 	<a href="#top" class="topHome"><i class="fa fa-chevron-up fa-2x"></i></a>
 

@@ -103,78 +103,29 @@ String userId = loginSession==null?"":loginSession.getUserId();
 
 AnimalInfo animalInfo = new AnimalInfo();
 ArrayList<AnimalInfo> listAnimalInfo =  (ArrayList<AnimalInfo>) session.getAttribute("listAnimalInfo");
+if(listAnimalInfo != null){
 %>
-<%=listAnimalInfo==null?"空":listAnimalInfo.toString()%>
-				<!-- item -->
-				<div class="col-md-4 text-center">
-					<i class="fa fa-arrows fa-2x circle"></i>
-					<h3>
-						Responsive <span class="id-color">Design</span>
-					</h3>
-					<p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit
-						imperdiet congue. Integer elit imperdiet congue.</p>
-				</div>
-				<!-- end: -->
-
-				<!-- item -->
-				<div class="col-md-4 text-center">
-					<i class="fa fa-css3 fa-2x circle"></i>
-					<h3>
-						HTML5/CSS3 <span class="id-color">Dev</span>
-					</h3>
-					<p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit
-						imperdiet congue. Integer elit imperdiet congue.</p>
-				</div>
-				<!-- end: -->
-
-				<!-- item -->
-				<div class="col-md-4 text-center">
-					<i class="fa fa-lightbulb-o fa-2x circle"></i>
-					<h3>
-						JavaScript <span class="id-color">jQuery</span>
-					</h3>
-					<p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit
-						imperdiet congue. Integer ultricies sed elit impe.</p>
-				</div>
-				<!-- end: -->
-
-				<!-- item -->
-				<div class="col-md-4 text-center">
-					<i class="fa fa-globe fa-2x circle"></i>
-					<h3>
-						Web <span class="id-color">Designing</span>
-					</h3>
-					<p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit
-						imperdiet congue. Integer elit imperdiet conempus.</p>
-				</div>
-				<!-- end:-->
-				<!-- item -->
-				<div class="col-md-4 text-center">
-					<i class="fa fa-desktop fa-2x circle"></i>
-					<h3>
-						Wordpress <span class="id-color">Dev</span>
-					</h3>
-					<p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit
-						imperdiet congue. Integer ultricies sed elit imperdiet congue.
-						Integer ultricies sed ligula eget tempus.</p>
-				</div>
-				<!-- end: -->
-
-				<!-- item -->
-				<div class="col-md-4 text-center">
-					<i class="fa fa-tablet fa-2x circle"></i>
-					<h3>
-						Mobile <span class="id-color">Dev</span>
-					</h3>
-					<p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit
-						imperdiet congue. Integer elit imperdiet congue. Integer ultricies
-						sed ultricies sed ligula eget tempus.</p>
-				</div>
-				<!-- end:-->
-
-			</div>
-		</div>
-		<!--/.container-->
+				<table id="animalTable" class="table table-hover">
+					<thead>
+						<tr>
+							<th>动物类别</th>
+							<th>动物名称</th>
+							<th>英文名</th>
+							<th>所属地区</th>
+						</tr>
+					</thead>
+					<tbody>
+					<%for(int i =0;i<listAnimalInfo.size();i++){ %>
+						<tr>
+							<td><%=listAnimalInfo.get(i).getAnimalType()%></td>
+							<td><%=listAnimalInfo.get(i).getAnimalName()%></td>
+							<td><%=listAnimalInfo.get(i).getAnimalEnlishName()%></td>
+							<td><%=listAnimalInfo.get(i).getAnimalRegion()%></td>
+						</tr>
+						<%}} %>
+					</tbody>
+				</table></section>
+	<section class="blank">
 	</section>
 	<!--/.page-section-->
 	<section class="copyright">
@@ -217,6 +168,10 @@ ArrayList<AnimalInfo> listAnimalInfo =  (ArrayList<AnimalInfo>) session.getAttri
         	$("#signOut").show();
         	$("#loginIn").hide();
         }
+        
+        var listAnimal = '<%=listAnimalInfo%>';
+        if(listAnimal == null || listAnimal == undefined || listAnimal == "")
+        	$("#animalTable").hide();
         });
 </script>
 </body>

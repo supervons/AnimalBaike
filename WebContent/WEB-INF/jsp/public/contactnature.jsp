@@ -36,6 +36,26 @@
 <link rel="stylesheet" href="${path}/css/styles.css" />
 <!-- Font Awesome -->
 <link href="${path}/fonts/font-awesome.min.css" rel="stylesheet">
+<style type="text/css">
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+#allmap {
+	width: 100%;
+	height: 500px;
+}
+
+p {
+	margin-left: 5px;
+	font-size: 14px;
+}
+</style>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=AFgrK3VlR809lb4pVACHIMHwGdI5I0vA"></script>
 </head>
 
 <body>
@@ -77,82 +97,12 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	</header>
 	<!--/.header-->
 	<div id="#top"></div>
-	
-<div class="actionPanel">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-9 ">
-					</div>
-					<div class="col-sm-3 ">
-					</div>
-				</div>
-			</div>
-		</div>
 	<section id="contactNature" class="page-section">
-		<div class="container">
-
-			<div class="row">
-				<div class="heading text-center">
-					<!-- Heading -->
-					<h2>Contact Us</h2>
-					<p>There are many variations of passages of Lorem Ipsum
-						available, but the majority have suffered.</p>
-				</div>
-			</div>
-
-			<div class="row mrgn30">
-				<div class="col-sm-4 col-md-4">
-					<h4>Address:</h4>
-					<address>
-						WebThemez Company<br> 134 Stilla. Tae., 414515<br>
-						Leorislon, SA 02434-34534 USA <br>
-					</address>
-					<h4>Phone:</h4>
-					<address>
-						12345-49589-2<br>
-					</address>
-				</div>
-
-				<div class="col-sm-12 col-md-8">
-					<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
-					<form name="sentMessage" id="contactForm" novalidate>
-						<div class="control-group">
-							<div class="controls">
-								<input type="text" class="form-control" placeholder="Full Name"
-									id="name" required
-									data-validation-required-message="Please enter your name" />
-								<p class="help-block"></p>
-							</div>
-						</div>
-						<div class="control-group">
-							<div class="controls">
-								<input type="email" class="form-control" placeholder="Email"
-									id="email" required
-									data-validation-required-message="Please enter your email" />
-							</div>
-						</div>
-
-						<div class="control-group">
-							<div class="controls">
-								<textarea rows="10" cols="100" class="form-control"
-									placeholder="Message" id="message" required
-									data-validation-required-message="Please enter your message"
-									minlength="5"
-									data-validation-minlength-message="Min 5 characters"
-									maxlength="999" style="resize: none"></textarea>
-							</div>
-						</div>
-						<div id="success"></div>
-						<!-- For success/fail messages -->
-						<button type="submit" class="btn btn-primary pull-right">Send</button>
-						<br />
-					</form>
-				</div>
-			</div>
-		</div>
-		<!--/.container-->
+		
 	</section>
 	
+	<section class="blank">
+	</section>
 	<!--/.page-section-->
 	<section class="copyright">
 		<div class="container">

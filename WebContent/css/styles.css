@@ -38,7 +38,9 @@ p {
 .btn, .form-control, .team-socials i {
     border-radius: 5px !important;
 }
-
+.blank{
+	margin-top: 40%;
+}
 .button-outline {
     -webkit-font-smoothing: antialiased;
     display: inline-block;
@@ -99,7 +101,7 @@ a {
     color: #6D6D6D;
     background: #131313;
     padding: 20px 0;
-}
+	}
 
 #top {
     position: relative;
@@ -858,8 +860,8 @@ footer {
         text-align: center;
         display: block;
         width: 100%;
-        margin: 2px 0 4px 0;
-    }
+		margin: 2px 0 4px 0;
+		}
 
     .actionPanel {
         padding: 12px 0;

@@ -76,8 +76,10 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<!--/.container-->
 	</header>
 	<!--/.header-->
-	<div id="#top"></div>
-
+	<section id="contactNature" class="page-section">
+		
+	</section>
+	<section class="blank"></section>
 	<!--/.page-section-->
 	<section class="copyright">
 		<div class="container">
