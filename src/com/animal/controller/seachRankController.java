@@ -35,6 +35,7 @@ public class seachRankController {
 		List<Map<String,String>> map =seachRecordService.getSeachRankBetweenWeek();
 		session.setAttribute("seachRankList", map);
 		session.setAttribute("rankType", "week");
+		session.setAttribute("tempFlag", "yes");
         return "public/discoveranimal";
     }
 	/**
@@ -46,6 +47,7 @@ public class seachRankController {
 		List<Map<String,String>> map =seachRecordService.getSeachRankBetweenMonth();
 		session.setAttribute("seachRankList", map);
 		session.setAttribute("rankType", "month");
+		session.setAttribute("tempFlag", "yes");
         return "public/seachrank";
     }
 	
@@ -59,6 +61,7 @@ public class seachRankController {
 		List<Map<String,String>> map =seachRecordService.getSeachRank();
 		session.setAttribute("seachRankList", map);
 		session.setAttribute("rankType", "all");
+		session.setAttribute("tempFlag", "yes");
         return "public/seachrank";
     }
 }

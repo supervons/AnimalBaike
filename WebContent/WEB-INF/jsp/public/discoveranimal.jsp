@@ -125,23 +125,41 @@ if(listAnimalInfo != null){
 						<%}} %>
 					</tbody>
 				</table></section>
-	<section class="blank">
+	<section class="blankOfDiscoverAnimal" style="margin-left:5%;margin-right:5%;" >
+					<h3 id="guessYouLike" style="display:none">您可能还喜欢</h3>
 					<table class="table table-bordered text-center text-justify">
 					<tbody>
+					<%
+					Map<String,Integer> randomAnimalList = (Map<String,Integer>)session.getAttribute("randomAnimalList");
+					if(randomAnimalList!=null && randomAnimalList.size()>0){%>
 						<tr>
-							<td>1</td>
-							<td>2</td>
-							<td>3</td>
-							<td>4</td>
-							<td>5</td>
+						<%if(randomAnimalList.size()<=5){%>
+						<%for(String s:randomAnimalList.keySet()){ 	%>
+							<td><a class = "btn btn-default" onclick="goToSeach('<%=s%>')"><%=s%></a></td>
+						<%}%>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td>2</td>
-							<td>3</td>
-							<td>4</td>
-							<td>5</td>
-						</tr>
+					<%}else{
+						List<String> animalList = new ArrayList<String>();
+						for(String s:randomAnimalList.keySet()){
+							animalList.add(s);
+						}
+						for(int n = 0;n<2;n++){%>
+							<tr>
+							<% if(n==0){
+								for(int i = 0;i<5;i++){%>
+									<td><a class = "btn btn-default" onclick="goToSeach('<%=animalList.get(i)%>')"><%=animalList.get(i)%></a></td>
+							<%
+								}}
+								else{
+									for(int i = 5;i<animalList.size();i++){%>
+									<td><a class = "btn btn-default" onclick="goToSeach('<%=animalList.get(i)%>')"><%=animalList.get(i)%></a></td>
+										<%
+									}
+								}%>
+								</tr>
+							<%
+							}}}%>
+					
 					</tbody>
 					</table>
 	</section>
@@ -177,6 +195,10 @@ if(listAnimalInfo != null){
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	var pathName = document.location.pathname;
+	var index = pathName.substr(1).indexOf("/");
+	var result = pathName.substr(0, index + 1);
+	
     $(function(){
         var userId = '<%=userId%>';
         if(userId == null || userId =="" || userId == undefined){
@@ -190,7 +212,25 @@ if(listAnimalInfo != null){
         var listAnimal = '<%=listAnimalInfo%>';
         if(listAnimal == null || listAnimal == undefined || listAnimal == "")
         	$("#animalTable").hide();
-        });
+        //判断推荐session中是否有值，有的话，则显示您可能还喜欢
+        var randomAnimalList = '<%=randomAnimalList%>';
+        if(randomAnimalList != 'null')
+            $("#guessYouLike").show();
+    });
+    
+    function goToSeach(seach_content){
+    	console.log("----"+seach_content + "----");
+		$.ajax({
+			url : result + "/AnimalController/seachAnimal/",
+			data : {
+				seachWord:seach_content,
+			},
+			type : "POST",
+			success : function(re) {
+				window.location.href=result + "/Navigation/goToDiscoverAnimal?rank=yes";
+			}
+		});      	
+    }
 </script>
 </body>
 </html>
