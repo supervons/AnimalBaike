@@ -53,4 +53,16 @@ public class SeachRecordServiceImpl implements SeachRecordService{
 		return seachRecordMapper.getSeachRankBetweenWeek();
 	}
 
+	@Override
+	public List<String> getUserIdBySeachRecord(String seactRecord,String userId) {
+		// TODO Auto-generated method stub
+		return seachRecordMapper.getUserIdBySeachRecord(seactRecord,userId);
+	}
+
+	@Override
+	public List<String> getSeachRecordByUserId(String userId,String seachRecord) {
+		// TODO Auto-generated method stub
+		return seachRecordMapper.getSeachRecordByUserId(userId,seachRecord);
+	}
+
 }

@@ -126,6 +126,24 @@ if(listAnimalInfo != null){
 					</tbody>
 				</table></section>
 	<section class="blank">
+					<table class="table table-bordered text-center text-justify">
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+						</tr>
+					</tbody>
+					</table>
 	</section>
 	<!--/.page-section-->
 	<section class="copyright">

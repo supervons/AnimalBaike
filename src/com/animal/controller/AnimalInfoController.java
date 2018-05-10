@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,6 +72,23 @@ public class AnimalInfoController {
             seachRecord.setSeachContent(seachWord);
             seachRecord.setSeachTime(new Date());
             seachRecordService.addNewSeachRecord(seachRecord);
+            /**向用户推荐**/
+            //根据用户的搜索关键字,查出搜索了该关键字的所有用户且不包含自己,搜索关键字必须有,用户id可以为空。
+            List<String> userList = seachRecordService.getUserIdBySeachRecord(seachWord, userId);
+            //根据用户列表，查出用户列表中的用户搜索记录,存入List
+            List<String> userSeachRecordList = new ArrayList<String>();
+            for(int i = 0;i<userList.size();i++){
+            	List<String> singleUserList = seachRecordService.getSeachRecordByUserId(userList.get(i), seachWord);
+            	if(singleUserList.size()>0)
+            		userSeachRecordList.addAll(singleUserList);
+            }
+            /**从其他用户的搜索记录中，获取出**/
+            Map<String,Integer> map = CommonUtils.getTopStringList(userSeachRecordList);
+            System.out.println(userSeachRecordList.toString());
+            System.out.println(map.toString());
+            if(map.size()<5){
+                session.setAttribute("userSeachRecordMap", map);            	
+            }
     		logger.info(listAnimalInfo.toString());//日志级别为info则输出
     		return "public/discoveranimal";
         } else {
@@ -78,5 +96,11 @@ public class AnimalInfoController {
             session.setAttribute("listAnimalInfo", null);
     		return "public/discoveranimal";
         }
+    }
+	
+	@RequestMapping(value="randomAnimal",method=RequestMethod.POST)
+    public String randomAnimal(Model model, HttpSession session,HttpServletRequest ss) {
+		String seachWord = ss.getParameter("seachWord");
+    		return "public/discoveranimal";
     }
 }

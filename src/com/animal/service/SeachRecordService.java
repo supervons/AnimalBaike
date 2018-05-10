@@ -16,4 +16,8 @@ public interface SeachRecordService {
 	public List<Map<String,String>> getSeachRankBetweenMonth();
 	
 	public List<Map<String,String>> getSeachRankBetweenWeek();
+	
+	public List<String> getUserIdBySeachRecord(String seachRecord,String userId);
+	
+	public List<String> getSeachRecordByUserId(String userId,String seachRecord);
 }
