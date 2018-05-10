@@ -50,8 +50,8 @@ create table `animal_info`(
 	animal_region varchar(20) comment '动物所属区域',
 	animal_fileid varchar(20) comment '动物文件图片id',
 	animal_details text comment '动物描述',	
-	reserve_field2 varchar(32) comment '保留字段2',	
-	reserve_field3 varchar(32) comment '保留字段3',	
+	animal_status varchar(32) comment '动物数据状态',	
+	animal_upload_user varchar(32) comment '上传用户',	
 	primary key(animal_id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8; 
 
@@ -136,7 +136,10 @@ create table `data_library`(
 
 INSERT INTO `data_library` VALUES 
  ('sendstatus','sendstatus01','正常','该状态标识此条验证码记录状态可用','','',''),
- ('sendstatus','sendstatus03','作废','该状态标识此条验证码记录状态作废','','','');
+ ('sendstatus','sendstatus03','作废','该状态标识此条验证码记录状态作废','','',''),
+ ('animalstatus','animalstatus01','正常','标识该动物可以正常显示','','',''),
+ ('animalstatus','animalstatus02','未通过','标识该动物没有通过审核，需要重新发起','','',''),
+ ('animalstatus','animalstatus03','作废','标识该动物数据作废','','','');
 
  /*验证码表*/
 create table `code_info`(

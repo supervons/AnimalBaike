@@ -77,8 +77,8 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	</header>
 	<!--/.header-->
 	<section id="contactNature" class="page-section">
-		
 	</section>
+	
 	<section class="blank">
 		<div class="modal fade" id="mymodal">
 			<div class="modal-dialog">

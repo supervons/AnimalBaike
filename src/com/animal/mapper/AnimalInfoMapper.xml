@@ -22,7 +22,8 @@
 	<select id="seachAnimalByWords" parameterType="String" resultMap="animalInfoResultMap">
 	select * 
 	from animal_info 
-	where animal_type = #{0} or animal_name like CONCAT('%', #{0}, '%')  or animal_region like CONCAT('%', #{0}, '%')
+	where (animal_type = #{0} or animal_name like CONCAT('%', #{0}, '%')  or animal_region like CONCAT('%', #{0}, '%'))
+	and animal_status = 'animalstatus01'
 	order by animal_name desc
 	</select>
 	<!--更新用户的密码 -->

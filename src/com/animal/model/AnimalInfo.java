@@ -14,8 +14,8 @@ public class AnimalInfo {
 	private String animalRegion;
 	private String animalFileId;
 	private String animalDetails;
-	private String reserveField2;
-	private String reserveField3;
+	private String animalStatus;
+	private String animalUploadUser;
 	public String getAnimalId() {
 		return animalId;
 	}
@@ -58,17 +58,17 @@ public class AnimalInfo {
 	public void setAnimalDetails(String animalDetails) {
 		this.animalDetails = animalDetails;
 	}
-	public String getReserveField2() {
-		return reserveField2;
+	public String getAnimalStatus() {
+		return animalStatus;
 	}
-	public void setReserveField2(String reserveField2) {
-		this.reserveField2 = reserveField2;
+	public void setAnimalStatus(String animalStatus) {
+		this.animalStatus = animalStatus;
 	}
-	public String getReserveField3() {
-		return reserveField3;
+	public String getAnimalUploadUser() {
+		return animalUploadUser;
 	}
-	public void setReserveField3(String reserveField3) {
-		this.reserveField3 = reserveField3;
+	public void setAnimalUploadUser(String animalUploadUser) {
+		this.animalUploadUser = animalUploadUser;
 	}
 	@Override
 	public String toString() {
@@ -76,8 +76,8 @@ public class AnimalInfo {
 				+ animalType + ", animalName=" + animalName
 				+ ", animalEnlishName=" + animalEnlishName + ", animalRegion="
 				+ animalRegion + ", animalFileId=" + animalFileId
-				+ ", animalDetails=" + animalDetails + ", reserveField2="
-				+ reserveField2 + ", reserveField3=" + reserveField3 + "]";
+				+ ", animalDetails=" + animalDetails + ", animalStatus="
+				+ animalStatus + ", animalUploadUser=" + animalUploadUser + "]";
 	}
 	
 }
