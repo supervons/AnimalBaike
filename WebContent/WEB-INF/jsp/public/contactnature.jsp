@@ -102,6 +102,27 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	</section>
 	
 	<section class="blank">
+	<div class="modal fade" id="mymodal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+						</button>
+						<h3 class="modal-title">系统提示</h3>
+					</div>
+					<div class="modal-body">
+						<h4>该模块需要登陆后才可以查看哦~</h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" ">关闭</button>
+						<button type="button" class="btn btn-primary" onclick="goToLogin()">去登陆</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
 	</section>
 	<!--/.page-section-->
 	<section class="copyright">
@@ -143,6 +164,10 @@ String userId = loginSession==null?"":loginSession.getUserId();
         }else{
         	$("#signOut").show();
         	$("#loginIn").hide();
+        }
+        var loginSession = '<%=loginSession%>';
+        if(loginSession == null || loginSession =="" || loginSession == undefined || loginSession == 'null' ){
+            $("#mymodal").modal("toggle");         	
         }
         });
 </script>

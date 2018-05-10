@@ -90,6 +90,11 @@ function sendCode() {
 	timer = setInterval(countDown, 1000);
 }
 
+//跳转到登陆界面
+function goToLogin(){
+	window.location.href= result +'/Navigation/goToLogin';	
+}
+
 // 点击叉时，关闭提示框
 function closeAlert() {
 	$("#phoneNumberAlert").hide();
