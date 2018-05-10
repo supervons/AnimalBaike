@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.animal.model.AnimalInfo;
+import com.animal.service.AnimalInfoService;
 import com.animal.service.SeachRecordService;
 /**
  * 导航控制器，主要负责跳转页面
@@ -26,6 +28,9 @@ public class NavigationController {
 
     @Autowired
     private SeachRecordService seachRecordService;
+    
+    @Autowired
+    private AnimalInfoService animalInfoService;
 	/**
 	 * 跳转到首页
 	 * @return
@@ -36,7 +41,7 @@ public class NavigationController {
         return "index";
     }
 	/**
-	 * 跳转到关于我们界面
+	 * 跳转到动物发现动物
 	 * @return
 	 */
 	@RequestMapping(value="goToDiscoverAnimal",method=RequestMethod.GET)
@@ -46,6 +51,17 @@ public class NavigationController {
 		if(!rankFlag.equals("yes"))
 			session.setAttribute("listAnimalInfo", null);
         return "public/discoveranimal";
+    }
+	/**
+	 * 跳转到动物详情
+	 * @return
+	 */
+	@RequestMapping(value="goToDiscoverAnimalInfo",method=RequestMethod.GET)
+    public String goToDiscoverAnimalInfo(HttpSession session,HttpServletRequest ss) {
+		String animalId = ss.getParameter("animalId");
+		AnimalInfo animalInfo = animalInfoService.getAnimalInfoByAnimalId(animalId);
+		session.setAttribute("animalDetailsInfo", animalInfo);
+        return "public/discoveranimalInfo";
     }
 	/**
 	 * 跳转到亲近自然界面

@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.animal.model.Login,com.animal.model.AnimalInfo,java.util.*" %>
+<%@ page import="com.animal.serviceimpl.AnimalInfoServiceImpl" %>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -88,81 +89,60 @@ String userId = loginSession==null?"":loginSession.getUserId();
 			</div>
 		</div>
 		<section id="services" class="page-section">
-		<div class="container">
-			<div class="heading text-center">
-				<!-- Heading -->
-				<h2>请输入想要查询的动物</h2>
-				<form action="${path}/AnimalController/seachAnimal/" method="POST">
-					<input type="text" id="seachWord" name="seachWord" class="seachWord" style="font-size:25px;height:45px">
-					<input class="btn btn-default" style="font-size:25px; height:40px" type="submit" id="seachBtn" name="seachBtn" value="搜一下" /></li>
-					</ul>
-				</form>
-			</div>
-			<div class="row">
-<%
-
-AnimalInfo animalInfo = new AnimalInfo();
-ArrayList<AnimalInfo> listAnimalInfo =  (ArrayList<AnimalInfo>) session.getAttribute("listAnimalInfo");
-if(listAnimalInfo != null){
-%>
-				<table id="animalTable" class="table table-hover">
+		<div id="animalBaseInfo" class="" style="background-color: #8B8B7A;padding:15px">
+		<div class="container center"  style="width:60%; height:500px;background:url(${path}/images/BG/animalBG.jpg);box-shadow: 10px 10px 5px #000000;">
+		<%
+		AnimalInfo animalInfo = (AnimalInfo)session.getAttribute("animalDetailsInfo");
+		%>
+<%-- 		<%=animalInfo.toString()%> --%>
+				<table class="table " style="color:#ffffff;">
 					<thead>
 						<tr>
-							<th>动物类别</th>
-							<th>动物名称</th>
-							<th>英文名</th>
-							<th>所属地区</th>
+							<th class="text-center" colspan="2" style="font-size: 25px;" >
+							<%=animalInfo.getAnimalName()%>
+							<%=animalInfo.getAnimalEnlishName()==null?"":animalInfo.getAnimalEnlishName()%>
+							</th>
 						</tr>
 					</thead>
 					<tbody>
-					<%for(int i =0;i<listAnimalInfo.size();i++){ %>
-						<tr onclick="goToAnimalInfo('<%=listAnimalInfo.get(i).getAnimalId()%>')">
-							<td><%=listAnimalInfo.get(i).getAnimalType()%></td>
-							<td><%=listAnimalInfo.get(i).getAnimalName()%></td>
-							<td><%=listAnimalInfo.get(i).getAnimalEnlishName()%></td>
-							<td><%=listAnimalInfo.get(i).getAnimalRegion()%></td>
-						</tr>
-						<%}} %>
-					</tbody>
-				</table></section>
-	<section class="blankOfDiscoverAnimal" style="margin-left:5%;margin-right:5%;" >
-					<h3 id="guessYouLike" style="display:none">您可能还喜欢</h3>
-					<table class="table table-bordered text-center text-justify">
-					<tbody>
-					<%
-					Map<String,Integer> randomAnimalList = (Map<String,Integer>)session.getAttribute("randomAnimalList");
-					if(randomAnimalList!=null && randomAnimalList.size()>0){%>
 						<tr>
-						<%if(randomAnimalList.size()<=5){%>
-						<%for(String s:randomAnimalList.keySet()){ 	%>
-							<td><a class = "btn btn-default" onclick="goToSeach('<%=s%>')"><%=s%></a></td>
-						<%}%>
+							<td rowspan="10" style="background-color: red">Bangalore</td>
+							<td class="text-left" style="width:30%">动物学名 ： <%=animalInfo.getAnimalName()==null?"":animalInfo.getAnimalName()%></td>
 						</tr>
-					<%}else{
-						List<String> animalList = new ArrayList<String>();
-						for(String s:randomAnimalList.keySet()){
-							animalList.add(s);
-						}
-						for(int n = 0;n<2;n++){%>
-							<tr>
-							<% if(n==0){
-								for(int i = 0;i<5;i++){%>
-									<td><a class = "btn btn-default" onclick="goToSeach('<%=animalList.get(i)%>')"><%=animalList.get(i)%></a></td>
-							<%
-								}}
-								else{
-									for(int i = 5;i<animalList.size();i++){%>
-									<td><a class = "btn btn-default" onclick="goToSeach('<%=animalList.get(i)%>')"><%=animalList.get(i)%></a></td>
-										<%
-									}
-								}%>
-								</tr>
-							<%
-							}}}%>
-					
+						<tr>
+							<td class="text-left" style="width:30%">动物类别 ： <%=animalInfo.getAnimalType()==null?"":animalInfo.getAnimalType()%></td>
+						</tr>
+						<tr>
+							<td class="text-left" style="width:30%">所属地区 ： <%=animalInfo.getAnimalRegion()==null?"":animalInfo.getAnimalRegion()%></td>
+						</tr>
+						<tr>
+							<td class="text-left" style="width:30%">上传用户 ： <%=animalInfo.getAnimalUploadUser()==null?"":animalInfo.getAnimalUploadUser()%></td>
+						</tr>
 					</tbody>
-					</table>
-	</section>
+				</table>
+			</div>
+		</div>
+		<div id="animalBaseInfo" class="" style="padding:15px">
+		<div class="container center"  style="width:60%; height:500px;">
+				<table class="table " style="color:#000000;">
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2" style="font-size: 25px;" >
+							物种描述 Animal Summary
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>
+						 		<%=animalInfo.getAnimalDetails()==null?"暂无物种描述":animalInfo.getAnimalDetails()%>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</section>
 	<!--/.page-section-->
 	<section class="copyright">
 		<div class="container">
@@ -198,25 +178,6 @@ if(listAnimalInfo != null){
 	var pathName = document.location.pathname;
 	var index = pathName.substr(1).indexOf("/");
 	var result = pathName.substr(0, index + 1);
-	
-    $(function(){
-        var userId = '<%=userId%>';
-        if(userId == null || userId =="" || userId == undefined){
-    		$("#signOut").hide();
-        	$("#loginIn").show();
-        }else{
-        	$("#signOut").show();
-        	$("#loginIn").hide();
-        }
-        
-        var listAnimal = '<%=listAnimalInfo%>';
-        if(listAnimal == null || listAnimal == undefined || listAnimal == "")
-        	$("#animalTable").hide();
-        //判断推荐session中是否有值，有的话，则显示您可能还喜欢
-        var randomAnimalList = '<%=randomAnimalList%>';
-        if(randomAnimalList != 'null')
-            $("#guessYouLike").show();
-    });
     
     function goToSeach(seach_content){
     	console.log("----"+seach_content + "----");
@@ -230,9 +191,6 @@ if(listAnimalInfo != null){
 				window.location.href=result + "/Navigation/goToDiscoverAnimal?rank=yes";
 			}
 		});      	
-    }
-    function goToAnimalInfo(animalId){
-		window.location.href=result + "/Navigation/goToDiscoverAnimalInfo?animalId="+animalId;
     }
 </script>
 </body>
