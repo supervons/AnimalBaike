@@ -2,6 +2,7 @@ package com.animal.controller;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.animal.model.AnimalInfo;
+import com.animal.model.Login;
 import com.animal.service.AnimalInfoService;
 import com.animal.service.SeachRecordService;
 /**
@@ -79,6 +81,14 @@ public class NavigationController {
 	@RequestMapping(value="goToShareAnimal",method=RequestMethod.GET)
     public String goToShareAnimal(HttpSession session) {
 		session.setAttribute("tempFlag", null);
+		Login loginInfo = (Login)session.getAttribute("loginsession");
+		if(loginInfo != null){
+			String userId = loginInfo.getUserId();
+			ArrayList<AnimalInfo> animalInfoList = animalInfoService.getAnimalListByUserId(userId);
+			session.setAttribute("animalInfoList", animalInfoList);
+		}else{
+			session.setAttribute("animalInfoList", null);
+		}
         return "public/shareanimal";
     }
 	/**
@@ -141,6 +151,44 @@ public class NavigationController {
 		session.setAttribute("tempFlag", null);
 		 //清空所有session中的值
          session.invalidate(); 
-         return "index";
+         return "login";
+	}
+	/**
+	 * 跳转到动物审批
+	 */
+	@RequestMapping(value="goApprovalAnimal",method=RequestMethod.GET)
+	public String  goApprovalAnimal(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
+		session.setAttribute("tempFlag", null);
+		 //清空所有session中的值
+         session.invalidate(); 
+         return "admin/index";
+	}
+	/**
+	 * 跳转到动物信息管理
+	 */
+	@RequestMapping(value="goAnimalInfoManage",method=RequestMethod.GET)
+	public String  goAnimalInfoManage(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
+		session.setAttribute("tempFlag", null);
+		 //清空所有session中的值
+         session.invalidate(); 
+         return "admin/animalinfo";
+	}
+	/**
+	 * 跳转到用户管理
+	 */
+	@RequestMapping(value="goUserManage",method=RequestMethod.GET)
+	public String  goUserManage(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
+
+         return "admin/usermanage";
+	}
+	/**
+	 * 跳转到发送公告
+	 */
+	@RequestMapping(value="goSendMsg",method=RequestMethod.GET)
+	public String  goSendMsg(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
+		session.setAttribute("tempFlag", null);
+		 //清空所有session中的值
+         session.invalidate(); 
+         return "admin/sendmsg";
 	}
 }

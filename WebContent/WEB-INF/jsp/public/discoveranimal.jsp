@@ -38,7 +38,7 @@
 <link href="${path}/fonts/font-awesome.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body >
 <%
 Login loginSession =  (Login)session.getAttribute("loginsession");
 String userId = loginSession==null?"":loginSession.getUserId();
@@ -91,10 +91,10 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<div class="container">
 			<div class="heading text-center">
 				<!-- Heading -->
-				<h2>请输入想要查询的动物</h2>
+				<h2 style="color:#ffffff">请输入想要查询的动物</h2>
 				<form action="${path}/AnimalController/seachAnimal/" method="POST">
 					<input type="text" id="seachWord" name="seachWord" class="seachWord" style="font-size:25px;height:45px">
-					<input class="btn btn-default" style="font-size:25px; height:40px" type="submit" id="seachBtn" name="seachBtn" value="搜一下" /></li>
+					<input class="btn btn-default" style="font-size:25px; height:40px;margin-bottom:10px" type="submit" id="seachBtn" name="seachBtn" value="搜一下" /></li>
 					</ul>
 				</form>
 			</div>
@@ -105,7 +105,7 @@ AnimalInfo animalInfo = new AnimalInfo();
 ArrayList<AnimalInfo> listAnimalInfo =  (ArrayList<AnimalInfo>) session.getAttribute("listAnimalInfo");
 if(listAnimalInfo != null){
 %>
-				<table id="animalTable" class="table table-hover">
+				<table id="animalTable" class="table table-hover" style="background-color: #ffffff">
 					<thead>
 						<tr>
 							<th>动物类别</th>
@@ -119,7 +119,7 @@ if(listAnimalInfo != null){
 						<tr onclick="goToAnimalInfo('<%=listAnimalInfo.get(i).getAnimalId()%>')">
 							<td><%=listAnimalInfo.get(i).getAnimalType()%></td>
 							<td><%=listAnimalInfo.get(i).getAnimalName()%></td>
-							<td><%=listAnimalInfo.get(i).getAnimalEnlishName()%></td>
+							<td><%=listAnimalInfo.get(i).getAnimalEnglishName()%></td>
 							<td><%=listAnimalInfo.get(i).getAnimalRegion()%></td>
 						</tr>
 						<%}} %>

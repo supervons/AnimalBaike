@@ -1,5 +1,7 @@
 package com.animal.mapper;
 
-public interface FileInfoMapper {
+import com.animal.model.FileInfo;
 
+public interface FileInfoMapper {
+	public int addAnimalFileInfo(FileInfo fileInfo);
 }

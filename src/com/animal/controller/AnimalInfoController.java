@@ -1,10 +1,16 @@
 package com.animal.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +22,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.DiskFileUpload;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileItemIterator;
+import org.apache.commons.fileupload.FileItemStream;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -29,10 +44,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.animal.model.AnimalInfo;
 import com.animal.model.CodeInfo;
+import com.animal.model.FileInfo;
 import com.animal.model.Login;
 import com.animal.model.SeachRecord;
 import com.animal.model.UserInfo;
 import com.animal.service.AnimalInfoService;
+import com.animal.service.FileInfoService;
 import com.animal.service.LoginService;
 import com.animal.service.CodeInfoService;
 import com.animal.service.SeachRecordService;
@@ -53,6 +70,10 @@ public class AnimalInfoController {
 
 	@Autowired
 	private SeachRecordService seachRecordService;	
+	
+	@Autowired
+	private FileInfoService fileInfoService;	
+	
 	Logger logger = LogManager.getLogger(SendCodeUtil.class.getName());
 	
 	@RequestMapping(value="seachAnimal",method=RequestMethod.POST)
@@ -140,5 +161,87 @@ public class AnimalInfoController {
     public String randomAnimal(Model model, HttpSession session,HttpServletRequest ss) {
 		String seachWord = ss.getParameter("seachWord");
     		return "public/discoveranimal";
+    }
+	
+	@RequestMapping(value="addNewAnimalInfo",method=RequestMethod.POST)
+    public String addNewAnimalInfo(Model model, HttpSession session,HttpServletRequest request,HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("ISO-8859-1");
+		/** 文件上傳部分 **/
+		boolean isMutipart = ServletFileUpload.isMultipartContent(request);// 这个req中的数据是不是以multipart/form-data来编码的
+
+		Map<String,String> fieldMap = new TreeMap<String,String>();
+		String fileId = CommonUtils.getUUID();
+		if (isMutipart) {
+			InputStream is = null;
+			FileOutputStream fos = null;
+			try {
+				ServletFileUpload upload = new ServletFileUpload();
+				FileItemIterator iterator = upload.getItemIterator(request);
+				while (iterator.hasNext()) {
+					FileItemStream fis = iterator.next();
+					// 创建一个输入流来获取fis中的数据，使用了Multipart之后就表示通过字节数据进行传递，所以需要将其转化为输入流进行处理
+					is = fis.openStream();
+					if (fis.isFormField()) {// isFormField()方法用来判断是否是普通的表单域
+						// 是表单域就输出表单域的名称，这里运行就输出：username
+						fieldMap.put(fis.getFieldName(), Streams.asString(is, "utf-8"));
+					} else {
+						// System.out.println(fis.isFormField());//输出：false
+						System.out.println(fis.getFieldName());// 输出:file
+						System.out.println("filename:" + fis.getName());// 如果不是表单域就说明是我上传的文件，此时输出的就是我上传的文件的名称
+						String fileInfo[] = fis.getName().toString().split("\\.");
+						String fileType = "";
+						String fileName = String.valueOf(new Date().getTime());
+						String fileFullPath = "";
+						Date uploadTime = new Date();
+						if(fileInfo.length>1)
+							fileType = fileInfo[1];
+						//文件上传路径
+						String itemPath = request.getContextPath();
+						System.out.println(itemPath);
+						String path = request.getSession().getServletContext().getRealPath("/");
+						path = path + "upload/" + fileName + "." + fileType;
+						fileFullPath = path;
+						fos = new FileOutputStream(path);
+						byte[] buf = new byte[1024];
+						int length = 0;
+						while ((length = is.read(buf)) > 0) {
+							fos.write(buf, 0, length);// 这样就实现了将上传的文件保存到制定文件路径下
+						}
+						//封转fileInfo对象，存入数据库。
+						FileInfo fileTempInfo = new FileInfo();
+						fileTempInfo.setFileId(fileId);
+						fileTempInfo.setFileType(fileType);
+						fileTempInfo.setFileName(fileName);
+						fileTempInfo.setUploadTime(uploadTime);
+						fileTempInfo.setFileFullPath(fileFullPath);
+						//存入数据库
+						fileInfoService.addAnimalFileInfo(fileTempInfo);
+						
+					}
+				}
+			} finally {
+				if (is != null)
+					is.close();
+				if (fos != null)
+					fos.close();
+			}
+		}
+		System.out.println(fieldMap.toString());
+		
+		/**从session中获取用户id**/
+		Login loginSession = (Login)session.getAttribute("loginsession");
+		AnimalInfo animalInfo = new AnimalInfo();
+		animalInfo.setAnimalId(CommonUtils.getUUID());
+		animalInfo.setAnimalType(fieldMap.get("animalType"));
+		animalInfo.setAnimalName(fieldMap.get("animalName"));
+		animalInfo.setAnimalEnglishName(fieldMap.get("animalEnglishName"));
+		animalInfo.setAnimalRegion(fieldMap.get("animalRegion"));
+		animalInfo.setAnimalDetails(fieldMap.get("animalDetails"));
+		animalInfo.setAnimalFileId(fileId);
+		animalInfo.setAnimalStatus("animalstatus02");//标识待审核
+		animalInfo.setAnimalUploadUser(loginSession.getUserId());
+		animalInfoService.addNewAnimalInfo(animalInfo);
+		
+    	return "public/discoveranimal";
     }
 }

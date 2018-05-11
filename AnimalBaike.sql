@@ -43,12 +43,12 @@ INSERT INTO `user_login` VALUES
 
 /*动物信息表*/
 create table `animal_info`(
-	animal_id varchar(11) comment '动物编号',
+	animal_id varchar(32) comment '动物编号',
 	animal_type varchar(32) comment '动物类型',
 	animal_name varchar(255) comment '动物学名',
 	animal_englishname varchar(20) comment '动物英文名',
 	animal_region varchar(20) comment '动物所属区域',
-	animal_fileid varchar(20) comment '动物文件图片id',
+	animal_fileid varchar(32) comment '动物文件图片id',
 	animal_details text comment '动物描述',	
 	animal_status varchar(32) comment '动物数据状态',	
 	animal_upload_user varchar(32) comment '上传用户',	
@@ -98,9 +98,9 @@ create table `seach_record`(
  
  /*文件信息表*/
 create table `file_info`(
-	file_id varchar(11) comment '文件id',
+	file_id varchar(32) comment '文件id',
 	file_type varchar(11) comment '文件类型',
-	file_fullpath varchar(20) comment '文件全路径',
+	file_fullpath varchar(255) comment '文件全路径',
 	file_name varchar(255) comment '文件名',
 	file_size int(32) comment '文件大小',
 	upload_time datetime comment '上传时间',
@@ -138,8 +138,9 @@ INSERT INTO `data_library` VALUES
  ('sendstatus','sendstatus01','正常','该状态标识此条验证码记录状态可用','','',''),
  ('sendstatus','sendstatus03','作废','该状态标识此条验证码记录状态作废','','',''),
  ('animalstatus','animalstatus01','正常','标识该动物可以正常显示','','',''),
- ('animalstatus','animalstatus02','未通过','标识该动物没有通过审核，需要重新发起','','',''),
- ('animalstatus','animalstatus03','作废','标识该动物数据作废','','','');
+ ('animalstatus','animalstatus02','待审核','标识该动物正在审核中','','',''),
+ ('animalstatus','animalstatus03','未通过','标识该动物没有通过审核，需要重新发起','','',''),
+ ('animalstatus','animalstatus04','作废','标识该动物数据作废','','','');
 
  /*验证码表*/
 create table `code_info`(

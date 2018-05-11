@@ -74,10 +74,11 @@ public class AnimalInfo {
 	public String toString() {
 		return "AnimalInfo [animalId=" + animalId + ", animalType="
 				+ animalType + ", animalName=" + animalName
-				+ ", animalEnglishName=" + animalEnglishName + ", animalRegion="
-				+ animalRegion + ", animalFileId=" + animalFileId
-				+ ", animalDetails=" + animalDetails + ", animalStatus="
-				+ animalStatus + ", animalUploadUser=" + animalUploadUser + "]";
+				+ ", animalEnglishName=" + animalEnglishName
+				+ ", animalRegion=" + animalRegion + ", animalFileId="
+				+ animalFileId + ", animalDetails=" + animalDetails
+				+ ", animalStatus=" + animalStatus + ", animalUploadUser="
+				+ animalUploadUser + "]";
 	}
-	
+
 }

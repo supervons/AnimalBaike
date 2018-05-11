@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.animal.model.Login" %>
+<%@ page import="com.animal.model.Login,java.util.*,com.animal.model.AnimalInfo"%>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -10,7 +10,7 @@
 <html lang="en-gb" class="no-js">
 <!--<![endif]-->
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <!--[if lt IE 9]> 
@@ -79,7 +79,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	<section id="contactNature" class="page-section">
 	</section>
 	
-	<section class="blank">
+	<section class="">
 		<div class="modal fade" id="mymodal">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -102,6 +102,110 @@ String userId = loginSession==null?"":loginSession.getUserId();
 			<!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal -->
+		<div id="animalBaseInfo" class="" style="padding:15px;background:url(${path}/images/BG/shareBG1.jpg);">
+		<div class="container center"  style="width:60%; height:520px;background:url(${path}/images/BG/shareBG2.jpg);box-shadow: 10px 10px 5px #000000;">
+		<%
+		%>
+<%-- 		<%=animalInfo.toString()%> --%>
+		<form action="${path}/AnimalController/addNewAnimalInfo"  method="post" enctype="multipart/form-data">
+				<table class="table " style="color:#ffffff;">
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2" style="font-size: 25px;" >
+							分享动物
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">动物类别</th>
+								<th class="text-left" style="font-size: 20px;">
+								<input type="text" id="animalType" name="animalType"/></th>
+							</tr>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">动物名称</th>
+								<th class="text-left" style="font-size: 20px;">
+								<input type="text" id="animalName" name="animalName"/></th>
+							</tr>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">英文名</th>
+								<th class="text-left" style="font-size: 20px;">
+								<input type="text" id="animalEnglishName" name="animalEnglishName"/></th>
+							</tr>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">所属地区</th>
+								<th class="text-left" style="font-size: 20px;">
+								<input type="text" id="animalRegion" name="animalRegion"/></th>
+							</tr>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">物种描述</th>
+								<th class="text-left" style="font-size: 20px;">
+								<textarea class="form-control" rows="2" id="animalDetails" name="animalDetails"></textarea></th>
+							</tr>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">上传图片</th>
+								<th class="text-left" style="font-size: 20px;">
+								<input type="file" id="animalFileId" name="animalFileId"/></th>
+							</tr>
+							<tr >
+								<th class="text-center" colspan="3" style="font-size: 20px;">
+								<button type="submit" class="btn btn-default">提交</button>
+								</tr>
+					</tbody>
+				</table>
+				</form>
+			</div>
+		</div>
+		<section class="blank" id="blank" style="display:none">
+		</section>
+	<div id="animalBaseInfo" class="" style="padding:15px">
+		<div class="container center"  style="width:60%; height:500px;">
+				<table class="table " style="color:#000000;">
+					<thead>
+						<tr>
+							<th class="text-center" colspan="5" style="font-size: 25px;" >
+							我的分享列表
+							</th>
+						</tr>
+						<tr>
+							<th>动物类别</th>
+							<th>动物名称</th>
+							<th>英文名</th>
+							<th>所属地区</th>
+							<th>审核状态</th>
+						</tr>
+					</thead>
+					
+	<%
+	ArrayList<AnimalInfo> animalInfoList = (ArrayList<AnimalInfo>) session.getAttribute("animalInfoList");
+	if(animalInfoList != null){
+	%>
+					<tbody>
+					
+						<%for(int i =0;i<animalInfoList.size();i++){
+							String status = animalInfoList.get(i).getAnimalStatus();
+							String statusValue = "sss";
+							if(status.equals("animalstatus01"))
+								statusValue = "通过";
+							else if(status.equals("animalstatus02"))
+								statusValue = "待审核";
+							else if(status.equals("animalstatus03"))
+								statusValue = "未通过";
+							else if(status.equals("animalstatus04"))
+								statusValue = "作废";
+							%>
+						<tr onclick="goToAnimalInfo('<%=animalInfoList.get(i).getAnimalId()%>')">
+							<td><%=animalInfoList.get(i).getAnimalType()%></td>
+							<td><%=animalInfoList.get(i).getAnimalName()%></td>
+							<td><%=animalInfoList.get(i).getAnimalEnglishName()%></td>
+							<td><%=animalInfoList.get(i).getAnimalRegion()%></td>
+							<td><%=statusValue%></td>
+						</tr>
+						<%}} %>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</section>
 	<!--/.page-section-->
 	<section class="copyright">

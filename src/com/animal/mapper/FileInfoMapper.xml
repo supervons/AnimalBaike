@@ -30,10 +30,10 @@
 <!-- 		set user_password="123456" -->
 <!-- 		where user_id=#{0} -->
 <!-- 	</update> -->
-<!-- 	 插入新的用户登录  -->
-<!-- 	<insert id="addNewUser" parameterType="User"> -->
-<!-- 		insert into -->
-<!-- 		user_login(user_id,user_password,user_identity,user_regitime) -->
-<!-- 		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime}) -->
-<!-- 	</insert> -->
+	<!-- 插入新的文件记录  -->
+	<insert id="addAnimalFileInfo" parameterType="FileInfo">
+		insert into
+		file_info(file_id,file_type,file_fullpath,file_name,file_size,upload_time)
+		values(#{fileId},#{fileType},#{fileFullPath},#{fileName},#{fileSize},#{uploadTime})
+	</insert>
 </mapper>

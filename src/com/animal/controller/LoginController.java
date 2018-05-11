@@ -67,7 +67,7 @@ public class LoginController {
             session.setAttribute("loginsession", loginUser);
     		logger.info(loginUser.toString());//日志级别为info则输出
             if(loginUser.getUserIdentity()==0)
-            	return "index";
+            	return "admin/index";
             else
             	return "index";
         } else {

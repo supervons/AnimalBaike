@@ -10,6 +10,7 @@
 		<result property="animalEnglishName" column="animal_englishname" />
 		<result property="animalRegion" column="animal_region" />
 		<result property="animalFileId" column="animal_fileid" />
+		<result property="animalStatus" column="animal_status" />
 		<result property="animalDetails" column="animal_details" />
 	</resultMap>
 	<!-- 根据动物id获取动物信息 -->
@@ -40,10 +41,28 @@
 <!-- 		set user_password="123456" -->
 <!-- 		where user_id=#{0} -->
 <!-- 	</update> -->
-	<!--插入新的用户登录  -->
-	<insert id="addNewAnimalInfo" parameterType="User">
+	<!--插入新的动物信息 -->
+	<insert id="addNewAnimalInfo" parameterType="AnimalInfo">
 		insert into
-		animal_info(animal_id,animal_type,animal_name,animal_englishname)
-		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime})
+		animal_info(animal_id,animal_type,animal_name,animal_englishname,animal_region,animal_fileid,animal_details,animal_status,animal_upload_user)
+		values(#{animalId},#{animalType},#{animalName},#{animalEnglishName},#{animalRegion},#{animalFileId},#{animalDetails},#{animalStatus},#{animalUploadUser})
 	</insert>
+	
+	
+	<!-- 根据上传用户id，查询该用户上传的动物 -->
+	<select id="getAnimalListByUserId" parameterType="String" resultMap="animalInfoResultMap">
+	select * 
+	from animal_info 
+	where animal_upload_user = #{0}
+	order by animal_name desc
+	</select>
+	
+	
+	<!--根据动物id，修改动物的状态，第一个参数为状态，第二个为动物id-->
+	<update id="updateAnimalStatusByAnimalId" parameterType="String">
+		update
+		animal_info
+		set animal_status=#{0}
+		where animal_id=#{1}
+	</update>
 </mapper>
