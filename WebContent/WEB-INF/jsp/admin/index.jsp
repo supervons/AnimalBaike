@@ -110,7 +110,7 @@ if(animalListInfoStatus02 != null){
 							<td><%=animalListInfoStatus02.get(i).getAnimalRegion()%></td>
 							<td><%=animalListInfoStatus02.get(i).getAnimalUploadUser()%></td>
 							<td><input type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal<%=i%>" value="查看描述"></td>
-							<td><input type="button" class="btn btn-default" value="查看图片"></td>
+							<td><input type="button" class="btn btn-default" data-toggle="modal" data-target="#imagModel<%=i%>" value="查看图片"></td>
 							<td>
 							<input type="button" class="btn btn-default" onclick="Agree('<%=animalListInfoStatus02.get(i).getAnimalId()%>')" value="同意">
 							<input type="button" class="btn btn-default" onclick="DisAgree('<%=animalListInfoStatus02.get(i).getAnimalId()%>')" value="否决">
@@ -134,6 +134,12 @@ if(animalListInfoStatus02 != null){
 							<!-- /.modal-content -->
 						</div>
 						<!-- /.modal-dialog -->
+					</div>
+					
+					<div class="modal fade text-center " style="padding-top:15%" id="imagModel<%=i%>"  tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<img data-src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalFileId()%>.jpg" style="width:600px" alt="First slide"
+						src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalFileId()%>.jpg" />
 					</div>
 					<!-- /.modal -->	
 					<%}} %>

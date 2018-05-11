@@ -10,12 +10,12 @@
 		<result property="fileSize" column="file_size" />
 		<result property="uploadTime" column="upload_time" />
 	</resultMap>
-	<!-- 根据动物id获取动物信息 -->
-<!-- 	<select id="getAnimalInfoByAnimalId" parameterType="String" resultMap="animalInfoResultMap"> -->
-<!-- 		select * -->
-<!-- 		from animal_info -->
-<!-- 		where animal_id=#{0} -->
-<!-- 	</select> -->
+	<!-- 根据动物id获取动物图片名 -->
+	<select id="getImageNameByAnimalId" parameterType="String" resultMap="fileInfoResultMap">
+		select *
+		from file_info,animal_info
+		where animal_fileid = file_id and animal_id =#{0}
+	</select>
 	<!--更新用户的密码 -->
 <!-- 	<update id="updatePassword" parameterType="String"> -->
 <!-- 		update -->

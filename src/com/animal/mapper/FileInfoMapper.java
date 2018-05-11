@@ -4,4 +4,5 @@ import com.animal.model.FileInfo;
 
 public interface FileInfoMapper {
 	public int addAnimalFileInfo(FileInfo fileInfo);
+	public String getImageNameByAnimalId(String animalId);
 }

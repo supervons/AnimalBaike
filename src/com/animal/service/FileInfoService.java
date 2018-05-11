@@ -9,4 +9,5 @@ import com.animal.model.UserInfo;
 public interface FileInfoService {
 	public int addAnimalFileInfo(FileInfo fileInfo);
 
+	public String getImageNameByAnimalId(String animalId);
 }

@@ -106,7 +106,8 @@ String userId = loginSession==null?"":loginSession.getUserId();
 					</thead>
 					<tbody>
 						<tr>
-							<td rowspan="10" style="background-color: red">Bangalore</td>
+							<td rowspan="10"><img data-src="${path}/upload/<%=animalInfo.getAnimalFileId()%>.jpg" style="width:550px" alt="First slide"
+						src="${path}/upload/<%=animalInfo.getAnimalFileId()%>.jpg" /></td>
 							<td class="text-left" style="width:30%">动物学名 ： <%=animalInfo.getAnimalName()==null?"":animalInfo.getAnimalName()%></td>
 						</tr>
 						<tr>

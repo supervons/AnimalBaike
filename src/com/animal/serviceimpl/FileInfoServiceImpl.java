@@ -27,5 +27,11 @@ public class FileInfoServiceImpl implements FileInfoService {
 		return fileInfoMapper.addAnimalFileInfo(fileInfo);
 	}
 
+	@Override
+	public String getImageNameByAnimalId(String animalId) {
+		// TODO Auto-generated method stub
+		return fileInfoMapper.getImageNameByAnimalId(animalId);
+	}
+
 
 }

@@ -185,6 +185,8 @@ public class AnimalInfoController {
 
 		Map<String,String> fieldMap = new TreeMap<String,String>();
 		String fileId = CommonUtils.getUUID();
+		//封转fileInfo对象，存入数据库。
+		FileInfo fileTempInfo = new FileInfo();
 		if (isMutipart) {
 			InputStream is = null;
 			FileOutputStream fos = null;
@@ -221,8 +223,6 @@ public class AnimalInfoController {
 						while ((length = is.read(buf)) > 0) {
 							fos.write(buf, 0, length);// 这样就实现了将上传的文件保存到制定文件路径下
 						}
-						//封转fileInfo对象，存入数据库。
-						FileInfo fileTempInfo = new FileInfo();
 						fileTempInfo.setFileId(fileId);
 						fileTempInfo.setFileType(fileType);
 						fileTempInfo.setFileName(fileName);
@@ -251,7 +251,7 @@ public class AnimalInfoController {
 		animalInfo.setAnimalEnglishName(fieldMap.get("animalEnglishName"));
 		animalInfo.setAnimalRegion(fieldMap.get("animalRegion"));
 		animalInfo.setAnimalDetails(fieldMap.get("animalDetails"));
-		animalInfo.setAnimalFileId(fileId);
+		animalInfo.setAnimalFileId(fileTempInfo.getFileName());
 		animalInfo.setAnimalStatus("animalstatus02");//标识待审核
 		animalInfo.setAnimalUploadUser(loginSession.getUserId());
 		animalInfoService.addNewAnimalInfo(animalInfo);
