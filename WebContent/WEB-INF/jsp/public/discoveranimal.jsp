@@ -35,7 +35,12 @@
 <link rel="stylesheet" type="text/css" href="${path}/css/da-slider.css" />
 <link rel="stylesheet" href="${path}/css/styles.css" />
 <!-- Font Awesome -->
-<link href="${path}/fonts/font-awesome.min.css" rel="stylesheet">
+<script>
+
+function goToAnimalInfo(animalId){
+	window.location.href=result + "/Navigation/goToDiscoverAnimalInfo?animalId="+animalId;
+}
+</script>
 </head>
 
 <body >
@@ -230,9 +235,6 @@ if(listAnimalInfo != null){
 				window.location.href=result + "/Navigation/goToDiscoverAnimal?rank=yes";
 			}
 		});      	
-    }
-    function goToAnimalInfo(animalId){
-		window.location.href=result + "/Navigation/goToDiscoverAnimalInfo?animalId="+animalId;
     }
 </script>
 </body>

@@ -156,9 +156,9 @@ String userId = loginSession==null?"":loginSession.getUserId();
 				</form>
 			</div>
 		</div>
-		<section class="blank" id="blank" style="display:none">
+		<section class="blank text-center" id="blank" style="display:none">
 		</section>
-	<div id="animalBaseInfo" class="" style="padding:15px">
+	<div id="MyAnimalBaseInfo" class="" style="padding:15px">
 		<div class="container center"  style="width:60%; height:500px;">
 				<table class="table " style="color:#000000;">
 					<thead>
@@ -243,10 +243,16 @@ String userId = loginSession==null?"":loginSession.getUserId();
         var userId = '<%=userId%>';
         if(userId == null || userId =="" || userId == undefined){
     		$("#signOut").hide();
+    		$("#animalBaseInfo").hide();
+    		$("#MyAnimalBaseInfo").hide();
         	$("#loginIn").show();
+        	$("#blank").show();
         }else{
         	$("#signOut").show();
+    		$("#animalBaseInfo").show();
+    		$("#MyAnimalBaseInfo").show();
         	$("#loginIn").hide();
+        	$("#blank").hide();
         }
         var loginSession = '<%=loginSession%>';
         if(loginSession == null || loginSession =="" || loginSession == undefined || loginSession == 'null' ){
