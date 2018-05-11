@@ -2,6 +2,7 @@ package com.animal.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.animal.model.AnimalInfo;
 import com.animal.model.CodeInfo;
 import com.animal.model.Login;
 import com.animal.model.UserInfo;
+import com.animal.service.AnimalInfoService;
 import com.animal.service.LoginService;
 import com.animal.service.CodeInfoService;
 import com.animal.service.UserInfoService;
@@ -41,6 +44,9 @@ public class LoginController {
 	
 	@Autowired
 	private UserInfoService userInfoService;	
+	
+	@Autowired
+	private AnimalInfoService animalInfoService;	
 	
 	@Autowired
 	private CodeInfoService codeInfoService;	
@@ -63,6 +69,8 @@ public class LoginController {
 		login.setUserId(ss.getParameter("userId"));
 		login.setUserPassword(md5.encodePassword(ss.getParameter("userPassword"), null));
 		Login loginUser = loginService.isLogin(login);	
+		ArrayList<AnimalInfo> animalListInfoStatus02 = animalInfoService.getAnimalInfoByAnimalStatus("animalstatus02");
+		session.setAttribute("animalListInfoStatus02", animalListInfoStatus02);
         if (loginUser != null) {
             session.setAttribute("loginsession", loginUser);
     		logger.info(loginUser.toString());//日志级别为info则输出

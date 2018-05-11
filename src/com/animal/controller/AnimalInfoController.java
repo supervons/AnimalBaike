@@ -162,6 +162,20 @@ public class AnimalInfoController {
 		String seachWord = ss.getParameter("seachWord");
     		return "public/discoveranimal";
     }
+	//同意数据通过
+	@RequestMapping(value="agreeAnimal",method=RequestMethod.POST)
+    public String agreeAnimal(Model model, HttpSession session,HttpServletRequest ss) {
+		String animalId = ss.getParameter("animalId");
+		animalInfoService.updateAnimalStatusByAnimalId("animalstatus01", animalId);
+    	return "admin/index";
+    }
+	//否决数据通过
+	@RequestMapping(value="disAgreeAnimal",method=RequestMethod.POST)
+    public String disAgreeAnimal(Model model, HttpSession session,HttpServletRequest ss) {
+		String animalId = ss.getParameter("animalId");
+		animalInfoService.updateAnimalStatusByAnimalId("animalstatus03", animalId);
+    	return "admin/index";
+    }
 	
 	@RequestMapping(value="addNewAnimalInfo",method=RequestMethod.POST)
     public String addNewAnimalInfo(Model model, HttpSession session,HttpServletRequest request,HttpServletResponse response) throws Exception{

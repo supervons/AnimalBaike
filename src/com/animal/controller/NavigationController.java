@@ -158,9 +158,8 @@ public class NavigationController {
 	 */
 	@RequestMapping(value="goApprovalAnimal",method=RequestMethod.GET)
 	public String  goApprovalAnimal(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
-		session.setAttribute("tempFlag", null);
-		 //清空所有session中的值
-         session.invalidate(); 
+		 ArrayList<AnimalInfo> animalListInfoStatus02 = animalInfoService.getAnimalInfoByAnimalStatus("animalstatus02");
+		 session.setAttribute("animalListInfoStatus02", animalListInfoStatus02);
          return "admin/index";
 	}
 	/**

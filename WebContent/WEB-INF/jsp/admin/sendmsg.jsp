@@ -31,7 +31,7 @@
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><strong>Marvel</strong></a>
+                <a class="navbar-brand" href="#"><strong>动物百科-发送公告</strong></a>
 				
         </nav>
         <!--/. NAV TOP  -->

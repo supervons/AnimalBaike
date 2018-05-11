@@ -67,12 +67,6 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
 				<div class="navbar-header">
-					<button type="button" id="nav-toggle" class="navbar-toggle"
-						data-toggle="collapse" data-target="#main-nav">
-						<span class="sr-only">导航</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
 					<a href="#" class="navbar-brand scroll-top logo"><b>动物百科</b>Animal BaiKe</a>
 				</div>
 				<!--/.navbar-header-->

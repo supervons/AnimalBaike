@@ -12,6 +12,7 @@
 		<result property="animalFileId" column="animal_fileid" />
 		<result property="animalStatus" column="animal_status" />
 		<result property="animalDetails" column="animal_details" />
+		<result property="animalUploadUser" column="animal_upload_user" />
 	</resultMap>
 	<!-- 根据动物id获取动物信息 -->
 	<select id="getAnimalInfoByAnimalId" parameterType="String" resultMap="animalInfoResultMap">
@@ -49,6 +50,13 @@
 	</insert>
 	
 	
+	<!-- 根据动物审核状态获取动物信息 -->
+	<select id="getAnimalInfoByAnimalStatus" parameterType="String" resultMap="animalInfoResultMap">
+		select *
+		from animal_info
+		where animal_status=#{0}
+	</select>
+	
 	<!-- 根据上传用户id，查询该用户上传的动物 -->
 	<select id="getAnimalListByUserId" parameterType="String" resultMap="animalInfoResultMap">
 	select * 
@@ -56,6 +64,7 @@
 	where animal_upload_user = #{0}
 	order by animal_name desc
 	</select>
+	
 	
 	
 	<!--根据动物id，修改动物的状态，第一个参数为状态，第二个为动物id-->
