@@ -10,7 +10,7 @@ public class AnimalInfo {
 	private String animalId;
 	private String animalType;
 	private String animalName;
-	private String animalEnlishName;
+	private String animalEnglishName;
 	private String animalRegion;
 	private String animalFileId;
 	private String animalDetails;
@@ -34,11 +34,11 @@ public class AnimalInfo {
 	public void setAnimalName(String animalName) {
 		this.animalName = animalName;
 	}
-	public String getAnimalEnlishName() {
-		return animalEnlishName;
+	public String getAnimalEnglishName() {
+		return animalEnglishName;
 	}
-	public void setAnimalEnlishName(String animalEnlishName) {
-		this.animalEnlishName = animalEnlishName;
+	public void setAnimalEnglishName(String animalEnglishName) {
+		this.animalEnglishName = animalEnglishName;
 	}
 	public String getAnimalRegion() {
 		return animalRegion;
@@ -74,7 +74,7 @@ public class AnimalInfo {
 	public String toString() {
 		return "AnimalInfo [animalId=" + animalId + ", animalType="
 				+ animalType + ", animalName=" + animalName
-				+ ", animalEnlishName=" + animalEnlishName + ", animalRegion="
+				+ ", animalEnglishName=" + animalEnglishName + ", animalRegion="
 				+ animalRegion + ", animalFileId=" + animalFileId
 				+ ", animalDetails=" + animalDetails + ", animalStatus="
 				+ animalStatus + ", animalUploadUser=" + animalUploadUser + "]";

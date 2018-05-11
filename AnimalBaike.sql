@@ -46,7 +46,7 @@ create table `animal_info`(
 	animal_id varchar(11) comment '动物编号',
 	animal_type varchar(32) comment '动物类型',
 	animal_name varchar(255) comment '动物学名',
-	animal_enlishname varchar(20) comment '动物英文名',
+	animal_englishname varchar(20) comment '动物英文名',
 	animal_region varchar(20) comment '动物所属区域',
 	animal_fileid varchar(20) comment '动物文件图片id',
 	animal_details text comment '动物描述',	

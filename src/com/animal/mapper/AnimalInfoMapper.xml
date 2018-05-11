@@ -7,7 +7,7 @@
 		<result property="animalId" column="animal_id" />
 		<result property="animalType" column="animal_type" />
 		<result property="animalName" column="animal_name" />
-		<result property="animalEnlishName" column="animal_enlishname" />
+		<result property="animalEnglishName" column="animal_englishname" />
 		<result property="animalRegion" column="animal_region" />
 		<result property="animalFileId" column="animal_fileid" />
 		<result property="animalDetails" column="animal_details" />
@@ -40,10 +40,10 @@
 <!-- 		set user_password="123456" -->
 <!-- 		where user_id=#{0} -->
 <!-- 	</update> -->
-<!-- 	 插入新的用户登录  -->
-<!-- 	<insert id="addNewUser" parameterType="User"> -->
-<!-- 		insert into -->
-<!-- 		user_login(user_id,user_password,user_identity,user_regitime) -->
-<!-- 		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime}) -->
-<!-- 	</insert> -->
+	<!--插入新的用户登录  -->
+	<insert id="addNewAnimalInfo" parameterType="User">
+		insert into
+		animal_info(animal_id,animal_type,animal_name,animal_englishname)
+		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime})
+	</insert>
 </mapper>

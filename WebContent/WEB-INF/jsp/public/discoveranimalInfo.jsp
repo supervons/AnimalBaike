@@ -100,7 +100,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 						<tr>
 							<th class="text-center" colspan="2" style="font-size: 25px;" >
 							<%=animalInfo.getAnimalName()%>
-							<%=animalInfo.getAnimalEnlishName()==null?"":animalInfo.getAnimalEnlishName()%>
+							<%=animalInfo.getAnimalEnglishName()==null?"":animalInfo.getAnimalEnglishName()%>
 							</th>
 						</tr>
 					</thead>
