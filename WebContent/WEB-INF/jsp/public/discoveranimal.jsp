@@ -98,7 +98,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 				<!-- Heading -->
 				<h2 style="color:#ffffff">请输入想要查询的动物</h2>
 				<form action="${path}/AnimalController/seachAnimal/" method="POST">
-					<input type="text" id="seachWord" name="seachWord" class="seachWord" style="font-size:25px;height:45px">
+					<input type="text" id="seachWord" name="seachWord"  class="seachWord" style="font-size:25px;height:45px">
 					<input class="btn btn-default" style="font-size:25px; height:40px;margin-bottom:10px" type="submit" id="seachBtn" name="seachBtn" value="搜一下" /></li>
 					</ul>
 				</form>

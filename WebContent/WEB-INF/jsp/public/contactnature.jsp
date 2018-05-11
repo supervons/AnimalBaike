@@ -45,7 +45,7 @@ body, html {
 }
 
 #allmap {
-	width: 100%;
+	width: 60%;
 	height: 500px;
 }
 
@@ -91,11 +91,22 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	</header>
 	<!--/.header-->
 	<div id="#top"></div>
-	<section id="contactNature" class="page-section">
-		
+	<section id="contactNature" class="page-section center">
+		<div style="margin-top:5%" class="text-center">
+			<input type="text" id="seachWord"  placeholder="探索附件的美景"/>
+			<input type="button" class="btn btn-default" value="搜索" onclick="seach()"/>
+			<p>推荐搜索：<a class="btn btn-default" value="公园">公园</a>
+			<a class="btn btn-default">景点</a>
+			<a class="btn btn-default">湿地</a>
+			<a class="btn btn-default">森林</a>
+			<a class="btn btn-default">山</a>
+			<a class="btn btn-default">湖</a></p>
+		</div>
+		<div id="allmap" style="margin-left:20%">
+		</div>
 	</section>
 	
-	<section class="blank">
+	<section class="blank" id="blank">
 	<div class="modal fade" id="mymodal">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -109,7 +120,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 						<h4>该模块需要登陆后才可以查看哦~</h4>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal" ">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary" onclick="goToLogin()">去登陆</button>
 					</div>
 				</div>
@@ -150,20 +161,49 @@ String userId = loginSession==null?"":loginSession.getUserId();
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	var rPoint = "";//横坐标
+	var lPoint = "";//纵坐标
     $(function(){
+    	var map = new BMap.Map("allmap");
+    	var point = new BMap.Point(116.331398,39.897445);
+    	map.centerAndZoom(point,12);
+    	var geolocation = new BMap.Geolocation();
+    	geolocation.getCurrentPosition(function(r){
+    		if(this.getStatus() == BMAP_STATUS_SUCCESS){
+    			var mk = new BMap.Marker(r.point);
+    			map.addOverlay(mk);
+    			map.panTo(r.point);
+    			rPoint = r.point.lng;
+    			lPoint = r.point.lat;
+    		}
+    		else {
+    			alert('failed'+this.getStatus());
+    		}        
+    	},{enableHighAccuracy: true})
         var userId = '<%=userId%>';
         if(userId == null || userId =="" || userId == undefined){
     		$("#signOut").hide();
         	$("#loginIn").show();
+        	$("#blank").show();
         }else{
         	$("#signOut").show();
         	$("#loginIn").hide();
+        	$("#blank").hide();
         }
         var loginSession = '<%=loginSession%>';
         if(loginSession == null || loginSession =="" || loginSession == undefined || loginSession == 'null' ){
             $("#mymodal").modal("toggle");         	
         }
         });
+    function seach(){
+    	// 百度地图API功能
+    	var map = new BMap.Map("allmap");          
+    	map.centerAndZoom(new BMap.Point(rPoint, lPoint), 22);
+    	var local = new BMap.LocalSearch(map, {
+    		renderOptions:{map: map}
+    	});
+    	local.search($("#seachWord").val());
+    }
 </script>
 </body>
 </html>

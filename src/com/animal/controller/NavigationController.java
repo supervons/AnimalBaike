@@ -163,11 +163,13 @@ public class NavigationController {
          return "admin/index";
 	}
 	/**
-	 * 跳转到动物信息管理
+	 * 跳转到动物信息管理，此页面展示所有的正式数据，也就是状态为1的。
 	 */
 	@RequestMapping(value="goAnimalInfoManage",method=RequestMethod.GET)
 	public String  goAnimalInfoManage(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
 		session.setAttribute("tempFlag", null);
+		ArrayList<AnimalInfo> animalListInfoAdmin = animalInfoService.getAnimalInfoByAnimalStatus("animalstatus01");
+		 session.setAttribute("animalListInfoAdmin", animalListInfoAdmin);
 		 //清空所有session中的值
          session.invalidate(); 
          return "admin/animalinfo";

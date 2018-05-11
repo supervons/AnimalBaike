@@ -116,29 +116,33 @@ if(animalListInfoStatus02 != null){
 							<input type="button" class="btn btn-default" onclick="DisAgree('<%=animalListInfoStatus02.get(i).getAnimalId()%>')" value="否决">
 							</td>
 						</tr>
-				<div class="modal fade" id="myModal<%=i%>"  tabindex="-1" role="dialog"
+				<div class="modal fade  text-center" id="myModal<%=i%>" style="padding-top:15%" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" style="margin-right:88%">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">×</button>
-									<h4 class="modal-title" id="myModalLabel">动物【<%=animalListInfoStatus02.get(i).getAnimalName()%>】描述</h4>
-								</div>
-								<div class="modal-body"><%=animalListInfoStatus02.get(i).getAnimalDetails()==""?"用户没有添加描述":animalListInfoStatus02.get(i).getAnimalDetails()%></div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">关闭</button>
-								</div>
+<!-- 						<div class="modal-dialog" style="margin-right:88%"> -->
+<!-- 							<div class="modal-content"> -->
+<!-- 								<div class="modal-header"> -->
+<!-- 									<button type="button" class="close" data-dismiss="modal" -->
+<!-- 										aria-hidden="true">×</button> -->
+<%-- 									<h4 class="modal-title" id="myModalLabel">动物【<%=animalListInfoStatus02.get(i).getAnimalName()%>】描述</h4> --%>
+<!-- 								</div> -->
+<%-- 								<div class="modal-body"><%=animalListInfoStatus02.get(i).getAnimalDetails()==""?"用户没有添加描述":animalListInfoStatus02.get(i).getAnimalDetails()%></div> --%>
+<!-- 								<div class="modal-footer"> -->
+<!-- 									<button type="button" class="btn btn-default" -->
+<!-- 										data-dismiss="modal">关闭</button> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- <!-- 							/.modal-content --> -->
+<!-- 						</div> -->
+							<div style="width:600px;height:300px;margin-left:30%;box-shadow: 10px 10px 5px #000000;background-color: #ffffff">
+							<h4 class="modal-title text-left" id="myModalLabel">动物【<%=animalListInfoStatus02.get(i).getAnimalName()%>】描述:</h4>
+							<div class="modal-body text-left"><%=animalListInfoStatus02.get(i).getAnimalDetails()==""?"用户没有添加描述":animalListInfoStatus02.get(i).getAnimalDetails()%></div> 
 							</div>
-							<!-- /.modal-content -->
-						</div>
 						<!-- /.modal-dialog -->
 					</div>
 					
-					<div class="modal fade text-center " style="padding-top:15%" id="imagModel<%=i%>"  tabindex="-1" role="dialog"
+					<div class="modal fade text-center " style="padding-top:15%;" id="imagModel<%=i%>"  tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true">
-						<img data-src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalFileId()%>.jpg" style="width:600px" alt="First slide"
+						<img data-src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalFileId()%>.jpg" style="box-shadow: 10px 10px 5px #000000;width:600px" alt="First slide"
 						src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalFileId()%>.jpg" />
 					</div>
 					<!-- /.modal -->	
