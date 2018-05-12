@@ -147,6 +147,10 @@ String userId = loginSession==null?"":loginSession.getUserId();
 								<th class="text-left" style="font-size: 20px;">
 								<input type="file" id="animalFileId" name="animalFileId"/></th>
 							</tr>
+							<tr>
+								<th class="text-center" colspan="2" style="font-size: 15px;color:red">
+								友情提示：您的分享需经管理员审核后，其他用户才能搜索到。</th>
+							</tr>
 							<tr >
 								<th class="text-center" colspan="3" style="font-size: 20px;">
 								<button type="submit" class="btn btn-default">提交</button>

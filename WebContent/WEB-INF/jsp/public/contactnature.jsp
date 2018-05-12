@@ -95,12 +95,12 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<div style="margin-top:5%" class="text-center">
 			<input type="text" id="seachWord"  placeholder="探索附件的美景"/>
 			<input type="button" class="btn btn-default" value="搜索" onclick="seach()"/>
-			<p>推荐搜索：<a class="btn btn-default" value="公园">公园</a>
-			<a class="btn btn-default">景点</a>
-			<a class="btn btn-default">湿地</a>
-			<a class="btn btn-default">森林</a>
-			<a class="btn btn-default">山</a>
-			<a class="btn btn-default">湖</a></p>
+			<p>推荐搜索：<a id="park" class="btn btn-default" onclick="changeSeach('公园')">公园</a>
+			<a id="scenic" class="btn btn-default"  onclick="changeSeach('景点')">景点</a>
+			<a id="wetland" class="btn btn-default"  onclick="changeSeach('湿地')">湿地</a>
+			<a id="forest" class="btn btn-default"  onclick="changeSeach('森林')">森林</a>
+			<a id="mountain" class="btn btn-default" onclick="changeSeach('山峰')">山峰</a>
+			<a id="lake" class="btn btn-default"  onclick="changeSeach('湖泊')">湖泊</a></p>
 		</div>
 		<div id="allmap" style="margin-left:20%">
 		</div>
@@ -174,12 +174,12 @@ String userId = loginSession==null?"":loginSession.getUserId();
     			map.addOverlay(mk);
     			map.panTo(r.point);
     			rPoint = r.point.lng;
-    			lPoint = r.point.lat;
+    				lPoint = r.point.lat;
     		}
     		else {
     			alert('failed'+this.getStatus());
     		}        
-    	},{enableHighAccuracy: true})
+    	},{enableHighAccuracy: true});
         var userId = '<%=userId%>';
         if(userId == null || userId =="" || userId == undefined){
     		$("#signOut").hide();
@@ -203,6 +203,10 @@ String userId = loginSession==null?"":loginSession.getUserId();
     		renderOptions:{map: map}
     	});
     	local.search($("#seachWord").val());
+    }
+    function changeSeach(word){
+    	$("#seachWord").val(word);
+    	seach();
     }
 </script>
 </body>
