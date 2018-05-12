@@ -72,13 +72,32 @@
 		<div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
+                       			 发送系统公告
                         </h1>
 									
 		</div>
             <div id="page-inner">
 	
 		<div class="row">
-			
+		<form action="${path}/NoticeController/addNewNoticeInfo"  method="post">
+		
+			<table id="animalTable" class="table table-hover text-center" style="width:70%;background-color: #ffffff">
+					<tr >
+								<th class="text-right" style="font-size: 20px;">标题：</th>
+								<th class="text-left" style="font-size: 20px;">
+								<input type="text" id="noticePublisher" name="noticePublisher"/></th>
+							</tr>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">内容：</th>
+								<th class="text-left" style="font-size: 20px;">
+								<textarea class="form-control" style="width:500px;height:300px;"rows="2" id="noticeContent" name="noticeContent"></textarea></th>
+							</tr>
+							<tr >
+								<th class="text-center" colspan="3" style="font-size: 20px;">
+								<button type="submit" class="btn btn-default">发送公告</button>
+							</tr>
+				</table>
+				</form>
 			</div>
 		</div>
         </div>

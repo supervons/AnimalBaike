@@ -112,9 +112,9 @@ create table `file_info`(
 
  /*公告信息表*/
 create table `notice_info`(
-	notice_id varchar(11) comment '公告id',
+	notice_id varchar(32) comment '公告id',
 	notice_publisher varchar(20) comment '公告发布者',
-	notice_content varchar(255) comment '公告内容',
+	notice_content text comment '公告内容',
 	release_time datetime comment '发布时间',
 	reserve_field1 varchar(32) comment '保留字段1',	
 	reserve_field2 varchar(32) comment '保留字段2',	

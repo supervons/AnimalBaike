@@ -9,12 +9,11 @@
 		<result property="noticeContent" column="notice_content" />
 		<result property="releaseTime" column="release_time" />
 	</resultMap>
-	<!-- 根据动物id获取动物信息 -->
-<!-- 	<select id="getAnimalInfoByAnimalId" parameterType="String" resultMap="animalInfoResultMap"> -->
-<!-- 		select * -->
-<!-- 		from animal_info -->
-<!-- 		where animal_id=#{0} -->
-<!-- 	</select> -->
+	<!-- 查询公告 -->
+	<select id="getNoticeList"  resultMap="notice_info">
+		select *
+		from notice_info order by release_time desc
+	</select>
 	<!--更新用户的密码 -->
 <!-- 	<update id="updatePassword" parameterType="String"> -->
 <!-- 		update -->
@@ -29,10 +28,10 @@
 <!-- 		set user_password="123456" -->
 <!-- 		where user_id=#{0} -->
 <!-- 	</update> -->
-<!-- 	 插入新的用户登录  -->
-<!-- 	<insert id="addNewUser" parameterType="User"> -->
-<!-- 		insert into -->
-<!-- 		user_login(user_id,user_password,user_identity,user_regitime) -->
-<!-- 		values(#{userId},#{userPassword},#{userIdentity},#{userRegitime}) -->
-<!-- 	</insert> -->
+	<!-- 插入新的公告 -->
+	<insert id="addNewNotice" parameterType="NoticeInfo">
+		insert into
+		notice_info(notice_id,notice_publisher,notice_content,release_time)
+		values(#{noticeId},#{noticePublisher},#{noticeContent},#{releaseTime})
+	</insert>
 </mapper>

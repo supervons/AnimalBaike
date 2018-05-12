@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +25,11 @@ import com.animal.model.AnimalInfo;
 import com.animal.model.CodeInfo;
 import com.animal.model.Login;
 import com.animal.model.UserInfo;
+import com.animal.model.NoticeInfo;
 import com.animal.service.AnimalInfoService;
 import com.animal.service.LoginService;
 import com.animal.service.CodeInfoService;
+import com.animal.service.NoticeInfoService;
 import com.animal.service.UserInfoService;
 import com.animal.tools.CommonUtils;
 import com.animal.tools.GetStandardTime;
@@ -46,7 +49,10 @@ public class LoginController {
 	private UserInfoService userInfoService;	
 	
 	@Autowired
-	private AnimalInfoService animalInfoService;	
+	private AnimalInfoService animalInfoService;
+	
+	@Autowired
+	private NoticeInfoService noticeInfoService;	
 	
 	@Autowired
 	private CodeInfoService codeInfoService;	
@@ -68,6 +74,13 @@ public class LoginController {
 		Md5PasswordEncoder md5 = new Md5PasswordEncoder();
 		login.setUserId(ss.getParameter("userId"));
 		login.setUserPassword(md5.encodePassword(ss.getParameter("userPassword"), null));
+		/**存入公告，存入最新的**/
+		List<NoticeInfo> listNoticeInfo = noticeInfoService.getNoticeList();
+		System.out.println(listNoticeInfo.toString());
+		if(listNoticeInfo!=null){
+			NoticeInfo noticeInfo = listNoticeInfo.get(0);
+			session.setAttribute("noticeInfo", noticeInfo);
+		}
 		Login loginUser = loginService.isLogin(login);	
 		ArrayList<AnimalInfo> animalListInfoStatus02 = animalInfoService.getAnimalInfoByAnimalStatus("animalstatus02");
 		session.setAttribute("animalListInfoStatus02", animalListInfoStatus02);

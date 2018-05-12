@@ -1,8 +1,9 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*" %>
-<%@ page import="com.animal.model.Login" %>
+<%@ page import="com.animal.model.Login,com.animal.model.NoticeInfo" %>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -132,6 +133,9 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	<section id="portfolio" style="background-color: #ffffff" class="page-section section appear clearfix">
 		<div class="container center" style="width: 60%; height: 300px;">
 			<table class="table " style="color: #000000;">
+				<%
+					NoticeInfo noticeInfo = (NoticeInfo) session.getAttribute("noticeInfo");
+				%>
 				<thead>
 					<tr>
 						<th class="text-center" colspan="2" style="font-size: 25px;">
@@ -139,9 +143,37 @@ String userId = loginSession==null?"":loginSession.getUserId();
 					</tr>
 				</thead>
 				<tbody>
+				<%if(noticeInfo!=null){ 
+
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String dateString = sdf.format(noticeInfo.getReleaseTime());
+				
+				%>
 					<tr>
-						<th></th>
+						<th>
+						标题
+						</th>
+						<th>
+						<%=noticeInfo.getNoticePublisher()%>
+						</th>
 					</tr>
+					<tr>
+						<th>
+						时间
+						</th>
+						<th>
+						<%=dateString%>
+						</th>
+					</tr>
+					<tr>
+						<th>
+						内容
+						</th>
+						<th>
+						<%=noticeInfo.getNoticeContent()%>
+						</th>
+					</tr>
+					<%} %>
 				</tbody>
 			</table>
 		</div>
