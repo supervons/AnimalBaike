@@ -130,6 +130,7 @@ UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
 							<th colspan="2">
 							<input type="button" id="changeBtn" class="btn btn-default" value="修改" onclick="changeReadonly()">
 							<input type="submit" id="saveBtn" class="btn btn-default" value="保存" onclick="return save()">
+							<input type="button" id="changeBtn" class="btn btn-default" value="修改密码" onclick="window.open('${path}/Login/changePassword/','_blank','location=no,scrollbars=0,resizable=0,width=450px,height=300px,left=450,top=200;');">
 							</th>
 							
 						</tr>

@@ -34,6 +34,7 @@
 					return false;
 				} else {
 					alert("修改密码成功~");
+					window.close();
 					return true;
 				}
 
