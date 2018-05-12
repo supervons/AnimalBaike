@@ -150,52 +150,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		</div>
 		<!--/.container-->
 	</section>
-	<footer class="page-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-6 about">
-					<a href="#" class="logoDark"><h4>WebThemez</h4></a>
-					<p>Lorem ipsum dolor amet, consectetur adipiscing elit. Aenean
-						leo lectus sollicitudin convallis eget libero. Aliquam laoreet
-						tellus ut libero semper, egestas velit malesuada. Sed non risus
-						eget dolor amet vestibulum ullamcorper. Integer feugiat molestie.</p>
-					<ul class="socialIcons">
-						<li><a href="#" class="fbIcon" target="_blank"><i
-								class="fa fa-facebook-square fa-lg"></i></a></li>
-						<li><a href="#" class="twitterIcon" target="_blank"><i
-								class="fa fa-twitter-square fa-lg"></i></a></li>
-						<li><a href="#" class="googleIcon" target="_blank"><i
-								class="fa fa-google-plus-square fa-lg"></i></a></li>
-						<li><a href="#" class="pinterest" target="_blank"><i
-								class="fa fa-pinterest-square fa-lg"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-md-4 col-sm-6 twitter">
-					<h4>Latest Tweets</h4>
-					<ul>
-						<li><a href="#">@John Doe</a> Lorem ipsum dolor amet,
-							consectetur adipiscing elit. Aenean leo lectus sollicitudin eget
-							libero.<br> <span>2 minutes ago</span></li>
-						<li><a href="#">@John Doe</a> Lorem ipsum dolor amet,
-							consectetur adipiscing elit. Aenean leo lectus sollicitudin eget
-							libero.<br> <span>About an hour ago</span></li>
-					</ul>
-				</div>
-				<div class="col-md-4 contact">
-					<h4>Contact Info</h4>
-					<p>Lorem ipsum dolor amet, consectetur adipiscing ipsum dolor.</p>
-					<ul>
-						<li><i class="fa fa-phone"></i>1-123-345-6789</li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i>
-								contact@webthemez.com</a></li>
-						<li><i class="fa fa-flag"></i>123 Smith Drive, Baltimore, MD
-							21212</li>
-					</ul>
-				</div>
-			</div>
-			<!-- END Row -->
-		</div>
-	</footer>
+	
 	<!--/.page-section-->
 	<section class="copyright">
 		<div class="container">
