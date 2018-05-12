@@ -28,6 +28,9 @@
 	and animal_status = 'animalstatus01'
 	order by animal_name desc
 	</select>
+	<delete id="deleteAnimalById" parameterType="String">
+	delete from animal_info where animal_id = #{0}
+	</delete>
 	<!--更新用户的密码 -->
 <!-- 	<update id="updatePassword" parameterType="String"> -->
 <!-- 		update -->

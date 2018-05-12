@@ -129,7 +129,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 					<thead>
 						<tr>
 							<th class="text-center" colspan="2" style="font-size: 25px;" >
-							物种描述 Animal Summary
+							物种描述 ANIMAL SUMMARY
 							</th>
 						</tr>
 					</thead>

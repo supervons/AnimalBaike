@@ -47,5 +47,10 @@ public class AnimalInfoServiceImpl implements AnimalInfoService{
 		// TODO Auto-generated method stub
 		return animalInfoMapper.getAnimalInfoByAnimalStatus(animalStatus);
 	}
+	@Override
+	public int deleteAnimalById(String animalId) {
+		// TODO Auto-generated method stub
+		return animalInfoMapper.deleteAnimalById(animalId);
+	}
 
 }

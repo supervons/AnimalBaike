@@ -91,11 +91,10 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<div class="container">
 
 			<div class="row">
-				<div class="heading text-center">
+				<div class="heading text-center" >
 					<!-- Heading -->
-					<h2>Contact Us</h2>
-					<p>There are many variations of passages of Lorem Ipsum
-						available, but the majority have suffered.</p>
+					<h2>关于动物百科</h2>
+					<p style="margin-left:15%;margin-right:15%;">动物百科是一个集用户分享动物信息，发现附件的自然信息以及向用户推荐动物的免费网站，旨在通过宣传有趣的动物，呼吁大家保护动物，关注生态问题。</p>
 				</div>
 			</div>
 

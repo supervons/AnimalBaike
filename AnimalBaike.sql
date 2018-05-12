@@ -6,7 +6,7 @@ create table `user_info`(
 	user_id varchar(11) comment '用户编号',
 	user_name varchar(4) comment '用户姓名',
 	user_age int comment '用户年龄',
-	user_sex varchar(2) comment '用户性别',
+	user_sex varchar(16) comment '用户性别',
 	user_tel varchar(32) comment '用户电话',
 	user_address varchar(32) comment '用户地址',	
 	reserve_field1 varchar(32) comment '保留字段1',	

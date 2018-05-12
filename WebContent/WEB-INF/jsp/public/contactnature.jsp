@@ -91,8 +91,8 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	</header>
 	<!--/.header-->
 	<div id="#top"></div>
-	<section id="contactNature" class="page-section center">
-		<div style="margin-top:5%" class="text-center">
+	<section id="contactNature"  class="page-section center" >
+		<div style="margin-top:5%"  class="text-center">
 			<input type="text" id="seachWord"  placeholder="探索附件的美景"/>
 			<input type="button" class="btn btn-default" value="搜索" onclick="seach()"/>
 			<p>推荐搜索：<a id="park" class="btn btn-default" onclick="changeSeach('公园')">公园</a>
@@ -103,6 +103,29 @@ String userId = loginSession==null?"":loginSession.getUserId();
 			<a id="lake" class="btn btn-default"  onclick="changeSeach('湖泊')">湖泊</a></p>
 		</div>
 		<div id="allmap" style="margin-left:20%">
+		</div>
+		<div id="animalBaseInfo" style="padding:15px">
+		<div class="container center" id="contactNature1" style="width:60%; height:500px;">
+				<table class="table " style="color:#000000;">
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2" style="font-size: 25px;" >
+							在线直播 ONLINE SHOW
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>
+						 		
+							</th>
+						</tr>
+					</tbody>
+				</table>
+			<div class="contact text-center">
+				<embed align="middle" allowfullscreen="true" allowscriptaccess="always" height="400px" mode="transparent" quality="high" src="http://yy.com/s/1345859273/1345859273/yyscene.swf" type="application/x-shockwave-flash" width="70%"></embed>
+			</div>
+			</div>
 		</div>
 	</section>
 	
@@ -185,10 +208,12 @@ String userId = loginSession==null?"":loginSession.getUserId();
     		$("#signOut").hide();
         	$("#loginIn").show();
         	$("#blank").show();
+        	$("#contactNature").hide();
         }else{
         	$("#signOut").show();
         	$("#loginIn").hide();
         	$("#blank").hide();
+        	$("#contactNature").show();
         }
         var loginSession = '<%=loginSession%>';
         if(loginSession == null || loginSession =="" || loginSession == undefined || loginSession == 'null' ){

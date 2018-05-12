@@ -43,9 +43,9 @@
                         <a href="${path}/Navigation/goApprovalAnimal">动物审批</a>
                     </li>
 
-                    <li>
-                        <a href="${path}/Navigation/goAnimalInfoManage">动物信息管理</a>
-                    </li>
+<!--                     <li> -->
+<%--                         <a href="${path}/Navigation/goAnimalInfoManage">动物信息管理</a> --%>
+<!--                     </li> -->
 
                     <li>
                         <a href="${path}/Navigation/goUserManage">用户管理</a>
@@ -54,10 +54,9 @@
                     <li>
                         <a class="active-menu" href="${path}/Navigation/goSendMsg">发送公告</a>
                     </li>
-                    
 
                     <li>
-                        <a href="${path}/Navigation/goSignOut">修改密码</a>
+                        <a href="#" onclick="window.open('${path}/Login/changePassword/','_blank','location=no,scrollbars=0,resizable=0,width=450px,height=300px,left=450,top=200;');">修改密码</a>
                     </li>
 
                     <li>

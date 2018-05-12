@@ -29,4 +29,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoMapper.addNewUserInfo(userInfo);
 	}
 
+	@Override
+	public int updateUserInfo(UserInfo userInfo) {
+		// TODO Auto-generated method stub
+		return userInfoMapper.updateUserInfo(userInfo);
+	}
+
 }

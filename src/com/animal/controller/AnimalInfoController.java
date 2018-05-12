@@ -162,6 +162,13 @@ public class AnimalInfoController {
 		String seachWord = ss.getParameter("seachWord");
     		return "public/discoveranimal";
     }
+	
+	@RequestMapping(value="deleteAnimal",method=RequestMethod.POST)
+    public String deleteAnimal(HttpSession session,HttpServletRequest ss) {
+		String aminalId = ss.getParameter("animalId");
+		animalInfoService.deleteAnimalById(aminalId);
+    	return "public/discoveranimal";
+    }
 	//同意数据通过
 	@RequestMapping(value="agreeAnimal",method=RequestMethod.POST)
     public String agreeAnimal(Model model, HttpSession session,HttpServletRequest ss) {

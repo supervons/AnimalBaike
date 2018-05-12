@@ -8,4 +8,6 @@ public interface UserInfoService {
 
 	//插入新用户
 	public int addNewUserInfo(UserInfo userInfo);
+	
+	public int updateUserInfo(UserInfo userInfo);
 }

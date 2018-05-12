@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.animal.model.Login" %>
+<%@ page import="com.animal.model.UserInfo" %>
 <!doctype html>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -42,7 +43,7 @@
 <%
 Login loginSession =  (Login)session.getAttribute("loginsession");
 String userId = loginSession==null?"":loginSession.getUserId();
-
+UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
 %>
 	<header class="header">
 		<div class="container">
@@ -78,9 +79,68 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	</header>
 	<!--/.header-->
 	<section id="contactNature" class="page-section">
-		
+		<div id="animalBaseInfo" class="" style="padding:15px">
+		<div class="container center"  style="width:40%;margin-top:2%;height:500px;">
+				<table class="table text-center" style="color:#000000;">
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2" id="banner"style="font-size: 25px;" >
+							个人信息  PERSONAL INFORMATION
+							</th>
+						</tr>
+					</thead>
+					<form action="${path}/UserInfo/updateUserInfo" method="post">
+							<%
+							if(userInfo !=null){
+							%>
+					<tbody>
+						<tr>
+
+							<th style="font-size: 20px; margin-top: 16px;">用户编号：</th>
+							<th><input class="form-control" type="text" id="userId"
+								name="userId" value="<%=userInfo.getUserId()%>" readonly="true"/></th>
+						</tr>
+						<tr>
+							<th style="font-size: 20px; margin-top: 16px;">用户姓名：</th>
+							<th><input class="form-control" type="text" id="userName"
+								name="userName" value="<%=userInfo.getUserName()%>" readonly="true"/></th>
+						</tr>
+						<tr>
+							<th style="font-size: 20px; margin-top: 16px;">用户年龄：</th>
+							<th><input class="form-control" type="text" id="userAge"
+								name="userAge" value="<%=userInfo.getUserAge()%>" readonly="true"/></th>
+						</tr>
+						<tr>
+							<th style="font-size: 20px; margin-top: 16px;">用户性别：</th>
+							<th><input class="form-control" type="text" id="userSex"
+								name="userSex" value="<%=userInfo.getUserSex()%>" readonly="true"/></th>
+						</tr>
+						<tr>
+							<th style="font-size: 20px; margin-top: 16px;">手机号码：</th>
+							<th><input class="form-control" type="text" id="userTel"
+								name="userTel" value="<%=userInfo.getUserTel()%>" readonly="true"/></th>
+						</tr>
+						<tr>
+							<th style="font-size: 20px; margin-top: 16px;">地址：</th>
+							<th><input class="form-control" type="text"
+								id="userAddress" name="userAddress"
+								value="<%=userInfo.getUserAddress()%>" readonly="true"/></th>
+						</tr>
+						<tr class="text-center">
+							<th colspan="2">
+							<input type="button" id="changeBtn" class="btn btn-default" value="修改" onclick="changeReadonly()">
+							<input type="submit" id="saveBtn" class="btn btn-default" value="保存" onclick="return save()">
+							</th>
+							
+						</tr>
+					</tbody>
+					<%} %>
+					</form>
+				</table>
+			</div>
+		</div>
 	</section>
-	<section class="blank">
+	<section class="blank" id="blank">
 	<div class="modal fade" id="mymodal">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -136,19 +196,52 @@ String userId = loginSession==null?"":loginSession.getUserId();
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
     $(function(){
+    	$("#saveBtn").hide();
         var userId = '<%=userId%>';
         if(userId == null || userId =="" || userId == undefined){
     		$("#signOut").hide();
         	$("#loginIn").show();
+        	$("#blank").show();
+        	$("#banner").hide();
         }else{
         	$("#signOut").show();
         	$("#loginIn").hide();
+        	$("#blank").hide();
+        	$("#banner").show();
         }
         var loginSession = '<%=loginSession%>';
         if(loginSession == null || loginSession =="" || loginSession == undefined || loginSession == 'null' ){
             $("#mymodal").modal("toggle");         	
         }
         });
+    function changeReadonly(){
+    	$("#changeBtn").hide();
+    	$("#saveBtn").show();
+    	var userName = document.getElementById("userName");
+    	var userAge = document.getElementById("userAge");
+    	var userSex = document.getElementById("userSex");
+    	var userTel = document.getElementById("userTel");
+    	var userAddress = document.getElementById("userAddress");
+    	userName.removeAttribute("readonly");
+    	userAge.removeAttribute("readonly");
+    	userSex.removeAttribute("readonly");
+    	userTel.removeAttribute("readonly");
+    	userAddress.removeAttribute("readonly");
+    }
+    function save(){
+    	$("#saveBtn").hide();
+    	$("#changeBtn").show();
+    	var userName = document.getElementById("userName");
+    	var userAge = document.getElementById("userAge");
+    	var userSex = document.getElementById("userSex");
+    	var userTel = document.getElementById("userTel");
+    	var userAddress = document.getElementById("userAddress");
+    	userName.setAttribute("readonly", true);
+    	userAge.setAttribute("readonly", true);
+    	userSex.setAttribute("readonly", true);
+    	userTel.setAttribute("readonly", true);
+    	userAddress.setAttribute("readonly", true);
+    }
 </script>
 </body>
 </html>

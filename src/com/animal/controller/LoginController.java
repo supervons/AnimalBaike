@@ -164,6 +164,22 @@ public class LoginController {
 			e.printStackTrace();
 		}
 	}
+
+	@RequestMapping(value="changePassword",method=RequestMethod.GET)
+    public String changePassword(Model model, HttpSession session,HttpServletRequest ss,HttpServletResponse response) {
+        return "changePassword";
+	}
+	@RequestMapping(value="updatePassword",method=RequestMethod.POST)
+    public String updatePassword(Model model, HttpSession session,HttpServletRequest ss,HttpServletResponse response) {
+		Login userLogin = (Login) session.getAttribute("loginsession");
+		System.out.println(userLogin.getUserId());
+		Md5PasswordEncoder md5 = new Md5PasswordEncoder();
+		String oldPassword = md5.encodePassword(ss.getParameter("oldPassword"), null);;
+		String newPassword = md5.encodePassword(ss.getParameter("newPassword"), null);
+		System.out.println(oldPassword+ "-" + newPassword);
+	    loginService.updatePassword(userLogin.getUserId(), oldPassword, newPassword);
+		return "changePassword";
+	}
 	
 	@RequestMapping(value="register",method=RequestMethod.POST)
     public String register(Model model, HttpSession session,HttpServletRequest ss) {

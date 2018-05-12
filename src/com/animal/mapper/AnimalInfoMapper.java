@@ -16,4 +16,6 @@ public interface AnimalInfoMapper {
 	public int updateAnimalStatusByAnimalId(String status,String AnimalId);
 	
 	public ArrayList<AnimalInfo> getAnimalInfoByAnimalStatus(String animalStatus);
+	
+	public int deleteAnimalById(String animalId);
 }

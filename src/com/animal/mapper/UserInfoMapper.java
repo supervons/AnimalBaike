@@ -15,4 +15,6 @@ public interface UserInfoMapper {
 //
 	//插入新用户
 	public int addNewUserInfo(UserInfo userInfo);
+	
+	public int updateUserInfo(UserInfo userInfo);
 }

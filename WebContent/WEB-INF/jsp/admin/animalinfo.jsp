@@ -44,9 +44,9 @@
                         <a  href="${path}/Navigation/goApprovalAnimal">动物审批</a>
                     </li>
 
-                    <li>
-                        <a class="active-menu" href="${path}/Navigation/goAnimalInfoManage">动物信息管理</a>
-                    </li>
+<!--                     <li> -->
+<%--                         <a class="active-menu" href="${path}/Navigation/goAnimalInfoManage">动物信息管理</a> --%>
+<!--                     </li> -->
 
                     <li>
                         <a href="${path}/Navigation/goUserManage">用户管理</a>

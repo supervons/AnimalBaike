@@ -168,7 +168,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 					<thead>
 						<tr>
 							<th class="text-center" colspan="5" style="font-size: 25px;" >
-							我的分享列表
+							我的分享列表 MY SHARE ANIMAL
 							</th>
 						</tr>
 						<tr>
@@ -177,6 +177,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 							<th>英文名</th>
 							<th>所属地区</th>
 							<th>审核状态</th>
+							<th>操作</th>
 						</tr>
 					</thead>
 					
@@ -198,12 +199,13 @@ String userId = loginSession==null?"":loginSession.getUserId();
 							else if(status.equals("animalstatus04"))
 								statusValue = "作废";
 							%>
-						<tr onclick="goToAnimalInfo('<%=animalInfoList.get(i).getAnimalId()%>')">
+						<tr>
 							<td><%=animalInfoList.get(i).getAnimalType()%></td>
 							<td><%=animalInfoList.get(i).getAnimalName()%></td>
 							<td><%=animalInfoList.get(i).getAnimalEnglishName()%></td>
 							<td><%=animalInfoList.get(i).getAnimalRegion()%></td>
 							<td><%=statusValue%></td>
+							<td><input type="button" class="btn btn-default" onclick="DeleteAgree('<%=animalInfoList.get(i).getAnimalId()%>')" value="删除"></td>
 						</tr>
 						<%}} %>
 					</tbody>
@@ -263,6 +265,19 @@ String userId = loginSession==null?"":loginSession.getUserId();
             $("#mymodal").modal("toggle");         	
         }
         });
+    function DeleteAgree(animalId){
+		$.ajax({
+			url : result + "/AnimalController/deleteAnimal/",
+			data : {
+				animalId:animalId,
+			},
+			type : "POST",
+			success : function(re) {
+				alert("删除成功!");
+				location.reload();
+			}
+		}); 
+    }
 </script>
 </body>
 </html>

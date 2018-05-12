@@ -129,9 +129,22 @@ String userId = loginSession==null?"":loginSession.getUserId();
 				class="glyphicon glyphicon-chevron-right"></span></a>
 		</div>
 	</section>
-	<section id="portfolio" class="page-section section appear clearfix">
-		<div class="container">
-
+	<section id="portfolio" style="background-color: #ffffff" class="page-section section appear clearfix">
+		<div class="container center" style="width: 60%; height: 300px;">
+			<table class="table " style="color: #000000;">
+				<thead>
+					<tr>
+						<th class="text-center" colspan="2" style="font-size: 25px;">
+							系统公告 SYSTEM BOARD</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		</div>
 	</section>
 

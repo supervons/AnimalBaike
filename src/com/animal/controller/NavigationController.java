@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.animal.model.AnimalInfo;
 import com.animal.model.Login;
+import com.animal.model.UserInfo;
 import com.animal.service.AnimalInfoService;
 import com.animal.service.SeachRecordService;
+import com.animal.service.UserInfoService;
 /**
  * 导航控制器，主要负责跳转页面
  * @author fys
@@ -33,6 +35,9 @@ public class NavigationController {
     
     @Autowired
     private AnimalInfoService animalInfoService;
+    
+    @Autowired
+    private UserInfoService userInfoService;
 	/**
 	 * 跳转到首页
 	 * @return
@@ -139,8 +144,12 @@ public class NavigationController {
 	 */
 	@RequestMapping(value="goToUserInfo",method=RequestMethod.GET)
     public String goToUserInfo(HttpSession session) {
-		session.setAttribute("tempFlag", null);
-            return "public/userinfo";
+		Login loginUser = (Login)session.getAttribute("loginsession");
+		if(loginUser!=null){
+			UserInfo userInfo = userInfoService.getUserInfoByUserId(loginUser.getUserId());
+			session.setAttribute("userInfo", userInfo);
+		}
+        return "public/userinfo";
     }
 
 	/**
