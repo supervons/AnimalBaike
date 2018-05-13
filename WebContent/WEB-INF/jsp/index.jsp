@@ -91,34 +91,45 @@ String userId = loginSession==null?"":loginSession.getUserId();
 			</ol>
 			<div class="carousel-inner">
 				<div class="item">
-					<img data-src="${path}/images/chess-2.jpg" alt="First slide"
+					<img onclick="goToSeach('哺乳类')" data-src="${path}/images/chess-2.jpg" alt="First slide"
 						src="${path}/images/chess-2.jpg" />
-					<div class="container">
+					<div class="container" >
 						<div class="carousel-caption">
 							<h1>梅 花 鹿</h1>
-							<h3>森林中的精灵.</h3>
+							<h3>森林中的精灵，点击发现更多哺乳类动物。</h3>
 							<!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
 						</div>
 					</div>
 				</div>
 				<div class="item active">
-					<img data-src="${path}/images/apple.jpg" alt="Second slide"
-						src="${path}/images/apple.jpg">
+					<img onclick="goToSeach('鱼类')" data-src="${path}/images/animal_images/turtle.jpg" alt="Second slide"
+						src="${path}/images/animal_images/turtle.jpg">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1>猎 豹</h1>
-							<h3>草原上的追风者.</h3>
+							<h1>海 龟</h1>
+							<h3>悠悠闲闲逛大海，点击发现更多鱼类。</h3>
 							<!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>-->
 						</div>
 					</div>
 				</div>
 				<div class="item">
-					<img data-src="${path}/images/windmills.jpg" alt="Third slide"
-						src="${path}/images/windmills.jpg">
+					<img onclick="goToSeach('鸟类')" data-src="${path}/images/animal_images/bird1.jpg" alt="Third slide"
+						src="${path}/images/animal_images/bird1.jpg">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1>考 拉</h1>
-							<h3>静静的享受树上时光.</h3>
+							<h1>赤 尾 噪 鹛</h1>
+							<h3>鸟中舞蹈家，点击发现更多鸟类动物。</h3>
+							<!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img onclick="goToSeach('昆虫类')" data-src="${path}/images/animal_images/bird1.jpg" alt="Third slide"
+						src="${path}/images/animal_images/Mantis.jpg">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>螳 螂</h1>
+							<h3>昆虫中的战士，点击发现更多昆虫。</h3>
 							<!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
 						</div>
 					</div>
@@ -229,6 +240,20 @@ String userId = loginSession==null?"":loginSession.getUserId();
         	$("#loginIn").hide();
         }
         });
+    
+    function goToSeach(seach_content){
+    	console.log(seach_content);
+		$.ajax({
+			url : result + "/AnimalController/seachAnimal/",
+			data : {
+				seachWord:seach_content,
+			},
+			type : "POST",
+			success : function(re) {
+				window.location.href=result + "/Navigation/goToDiscoverAnimal?rank=yes";
+			}
+		});      	
+    }
 </script>
 </body>
 </html>

@@ -94,57 +94,34 @@ String userId = loginSession==null?"":loginSession.getUserId();
 				<div class="heading text-center" >
 					<!-- Heading -->
 					<h2>关于动物百科</h2>
-					<p style="margin-left:15%;margin-right:15%;">动物百科是一个集用户分享动物信息，发现附件的自然信息以及向用户推荐动物的免费网站，旨在通过宣传有趣的动物，呼吁大家保护动物，关注生态问题。</p>
+					<p style="margin-left:15%;margin-right:15%;">动物百科是一个集用户分享动物信息，发现附近的自然信息以及向用户推荐动物的免费网站，旨在通过宣传有趣的动物，呼吁大家保护动物，走近自然，关注生态问题。</p>
 				</div>
 			</div>
 
 			<div class="row mrgn30">
 				<div class="col-sm-4 col-md-4">
-					<h4>Address:</h4>
+					<h4>动物百科-GitHub项目地址：</h4>
 					<address>
-						WebThemez Company<br> 134 Stilla. Tae., 414515<br>
-						Leorislon, SA 02434-34534 USA <br>
+						<a href="#" onclick="window.open('https://github.com/supervons/AnimalBaike','_blank','');">github.com/supervons/AnimalBaike</a><br>
 					</address>
-					<h4>Phone:</h4>
+					<h4>联系邮箱:</h4>
 					<address>
-						12345-49589-2<br>
+						superfys@sina.com<br>
 					</address>
+					<h4>更多交流:<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=0967f56548783f4ca59e39189ab7db75b77071a99de637a794dba7a265a7d370">
+					<img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="动物百科【官方群】" title="动物百科【官方群】"></a></h4>
+					<address>
+					<img data-src="${path}/images/icon/animalBaike.png" alt="Third slide"
+						src="${path}/images/icon/animalBaike.png" ><br>
+						
+					</address>
+					
 				</div>
 
 				<div class="col-sm-12 col-md-8">
 					<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
-					<form name="sentMessage" id="contactForm" novalidate>
-						<div class="control-group">
-							<div class="controls">
-								<input type="text" class="form-control" placeholder="Full Name"
-									id="name" required
-									data-validation-required-message="Please enter your name" />
-								<p class="help-block"></p>
-							</div>
-						</div>
-						<div class="control-group">
-							<div class="controls">
-								<input type="email" class="form-control" placeholder="Email"
-									id="email" required
-									data-validation-required-message="Please enter your email" />
-							</div>
-						</div>
-
-						<div class="control-group">
-							<div class="controls">
-								<textarea rows="10" cols="100" class="form-control"
-									placeholder="Message" id="message" required
-									data-validation-required-message="Please enter your message"
-									minlength="5"
-									data-validation-minlength-message="Min 5 characters"
-									maxlength="999" style="resize: none"></textarea>
-							</div>
-						</div>
-						<div id="success"></div>
-						<!-- For success/fail messages -->
-						<button type="submit" class="btn btn-primary pull-right">Send</button>
-						<br />
-					</form>
+					<img data-src="${path}/images/animal_images/Cheetah.jpg" alt="Third slide"
+						src="${path}/images/animal_images/Cheetah.jpg" style="width:800px">
 				</div>
 			</div>
 		</div>
