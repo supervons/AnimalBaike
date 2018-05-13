@@ -48,5 +48,11 @@ public class LoginServiceImpl implements LoginService {
 		return loginMapper.isExistUser(userId);
 	}
 
+	@Override
+	public int deleteLoginInfoById(String userId) {
+		// TODO Auto-generated method stub
+		return loginMapper.deleteLoginInfoById(userId);
+	}
+
 
 }

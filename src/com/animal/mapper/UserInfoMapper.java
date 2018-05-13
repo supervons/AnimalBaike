@@ -1,5 +1,7 @@
 package com.animal.mapper;
 
+import java.util.List;
+
 import com.animal.model.UserInfo;
 
 //用户信息类
@@ -17,4 +19,8 @@ public interface UserInfoMapper {
 	public int addNewUserInfo(UserInfo userInfo);
 	
 	public int updateUserInfo(UserInfo userInfo);
+	
+	public List<UserInfo> getUserInfoList();
+	
+	public int deleteUserById(String userId);
 }

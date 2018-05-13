@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.animal.model.UserInfo;
+import com.animal.service.LoginService;
 import com.animal.service.UserInfoService;
 
 @Controller
@@ -17,6 +18,9 @@ import com.animal.service.UserInfoService;
 public class UserInfoController {
 	@Autowired
 	private UserInfoService userInfoService;	
+	
+	@Autowired
+	private LoginService loginInfoService;	
 //	/**
 //	 * 根据用户id获取用户信息
 //	 * @param userId
@@ -30,6 +34,13 @@ public class UserInfoController {
 		System.out.println(userInfo);
 		userInfoService.updateUserInfo(userInfo);
 		session.setAttribute("userInfo", userInfo);
+		return "public/userinfo";
+    }
+	@RequestMapping(value="deleteUserInfo",method=RequestMethod.POST)
+    public String deleteUserInfo(UserInfo userInfo,Model model, HttpSession session,HttpServletRequest ss) {
+		String userId =ss.getParameter("userId");
+		userInfoService.deleteUserById(userId);
+		loginInfoService.deleteLoginInfoById(userId);
 		return "public/userinfo";
     }
 

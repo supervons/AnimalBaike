@@ -1,6 +1,8 @@
 package com.animal.serviceimpl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +35,18 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public int updateUserInfo(UserInfo userInfo) {
 		// TODO Auto-generated method stub
 		return userInfoMapper.updateUserInfo(userInfo);
+	}
+
+	@Override
+	public List<UserInfo> getUserInfoList() {
+		// TODO Auto-generated method stub
+		return userInfoMapper.getUserInfoList();
+	}
+
+	@Override
+	public int deleteUserById(String userId) {
+		// TODO Auto-generated method stub
+		return userInfoMapper.deleteUserById(userId);
 	}
 
 }

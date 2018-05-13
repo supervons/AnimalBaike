@@ -188,7 +188,10 @@ public class NavigationController {
 	 */
 	@RequestMapping(value="goUserManage",method=RequestMethod.GET)
 	public String  goUserManage(HttpSession session,HttpServletRequest ss,HttpServletResponse response) throws IOException{
-
+		 List<UserInfo> userInfoList = userInfoService.getUserInfoList();
+		 if(userInfoList!=null){
+			 session.setAttribute("userInfoList", userInfoList);
+		 }
          return "admin/usermanage";
 	}
 	/**

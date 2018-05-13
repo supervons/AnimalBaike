@@ -19,5 +19,7 @@ public interface LoginService {
 	
 	//检查用户是否存在
 	public int isExistUser(String userId);
+	
+	public int deleteLoginInfoById(String userId);
 
 }

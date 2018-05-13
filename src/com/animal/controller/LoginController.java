@@ -182,6 +182,14 @@ public class LoginController {
     public String changePassword(Model model, HttpSession session,HttpServletRequest ss,HttpServletResponse response) {
         return "changePassword";
 	}
+
+
+	@RequestMapping(value="resetPassword",method=RequestMethod.POST)
+    public String resetPassword(Model model, HttpSession session,HttpServletRequest ss,HttpServletResponse response) {
+        String userId = ss.getParameter("userId");
+        loginService.resetUserPassword(userId);
+		return "admin/usermanage";
+	}
 	@RequestMapping(value="updatePassword",method=RequestMethod.POST)
     public String updatePassword(Model model, HttpSession session,HttpServletRequest ss,HttpServletResponse response) {
 		Login userLogin = (Login) session.getAttribute("loginsession");

@@ -34,9 +34,12 @@
 	<update id="resetUserPassword" parameterType="String">
 		update
 		user_login
-		set user_password="123456"
+		set user_password="e10adc3949ba59abbe56e057f20f883e"
 		where user_id=#{0}
 	</update>
+	<delete id="deleteLoginInfoById" parameterType="String">
+		delete from user_login where user_id = #{0}
+	</delete>
 	<!-- 插入新的用户登录 -->
 	<insert id="addNewUser" parameterType="Login">
 		insert into
