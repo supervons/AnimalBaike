@@ -262,7 +262,14 @@ public class AnimalInfoController {
 		animalInfo.setAnimalStatus("animalstatus02");//标识待审核
 		animalInfo.setAnimalUploadUser(loginSession.getUserId());
 		animalInfoService.addNewAnimalInfo(animalInfo);
-		
-    	return "public/discoveranimal";
+		Login loginInfo = (Login)session.getAttribute("loginsession");
+		if(loginInfo != null){
+			String userId = loginInfo.getUserId();
+			ArrayList<AnimalInfo> animalInfoList = animalInfoService.getAnimalListByUserId(userId);
+			session.setAttribute("animalInfoList", animalInfoList);
+		}else{
+			session.setAttribute("animalInfoList", null);
+		}
+    	return "public/shareanimal";
     }
 }
