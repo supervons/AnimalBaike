@@ -77,7 +77,7 @@ public class LoginController {
 		/**存入公告，存入最新的**/
 		List<NoticeInfo> listNoticeInfo = noticeInfoService.getNoticeList();
 		System.out.println(listNoticeInfo.toString());
-		if(listNoticeInfo!=null){
+		if(listNoticeInfo!=null && listNoticeInfo.size()>0){
 			NoticeInfo noticeInfo = listNoticeInfo.get(0);
 			session.setAttribute("noticeInfo", noticeInfo);
 		}

@@ -36,7 +36,6 @@
 <link rel="stylesheet" href="${path}/css/styles.css" />
 <!-- Font Awesome -->
 <script>
-
 function goToAnimalInfo(animalId){
 	window.location.href=result + "/Navigation/goToDiscoverAnimalInfo?animalId="+animalId;
 }

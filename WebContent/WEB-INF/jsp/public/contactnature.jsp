@@ -113,6 +113,11 @@ String userId = loginSession==null?"":loginSession.getUserId();
 							在线直播 ONLINE SHOW
 							</th>
 						</tr>
+						<tr>
+							<th class="text-center" colspan="2" style="font-size: 25px;">
+								<a href="https://www.huya.com/15540759">更多直播请点击</a>
+							</th>
+						</tr>
 					</thead>
 					<tbody>
 						<tr>
