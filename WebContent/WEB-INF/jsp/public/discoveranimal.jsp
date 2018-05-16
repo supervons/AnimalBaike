@@ -39,6 +39,20 @@
 function goToAnimalInfo(animalId){
 	window.location.href=result + "/Navigation/goToDiscoverAnimalInfo?animalId="+animalId;
 }
+
+function goToSeach(seach_content){
+	console.log("----"+seach_content + "----");
+	$.ajax({
+		url : result + "/AnimalController/seachAnimal/",
+		data : {
+			seachWord:seach_content,
+		},
+		type : "POST",
+		success : function(re) {
+			window.location.href=result + "/Navigation/goToDiscoverAnimal?rank=yes";
+		}
+	});      	
+}
 </script>
 </head>
 
@@ -221,20 +235,6 @@ if(listAnimalInfo != null){
         if(randomAnimalList != 'null')
             $("#guessYouLike").show();
     });
-    
-    function goToSeach(seach_content){
-    	console.log("----"+seach_content + "----");
-		$.ajax({
-			url : result + "/AnimalController/seachAnimal/",
-			data : {
-				seachWord:seach_content,
-			},
-			type : "POST",
-			success : function(re) {
-				window.location.href=result + "/Navigation/goToDiscoverAnimal?rank=yes";
-			}
-		});      	
-    }
 </script>
 </body>
 </html>
