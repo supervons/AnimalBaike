@@ -36,6 +36,25 @@
 <link rel="stylesheet" href="${path}/css/styles.css" />
 <!-- Font Awesome -->
 <link href="${path}/fonts/font-awesome.min.css" rel="stylesheet">
+<script>
+function submitShare(){
+	for(var i=0;i<document.form1.elements.length-1;i++)
+    {
+     if(document.form1.elements[i].value=="")
+     {
+       alert("以上均为必填项，请认真填写!");
+       document.form1.elements[i].focus();
+       return false;
+     }
+    }
+	if(confirm("确定要提交吗？")){
+		return true;
+	}
+	return false;
+
+}
+
+</script>
 </head>
 
 <body>
@@ -107,7 +126,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<%
 		%>
 <%-- 		<%=animalInfo.toString()%> --%>
-		<form action="${path}/AnimalController/addNewAnimalInfo"  method="post" enctype="multipart/form-data">
+		<form action="${path}/AnimalController/addNewAnimalInfo" id="form1" class="form1" method="post" enctype="multipart/form-data">
 				<table class="table " style="color:#ffffff;">
 					<thead>
 						<tr>
@@ -153,7 +172,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 							</tr>
 							<tr >
 								<th class="text-center" colspan="3" style="font-size: 20px;">
-								<button type="submit" class="btn btn-default">提交</button>
+								<button type="submit" class="btn btn-default" onclick="submitShare()">提交</button>
 								</tr>
 					</tbody>
 				</table>
@@ -266,17 +285,19 @@ String userId = loginSession==null?"":loginSession.getUserId();
         }
         });
     function DeleteAgree(animalId){
-		$.ajax({
-			url : result + "/AnimalController/deleteAnimal/",
-			data : {
-				animalId:animalId,
-			},
-			type : "POST",
-			success : function(re) {
-				alert("删除成功!");
-				location.reload();
-			}
-		}); 
+    	if(confirm("确定要删除该记录吗？")){
+    		$.ajax({
+    			url : result + "/AnimalController/deleteAnimal/",
+    			data : {
+    				animalId:animalId,
+    			},
+    			type : "POST",
+    			success : function(re) {
+    				alert("删除成功!");
+    				location.reload();
+    			}
+    		}); 
+    	}
     }
 </script>
 </body>
