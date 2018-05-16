@@ -133,8 +133,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 			</div>
 		</div>
 	</section>
-	
-	<section class="blank" id="blank">
+	<section class="blanks" id="blanks">
 	<div class="modal fade" id="mymodal">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -212,12 +211,12 @@ String userId = loginSession==null?"":loginSession.getUserId();
         if(userId == null || userId =="" || userId == undefined){
     		$("#signOut").hide();
         	$("#loginIn").show();
-        	$("#blank").show();
+        	$("#blanks").show();
         	$("#contactNature").hide();
         }else{
         	$("#signOut").show();
         	$("#loginIn").hide();
-        	$("#blank").hide();
+        	$("#blanks").hide();
         	$("#contactNature").show();
         }
         var loginSession = '<%=loginSession%>';
