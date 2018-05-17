@@ -109,12 +109,20 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		<div class="container">
 			<div class="heading text-center">
 				<!-- Heading -->
-				<h2 style="color:#ffffff">请输入想要查询的动物</h2>
+				<h2 style="color:#000000;margin-right:5%">请输入想要查询的动物</h2>
 				<form action="${path}/AnimalController/seachAnimal/" method="POST">
-					<input type="text" id="seachWord" name="seachWord"  class="seachWord" style="font-size:25px;height:45px">
+					<input type="text" id="seachWord" name="seachWord"  class="seachWord">
 					<input class="btn btn-default" style="font-size:25px; height:40px;margin-bottom:10px" type="submit" id="seachBtn" name="seachBtn" value="搜一下" /></li>
 					</ul>
 				</form>
+				<p>随机推荐：
+				<%
+				List<String> listRandomAnimal =  (List<String>)session.getAttribute("listRandomAnimal"); 
+				if(listRandomAnimal!=null){
+					for(int i =0;i<listRandomAnimal.size();i++){
+				%>
+				<a id="lake" class="btn btn-default"  onclick="goToSeach('<%=listRandomAnimal.get(i)%>')"><%=listRandomAnimal.get(i)%></a>
+				<%}}%></p>
 			</div>
 			<div class="row">
 <%
@@ -144,7 +152,7 @@ if(listAnimalInfo != null){
 					</tbody>
 				</table></section>
 	<section class="blankOfDiscoverAnimal" style="margin-left:5%;margin-right:5%;" >
-					<h3 id="guessYouLike" style="display:none">您可能还喜欢</h3>
+					<h3 id="guessYouLike" style="display:none;">您可能还喜欢</h3>
 					<table class="table table-bordered text-center text-justify">
 					<tbody>
 					<%

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ import com.animal.model.UserInfo;
 import com.animal.service.AnimalInfoService;
 import com.animal.service.SeachRecordService;
 import com.animal.service.UserInfoService;
+import com.animal.tools.CommonUtils;
 /**
  * 导航控制器，主要负责跳转页面
  * @author fys
@@ -57,7 +59,24 @@ public class NavigationController {
 		String rankFlag = ss.getParameter("rank")==null?"":ss.getParameter("rank");
 		if(!rankFlag.equals("yes"))
 			session.setAttribute("listAnimalInfo", null);
-        return "public/discoveranimal";
+		//获取所有通过了的动物
+		ArrayList<AnimalInfo> listAnimalInfo = animalInfoService.getAnimalInfoByAnimalStatus("animalstatus01");
+        List<String> listRandomAnimal = new ArrayList<String>();
+      //小于5个全部纳入
+		if(listAnimalInfo.size()<5){
+			for(int i = 0;i<listAnimalInfo.size();i++){
+				listRandomAnimal.add(listAnimalInfo.get(i).getAnimalName());
+			}
+		}else{//大于5个随机抽5个
+        	Set<Integer> result = CommonUtils.getRandomNumber(0, listRandomAnimal.size(), 5);
+        	for (int n : result) {
+        		listRandomAnimal.add(listAnimalInfo.get(n).getAnimalName());
+            }
+		}
+		//放入session
+		session.setAttribute("listRandomAnimal", listRandomAnimal);
+        
+		return "public/discoveranimal";
     }
 	/**
 	 * 跳转到动物详情
