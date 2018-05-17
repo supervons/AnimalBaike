@@ -94,6 +94,8 @@ if(animalListInfoAdmin != null){
 							<th>上传用户</th>
 							<th>描述</th>
 							<th>图片</th>
+							<th>音频</th>
+							<th>视频</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -107,6 +109,12 @@ if(animalListInfoAdmin != null){
 							<td><%=animalListInfoAdmin.get(i).getAnimalUploadUser()%></td>
 							<td><input type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal<%=i%>" value="查看描述"></td>
 							<td><input type="button" class="btn btn-default" data-toggle="modal" data-target="#imagModel<%=i%>" value="查看图片"></td>
+							<td><audio controls="controls" height="100" width="60">
+									<source src="${path}/upload/<%=animalListInfoAdmin.get(i).getAnimalSoundId()%>.mp3"  type="audio/mp3" />
+									<source src="${path}/upload/<%=animalListInfoAdmin.get(i).getAnimalSoundId()%>.ogg" type="audio/ogg" />
+									<source src="${path}/upload/<%=animalListInfoAdmin.get(i).getAnimalSoundId()%>.flac" type="audio/flac" />
+									<embed height="100" width="100" src="${path}/upload/<%=animalInfo.getAnimalSoundId()%>.mp3" />
+								</audio></td>
 							<td>
 							<input type="button" class="btn btn-default" onclick="Agree('<%=animalListInfoAdmin.get(i).getAnimalId()%>')" value="同意">
 							<input type="button" class="btn btn-default" onclick="DisAgree('<%=animalListInfoAdmin.get(i).getAnimalId()%>')" value="否决">

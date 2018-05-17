@@ -122,11 +122,11 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		</div>
 		<!-- /.modal -->
 		<div id="animalBaseInfo" class="" style="padding:15px;background:url(${path}/images/BG/shareBG1.jpg);">
-		<div class="container center"  style="width:60%; height:520px;background:url(${path}/images/BG/shareBG2.jpg);box-shadow: 10px 10px 5px #000000;">
+		<div class="container center"  style="width:60%; height:600px;background:url(${path}/images/BG/shareBG2.jpg);box-shadow: 10px 10px 5px #000000;">
 		<%
 		%>
 <%-- 		<%=animalInfo.toString()%> --%>
-		<form action="${path}/AnimalController/addNewAnimalInfo" id="form1" class="form1" method="post" enctype="multipart/form-data">
+		<form action="${path}/AnimalController/addNewAnimalInfo" id="form1" name="form1" method="post" enctype="multipart/form-data">
 				<table class="table " style="color:#ffffff;">
 					<thead>
 						<tr>
@@ -164,7 +164,17 @@ String userId = loginSession==null?"":loginSession.getUserId();
 							<tr >
 								<th class="text-right" style="font-size: 20px;">上传图片</th>
 								<th class="text-left" style="font-size: 20px;">
-								<input type="file" id="animalFileId" name="animalFileId"/></th>
+								<input type="file" id="animalFileId" accept="image/jpeg" name="animalFileId"/></th>
+							</tr>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">上传视频</th>
+								<th class="text-left" style="font-size: 20px;">
+								<input type="file" id="animalVideoId" accept="video/x-mpeg2" name="animalVideoId"/></th>
+							</tr>
+							<tr >
+								<th class="text-right" style="font-size: 20px;">上传音频</th>
+								<th class="text-left" style="font-size: 20px;">
+								<input type="file" id="animalSoundId" name="animalSoundId"/></th>
 							</tr>
 							<tr>
 								<th class="text-center" colspan="2" style="font-size: 15px;color:red">
@@ -172,7 +182,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 							</tr>
 							<tr >
 								<th class="text-center" colspan="3" style="font-size: 20px;">
-								<button type="submit" class="btn btn-default" onclick="submitShare()">提交</button>
+								<button type="submit" class="btn btn-default" onclick="return submitShare()">提交</button>
 								</tr>
 					</tbody>
 				</table>
@@ -294,7 +304,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
     			type : "POST",
     			success : function(re) {
     				alert("删除成功!");
-    				location.reload();
+    				window.location.href= result + "/Navigation/goToShareAnimal/";
     			}
     		}); 
     	}

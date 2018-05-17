@@ -140,30 +140,36 @@
 	var index = pathName.substr(1).indexOf("/");
 	var result = pathName.substr(0, index + 1);
       function resetUser(userId){
-    		$.ajax({
-    			url : result + "/Login/resetPassword/",
-    			data : {
-    				userId:userId,
-    			},
-    			type : "POST",
-    			success : function(re) {
-    				alert("重置密码成功!重置为【123456】");
-    				location.reload();
-    			}
-    		}); 
+    	  if(confirm("确定重置用户密码吗？")){
+    		  $.ajax({
+      			url : result + "/Login/resetPassword/",
+      			data : {
+      				userId:userId,
+      			},
+      			type : "POST",
+      			success : function(re) {
+      				alert("重置密码成功!重置为【123456】");
+      				location.reload();
+      			}
+      		}); 
+    	  }
+    		
         }
       function deleteUser(userId){
-  		$.ajax({
-  			url : result + "/UserInfo/deleteUserInfo/",
-  			data : {
-  				userId:userId,
-  			},
-  			type : "POST",
-  			success : function(re) {
-  				alert("删除成功!");
-  				location.reload();
-  			}
-  		}); 
+    	  if(confirm("确定删除用户吗？")){
+    		  $.ajax({
+    	  			url : result + "/UserInfo/deleteUserInfo/",
+    	  			data : {
+    	  				userId:userId,
+    	  			},
+    	  			type : "POST",
+    	  			success : function(re) {
+    	  				alert("删除成功!");
+    	  				location.reload();
+    	  			}
+    	  		}); 
+    	  }
+  		
       }
     
       </script>

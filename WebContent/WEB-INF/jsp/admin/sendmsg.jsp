@@ -25,6 +25,17 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css">
+<script>
+function submitFun(){
+	  if(confirm("确定发送公告吗？")){
+		  alert('发送成功！');
+		  return true;
+	  }else{
+		  return false;
+	  }
+}
+
+</script>
 </head>
 
 <body>
@@ -94,7 +105,7 @@
 							</tr>
 							<tr >
 								<th class="text-center" colspan="3" style="font-size: 20px;">
-								<button type="submit" class="btn btn-default">发送公告</button>
+								<input type="submit" onclick="return submitFun()" class="btn btn-default" value="发送公告"></button>
 							</tr>
 				</table>
 				</form>

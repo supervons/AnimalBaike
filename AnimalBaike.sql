@@ -49,6 +49,8 @@ create table `animal_info`(
 	animal_englishname varchar(20) comment '动物英文名',
 	animal_region varchar(20) comment '动物所属区域',
 	animal_fileid varchar(32) comment '动物文件图片id',
+	animal_videoid varchar(32) comment '动物视频id',
+	animal_soundid varchar(32) comment '动物语音id',
 	animal_details text comment '动物描述',	
 	animal_status varchar(32) comment '动物数据状态',	
 	animal_upload_user varchar(32) comment '上传用户',	

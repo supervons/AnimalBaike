@@ -98,6 +98,8 @@ if(animalListInfoStatus02 != null){
 							<th>上传用户</th>
 							<th>描述</th>
 							<th>图片</th>
+							<th>音频</th>
+							<th>视频</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -111,6 +113,8 @@ if(animalListInfoStatus02 != null){
 							<td><%=animalListInfoStatus02.get(i).getAnimalUploadUser()%></td>
 							<td><input type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal<%=i%>" value="查看描述"></td>
 							<td><input type="button" class="btn btn-default" data-toggle="modal" data-target="#imagModel<%=i%>" value="查看图片"></td>
+							<td><input type="button" class="btn btn-default" data-toggle="modal" data-target="#soundModel<%=i%>" value="查看音频"></td>
+							<td><input type="button" class="btn btn-default" data-toggle="modal" data-target="#videoModel<%=i%>" value="查看视频"></td>
 							<td>
 							<input type="button" class="btn btn-default" onclick="Agree('<%=animalListInfoStatus02.get(i).getAnimalId()%>')" value="同意">
 							<input type="button" class="btn btn-default" onclick="DisAgree('<%=animalListInfoStatus02.get(i).getAnimalId()%>')" value="否决">
@@ -144,6 +148,28 @@ if(animalListInfoStatus02 != null){
 						aria-labelledby="myModalLabel" aria-hidden="true">
 						<img data-src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalFileId()%>.jpg" style="box-shadow: 10px 10px 5px #000000;width:600px" alt="First slide"
 						src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalFileId()%>.jpg" />
+					</div>
+					
+					<div class="modal fade text-center " style="padding-top:15%;" id="soundModel<%=i%>"  tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<audio controls="controls" width="30px">
+									<source src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalSoundId()%>.mp3"  type="audio/mp3" />
+									<source src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalSoundId()%>.ogg" type="audio/ogg" />
+									<source src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalSoundId()%>.flac" type="audio/flac" />
+									<embed height="100" width="100" src="${path}/upload/<%=animalInfo.getAnimalSoundId()%>.mp3" />
+								</audio>
+					</div>
+					<div class="modal fade text-center " style="padding-top:15%;" id="videoModel<%=i%>"  tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<video width="320" height="240" style="margin:0 auto" controls="controls">
+							<source src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalVideoId()%>.mp4" type="video/mp4" />
+							<source src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalVideoId()%>.ogg" type="video/ogg" />
+							<source src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalVideoId()%>.webm" type="video/webm" />
+							<source src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalVideoId()%>.wmv" type="video/wmv" />
+							<object src="${path}/upload/<%=animalListInfoStatus02.get(i).getAnimalVideoId()%>.wmv" width="320" height="240">
+								<embed src="movie.swf" width="320" height="240" />
+							</object>
+						</video>
 					</div>
 					<!-- /.modal -->	
 					<%}} %>
@@ -187,30 +213,36 @@ if(animalListInfoStatus02 != null){
 	            $("#mymodal").modal("toggle");      
 	        });
       function Agree(animalId){
-  		$.ajax({
-  			url : result + "/AnimalController/agreeAnimal/",
-  			data : {
-  				animalId:animalId,
-  			},
-  			type : "POST",
-  			success : function(re) {
-				alert("已同意!");
-				location.reload();
-  			}
-  		});      	
+    	  if(confirm("确定通过吗？")){
+    		  $.ajax({
+    	  			url : result + "/AnimalController/agreeAnimal/",
+    	  			data : {
+    	  				animalId:animalId,
+    	  			},
+    	  			type : "POST",
+    	  			success : function(re) {
+    					alert("已同意!");
+    					location.reload();
+    	  			}
+    	  		});      
+    	  }
+  			
       }
       function DisAgree(animalId){
-    		$.ajax({
-    			url : result + "/AnimalController/disAgreeAnimal/",
-    			data : {
-    				animalId:animalId,
-    			},
-    			type : "POST",
-    			success : function(re) {
-  				alert("已否决!");
-  				location.reload();
-    			}
-    		});      	
+    	  if(confirm("确定否决吗？")){
+    		  $.ajax({
+      			url : result + "/AnimalController/disAgreeAnimal/",
+      			data : {
+      				animalId:animalId,
+      			},
+      			type : "POST",
+      			success : function(re) {
+    				alert("已否决!");
+    				location.reload();
+      			}
+      		});  
+    	  }
+    		    	
         }
       </script>
 

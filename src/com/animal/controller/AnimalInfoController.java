@@ -191,7 +191,10 @@ public class AnimalInfoController {
 		boolean isMutipart = ServletFileUpload.isMultipartContent(request);// 这个req中的数据是不是以multipart/form-data来编码的
 
 		Map<String,String> fieldMap = new TreeMap<String,String>();
-		String fileId = CommonUtils.getUUID();
+		String fileId ="";
+		String imageName = "";
+		String videoName ="";
+		String soundName ="";
 		//封转fileInfo对象，存入数据库。
 		FileInfo fileTempInfo = new FileInfo();
 		if (isMutipart) {
@@ -210,33 +213,98 @@ public class AnimalInfoController {
 					} else {
 						// System.out.println(fis.isFormField());//输出：false
 						System.out.println(fis.getFieldName());// 输出:file
-						System.out.println("filename:" + fis.getName());// 如果不是表单域就说明是我上传的文件，此时输出的就是我上传的文件的名称
-						String fileInfo[] = fis.getName().toString().split("\\.");
-						String fileType = "";
-						String fileName = String.valueOf(new Date().getTime());
-						String fileFullPath = "";
-						Date uploadTime = new Date();
-						if(fileInfo.length>1)
-							fileType = fileInfo[1];
-						//文件上传路径
-						String itemPath = request.getContextPath();
-						System.out.println(itemPath);
-						String path = request.getSession().getServletContext().getRealPath("/");
-						path = path + "upload/" + fileName + "." + fileType;
-						fileFullPath = path;
-						fos = new FileOutputStream(path);
-						byte[] buf = new byte[1024];
-						int length = 0;
-						while ((length = is.read(buf)) > 0) {
-							fos.write(buf, 0, length);// 这样就实现了将上传的文件保存到制定文件路径下
+						if(fis.getFieldName().equals("animalFileId")){
+							fileId = CommonUtils.getUUID();
+							System.out.println("filename:" + fis.getName());// 如果不是表单域就说明是我上传的文件，此时输出的就是我上传的文件的名称
+							String fileInfo[] = fis.getName().toString().split("\\.");
+							String fileType = "";
+							String fileName = String.valueOf(new Date().getTime());
+							imageName = fileName;
+							String fileFullPath = "";
+							Date uploadTime = new Date();
+							if(fileInfo.length>1)
+								fileType = fileInfo[1];
+							//文件上传路径
+							String itemPath = request.getContextPath();
+							System.out.println(itemPath);
+							String path = request.getSession().getServletContext().getRealPath("/");
+							path = path + "upload/" + fileName + "." + fileType;
+							fileFullPath = path;
+							fos = new FileOutputStream(path);
+							byte[] buf = new byte[1024];
+							int length = 0;
+							while ((length = is.read(buf)) > 0) {
+								fos.write(buf, 0, length);// 这样就实现了将上传的文件保存到制定文件路径下
+							}
+							fileTempInfo.setFileId(fileId);
+							fileTempInfo.setFileType(fileType);
+							fileTempInfo.setFileName(fileName);
+							fileTempInfo.setUploadTime(uploadTime);
+							fileTempInfo.setFileFullPath(fileFullPath);
+							//存入数据库
+							fileInfoService.addAnimalFileInfo(fileTempInfo);
+						}else if(fis.getFieldName().equals("animalVideoId")){
+							fileId = CommonUtils.getUUID();
+							System.out.println("filename:" + fis.getName());// 如果不是表单域就说明是我上传的文件，此时输出的就是我上传的文件的名称
+							String fileInfo[] = fis.getName().toString().split("\\.");
+							String fileType = "";
+							String fileName = String.valueOf(new Date().getTime());
+							videoName = fileName;
+							String fileFullPath = "";
+							Date uploadTime = new Date();
+							if(fileInfo.length>1)
+								fileType = fileInfo[1];
+							//文件上传路径
+							String itemPath = request.getContextPath();
+							System.out.println(itemPath);
+							String path = request.getSession().getServletContext().getRealPath("/");
+							path = path + "upload/" + fileName + "." + fileType;
+							fileFullPath = path;
+							fos = new FileOutputStream(path);
+							byte[] buf = new byte[1024];
+							int length = 0;
+							while ((length = is.read(buf)) > 0) {
+								fos.write(buf, 0, length);// 这样就实现了将上传的文件保存到制定文件路径下
+							}
+							fileTempInfo.setFileId(fileId);
+							fileTempInfo.setFileType(fileType);
+							fileTempInfo.setFileName(fileName);
+							fileTempInfo.setUploadTime(uploadTime);
+							fileTempInfo.setFileFullPath(fileFullPath);
+							//存入数据库
+							fileInfoService.addAnimalFileInfo(fileTempInfo);
+						}else{
+							fileId = CommonUtils.getUUID();
+							System.out.println("filename:" + fis.getName());// 如果不是表单域就说明是我上传的文件，此时输出的就是我上传的文件的名称
+							String fileInfo[] = fis.getName().toString().split("\\.");
+							String fileType = "";
+							String fileName = String.valueOf(new Date().getTime());
+							soundName = fileName;
+							String fileFullPath = "";
+							Date uploadTime = new Date();
+							if(fileInfo.length>1)
+								fileType = fileInfo[1];
+							//文件上传路径
+							String itemPath = request.getContextPath();
+							System.out.println(itemPath);
+							String path = request.getSession().getServletContext().getRealPath("/");
+							path = path + "upload/" + fileName + "." + fileType;
+							fileFullPath = path;
+							fos = new FileOutputStream(path);
+							byte[] buf = new byte[1024];
+							int length = 0;
+							while ((length = is.read(buf)) > 0) {
+								fos.write(buf, 0, length);// 这样就实现了将上传的文件保存到制定文件路径下
+							}
+							fileTempInfo.setFileId(fileId);
+							fileTempInfo.setFileType(fileType);
+							fileTempInfo.setFileName(fileName);
+							fileTempInfo.setUploadTime(uploadTime);
+							fileTempInfo.setFileFullPath(fileFullPath);
+							//存入数据库
+							fileInfoService.addAnimalFileInfo(fileTempInfo);
 						}
-						fileTempInfo.setFileId(fileId);
-						fileTempInfo.setFileType(fileType);
-						fileTempInfo.setFileName(fileName);
-						fileTempInfo.setUploadTime(uploadTime);
-						fileTempInfo.setFileFullPath(fileFullPath);
-						//存入数据库
-						fileInfoService.addAnimalFileInfo(fileTempInfo);
+						
 						
 					}
 				}
@@ -258,7 +326,9 @@ public class AnimalInfoController {
 		animalInfo.setAnimalEnglishName(fieldMap.get("animalEnglishName"));
 		animalInfo.setAnimalRegion(fieldMap.get("animalRegion"));
 		animalInfo.setAnimalDetails(fieldMap.get("animalDetails"));
-		animalInfo.setAnimalFileId(fileTempInfo.getFileName());
+		animalInfo.setAnimalFileId(imageName);
+		animalInfo.setAnimalVideoId(videoName);
+		animalInfo.setAnimalSoundId(soundName);
 		animalInfo.setAnimalStatus("animalstatus02");//标识待审核
 		animalInfo.setAnimalUploadUser(loginSession.getUserId());
 		animalInfoService.addNewAnimalInfo(animalInfo);

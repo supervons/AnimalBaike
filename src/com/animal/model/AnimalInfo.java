@@ -13,6 +13,8 @@ public class AnimalInfo {
 	private String animalEnglishName;
 	private String animalRegion;
 	private String animalFileId;
+	private String animalVideoId;
+	private String animalSoundId;
 	private String animalDetails;
 	private String animalStatus;
 	private String animalUploadUser;
@@ -70,15 +72,29 @@ public class AnimalInfo {
 	public void setAnimalUploadUser(String animalUploadUser) {
 		this.animalUploadUser = animalUploadUser;
 	}
+	public String getAnimalVideoId() {
+		return animalVideoId;
+	}
+	public void setAnimalVideoId(String animalVideoId) {
+		this.animalVideoId = animalVideoId;
+	}
+	public String getAnimalSoundId() {
+		return animalSoundId;
+	}
+	public void setAnimalSoundId(String animalSoundId) {
+		this.animalSoundId = animalSoundId;
+	}
 	@Override
 	public String toString() {
 		return "AnimalInfo [animalId=" + animalId + ", animalType="
 				+ animalType + ", animalName=" + animalName
 				+ ", animalEnglishName=" + animalEnglishName
 				+ ", animalRegion=" + animalRegion + ", animalFileId="
-				+ animalFileId + ", animalDetails=" + animalDetails
-				+ ", animalStatus=" + animalStatus + ", animalUploadUser="
-				+ animalUploadUser + "]";
+				+ animalFileId + ", animalVideoId=" + animalVideoId
+				+ ", animalSoundId=" + animalSoundId + ", animalDetails="
+				+ animalDetails + ", animalStatus=" + animalStatus
+				+ ", animalUploadUser=" + animalUploadUser + "]";
 	}
+	
 
 }

@@ -37,6 +37,28 @@
 <link rel="stylesheet" href="${path}/css/styles.css" />
 <!-- Font Awesome -->
 <link href="${path}/fonts/font-awesome.min.css" rel="stylesheet">
+<script>
+var myVideo=document.getElementById("video1");  
+
+	function playPause() {
+		if (myVideo.paused)
+			myVideo.play();
+		else
+			myVideo.pause();
+	}
+
+	function makeBig() {
+		myVideo.width = 560;
+	}
+
+	function makeSmall() {
+		myVideo.width = 320;
+	}
+
+	function makeNormal() {
+		myVideo.width = 420;
+	}
+</script>
 </head>
 
 <body>
@@ -90,7 +112,7 @@ String userId = loginSession==null?"":loginSession.getUserId();
 		</div>
 		<section id="services" class="page-section">
 		<div id="animalBaseInfo" class="" style="background-color: #8B8B7A;padding:15px">
-		<div class="container center"  style="width:60%; height:500px;background:url(${path}/images/BG/animalBG.jpg);box-shadow: 10px 10px 5px #000000;">
+		<div class="container center"  style="width:70%; height:500px;background:url(${path}/images/BG/animalBG.jpg);box-shadow: 10px 10px 5px #000000;">
 		<%
 		AnimalInfo animalInfo = (AnimalInfo)session.getAttribute("animalDetailsInfo");
 		%>
@@ -108,16 +130,25 @@ String userId = loginSession==null?"":loginSession.getUserId();
 						<tr>
 							<td rowspan="10"><img data-src="${path}/upload/<%=animalInfo.getAnimalFileId()%>.jpg" style="width:550px" alt="First slide"
 						src="${path}/upload/<%=animalInfo.getAnimalFileId()%>.jpg" /></td>
-							<td class="text-left" style="width:30%">动物学名 ： <%=animalInfo.getAnimalName()==null?"":animalInfo.getAnimalName()%></td>
+							<td class="text-left" style="width:20%">动物学名 ： <%=animalInfo.getAnimalName()==null?"":animalInfo.getAnimalName()%></td>
 						</tr>
 						<tr>
-							<td class="text-left" style="width:30%">动物类别 ： <%=animalInfo.getAnimalType()==null?"":animalInfo.getAnimalType()%></td>
+							<td class="text-left" style="width:20%">动物类别 ： <%=animalInfo.getAnimalType()==null?"":animalInfo.getAnimalType()%></td>
 						</tr>
 						<tr>
-							<td class="text-left" style="width:30%">所属地区 ： <%=animalInfo.getAnimalRegion()==null?"":animalInfo.getAnimalRegion()%></td>
+							<td class="text-left" style="width:20%">所属地区 ： <%=animalInfo.getAnimalRegion()==null?"":animalInfo.getAnimalRegion()%></td>
 						</tr>
 						<tr>
-							<td class="text-left" style="width:30%">上传用户 ： <%=animalInfo.getAnimalUploadUser()==null?"":animalInfo.getAnimalUploadUser()%></td>
+							<td class="text-left" style="width:20%">上传用户 ： <%=animalInfo.getAnimalUploadUser()==null?"":animalInfo.getAnimalUploadUser()%></td>
+						</tr >
+						<tr>
+							<td  class="text-left" style="width:20%">动物音频 ：
+							<audio controls="controls" height="100" width="60">
+									<source src="${path}/upload/<%=animalInfo.getAnimalSoundId()%>.mp3"  type="audio/mp3" />
+									<source src="${path}/upload/<%=animalInfo.getAnimalSoundId()%>.ogg" type="audio/ogg" />
+									<source src="${path}/upload/<%=animalInfo.getAnimalSoundId()%>.flac" type="audio/flac" />
+									<embed height="100" width="100" src="${path}/upload/<%=animalInfo.getAnimalSoundId()%>.mp3" />
+								</audio></td>
 						</tr>
 					</tbody>
 				</table>
@@ -139,6 +170,35 @@ String userId = loginSession==null?"":loginSession.getUserId();
 						 		<%=animalInfo.getAnimalDetails()==null?"暂无物种描述":animalInfo.getAnimalDetails()%>
 							</th>
 						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="animalBaseInfo" class="text-center" style="padding:15px">
+		<div class="container center"  style="width:60%; height:500px;">
+				<table class="table " style="color:#000000;">
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2" style="font-size: 25px;" >
+							动物视频 ANIMAL VIDEO
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<th class="text-center" colspan="2" >
+						<video width="320" height="240" style="margin:0 auto" controls="controls">
+							<source src="${path}/upload/<%=animalInfo.getAnimalVideoId()%>.mp4" type="video/mp4" />
+							<source src="${path}/upload/<%=animalInfo.getAnimalVideoId()%>.ogg" type="video/ogg" />
+							<source src="${path}/upload/<%=animalInfo.getAnimalVideoId()%>.webm" type="video/webm" />
+							<source src="${path}/upload/<%=animalInfo.getAnimalVideoId()%>.wmv" type="video/wmv" />
+							<object src="${path}/upload/<%=animalInfo.getAnimalVideoId()%>.wmv" width="320" height="240">
+								<embed src="movie.swf" width="320" height="240" />
+							</object>
+						</video>
+						</th>
+					
+					</tr>
 					</tbody>
 				</table>
 			</div>
